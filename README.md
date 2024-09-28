@@ -1,1 +1,1 @@
-# grub-n-grow
+# Grub'n'Grow
