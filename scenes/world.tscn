@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg7o4qlnmdeoi"]
+
+[ext_resource type="Script" path="res://scripts/farm_grid.gd" id="1_qy2y8"]
+
+[node name="World" type="Node2D"]
+
+[node name="FarmGrid" type="TileMapLayer" parent="."]
+script = ExtResource("1_qy2y8")
