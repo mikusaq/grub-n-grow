@@ -61,6 +61,8 @@ func farm_tile_process_input(tile_pos: Vector2i):
 		set_cell(tile_pos, 0, MULCH_POS)
 	elif atlas_choords == MULCH_POS:
 		seed_plant(tile_pos)
+	elif atlas_choords in [POTATO_HARVEST_POS, TOMATO_HARVEST_POS, BASIL_HARVEST_POS]:
+		process_harvest(tile_pos, atlas_choords)
 
 
 func seed_plant(tile_pos: Vector2i):
@@ -89,3 +91,13 @@ func process_next_day():
 			elif atlas_choords == BASIL_PLANT_POS:
 				if farm_tile.growing_days == 4:
 					set_cell(farm_tile.tile_pos, 0, BASIL_HARVEST_POS)
+
+
+func process_harvest(tile_pos: Vector2i, atlas_choords: Vector2i):
+	if atlas_choords == POTATO_HARVEST_POS:
+		print("Harvested 1 potato")
+	elif atlas_choords == TOMATO_HARVEST_POS:
+		print("Harvested 1 tomato")
+	elif atlas_choords == BASIL_HARVEST_POS:
+		print("Harvested 1 basil")
+	set_cell(tile_pos, 0, SOIL_POS)
