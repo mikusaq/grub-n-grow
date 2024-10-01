@@ -63,7 +63,8 @@ func get_surrounding_farm_tiles(farm_tile: FarmTile) -> Array[FarmTile]:
 	var farm_tiles: Array[FarmTile]
 	var surrounding_cells = get_surrounding_cells(farm_tile.tile_pos)
 	for cell in surrounding_cells:
-		farm_tiles.append(get_farm_tile(cell))
+		if cell.x > 0 and cell.y < 5:
+			farm_tiles.append(get_farm_tile(cell))
 	return farm_tiles
 
 
