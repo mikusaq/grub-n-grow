@@ -15,45 +15,7 @@ const BASIL_SEED_POS = Vector2i(0, 3)
 const BASIL_PLANT_POS = Vector2i(1, 3)
 const BASIL_HARVEST_POS = Vector2i(2, 3)
 
-enum PlantType {NO_TYPE, POTATO, TOMATO, BASIL, TREE}
-
-signal seed_chosen(plant_type: PlantType)
-
-class FarmTile:
-	var farm_grid: FarmGrid
-	var plant_type: PlantType = PlantType.NO_TYPE
-	var tile_pos: Vector2i
-	var atlas_choords: Vector2i:
-		set(new_value):
-			atlas_choords = new_value
-			farm_grid.set_cell(tile_pos, 0, atlas_choords)
-	var growing_days: int = 0
-	var harvest: int = 1
-	
-	func reset(new_atlas_choords: Vector2i = SOIL_POS):
-		plant_type = PlantType.NO_TYPE
-		atlas_choords = new_atlas_choords
-		growing_days = 0
-		harvest = 1
-	
-	func is_harvest_time() -> bool:
-		if plant_type == PlantType.POTATO:
-			if growing_days == 2:
-				return true
-		elif plant_type == PlantType.TOMATO:
-			if growing_days == 3:
-				return true
-		elif plant_type == PlantType.BASIL:
-			if growing_days == 3:
-				return true
-		return false
-	
-	func determine_harvest_value(surrounding_farm_tiles: Array[FarmTile]) -> void:
-		for farm_tile in surrounding_farm_tiles:
-			if farm_tile.plant_type == PlantType.TREE:
-				harvest += 1
-			elif farm_tile.plant_type == PlantType.BASIL and plant_type == PlantType.TOMATO:
-				harvest += 1
+signal seed_chosen(plant_type: FarmTile.PlantType)
 	
 var farm_tiles: Array[FarmTile]
 
@@ -83,7 +45,7 @@ func _ready() -> void:
 		farm_tile.tile_pos = tile_pos
 		farm_tile.atlas_choords = get_cell_atlas_coords(tile_pos)
 		if farm_tile.atlas_choords == TREE_POS:
-			farm_tile.plant_type = PlantType.TREE
+			farm_tile.plant_type = FarmTile.PlantType.TREE
 		farm_tiles.append(farm_tile)
 
 
@@ -99,11 +61,11 @@ func _input(event: InputEvent) -> void:
 		var farm_tile = get_farm_tile(tile_mouse_pos)
 		process_input_on_farm_tile(farm_tile)
 	elif event.is_action_pressed("1"):
-		seed_chosen.emit(PlantType.POTATO)
+		seed_chosen.emit(FarmTile.PlantType.POTATO)
 	elif event.is_action_pressed("2"):
-		seed_chosen.emit(PlantType.TOMATO)
+		seed_chosen.emit(FarmTile.PlantType.TOMATO)
 	elif event.is_action_pressed("3"):
-		seed_chosen.emit(PlantType.BASIL)
+		seed_chosen.emit(FarmTile.PlantType.BASIL)
 	elif event.is_action_pressed("next_day"):
 		process_next_day()
 
@@ -116,11 +78,11 @@ func process_input_on_farm_tile(farm_tile: FarmTile):
 	elif farm_tile.atlas_choords == MULCH_POS:
 		var plant_to_seed = await seed_chosen
 		farm_tile.plant_type = plant_to_seed
-		if plant_to_seed == PlantType.POTATO:
+		if plant_to_seed == FarmTile.PlantType.POTATO:
 			farm_tile.atlas_choords = POTATO_PLANT_POS
-		elif plant_to_seed == PlantType.TOMATO:
+		elif plant_to_seed == FarmTile.PlantType.TOMATO:
 			farm_tile.atlas_choords = TOMATO_PLANT_POS
-		elif plant_to_seed == PlantType.BASIL:
+		elif plant_to_seed == FarmTile.PlantType.BASIL:
 			farm_tile.atlas_choords = BASIL_PLANT_POS
 	elif farm_tile.atlas_choords in [POTATO_HARVEST_POS, TOMATO_HARVEST_POS, BASIL_HARVEST_POS]:
 		harvest(farm_tile)
@@ -137,21 +99,21 @@ func process_next_day():
 		elif farm_tile.atlas_choords in [POTATO_PLANT_POS, TOMATO_PLANT_POS, BASIL_PLANT_POS]:
 			farm_tile.growing_days += 1
 			if farm_tile.is_harvest_time():
-				if farm_tile.plant_type == PlantType.POTATO:
+				if farm_tile.plant_type == FarmTile.PlantType.POTATO:
 					farm_tile.atlas_choords = POTATO_HARVEST_POS
-				elif farm_tile.plant_type == PlantType.TOMATO:
+				elif farm_tile.plant_type == FarmTile.PlantType.TOMATO:
 					farm_tile.atlas_choords = TOMATO_HARVEST_POS
-				elif farm_tile.plant_type == PlantType.BASIL:
+				elif farm_tile.plant_type == FarmTile.PlantType.BASIL:
 					farm_tile.atlas_choords = BASIL_HARVEST_POS
 				var surrounding_farm_tiles = get_surrounding_farm_tiles(farm_tile)
 				farm_tile.determine_harvest_value(surrounding_farm_tiles)
 
 
 func harvest(farm_tile: FarmTile):
-	if farm_tile.plant_type == PlantType.POTATO:
+	if farm_tile.plant_type == FarmTile.PlantType.POTATO:
 		print("Potatoes harvested: ", farm_tile.harvest)
-	elif farm_tile.plant_type == PlantType.TOMATO:
+	elif farm_tile.plant_type == FarmTile.PlantType.TOMATO:
 		print("Tomatoes harvested: ", farm_tile.harvest)
-	elif farm_tile.plant_type == PlantType.BASIL:
+	elif farm_tile.plant_type == FarmTile.PlantType.BASIL:
 		print("Basils harvested: ", farm_tile.harvest)
 	farm_tile.reset()
