@@ -49,11 +49,6 @@ func _ready() -> void:
 		farm_tiles.append(farm_tile)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		var mouse_pos = get_global_mouse_position()
@@ -77,13 +72,7 @@ func process_input_on_farm_tile(farm_tile: FarmTile):
 		farm_tile.atlas_choords = MULCH_POS
 	elif farm_tile.atlas_choords == MULCH_POS:
 		var plant_to_seed = await seed_chosen
-		farm_tile.plant_type = plant_to_seed
-		if plant_to_seed == FarmTile.PlantType.POTATO:
-			farm_tile.atlas_choords = POTATO_PLANT_POS
-		elif plant_to_seed == FarmTile.PlantType.TOMATO:
-			farm_tile.atlas_choords = TOMATO_PLANT_POS
-		elif plant_to_seed == FarmTile.PlantType.BASIL:
-			farm_tile.atlas_choords = BASIL_PLANT_POS
+		farm_tile.seed_plant(plant_to_seed)
 	elif farm_tile.atlas_choords in [POTATO_HARVEST_POS, TOMATO_HARVEST_POS, BASIL_HARVEST_POS]:
 		harvest(farm_tile)
 

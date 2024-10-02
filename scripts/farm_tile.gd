@@ -19,8 +19,18 @@ func reset(new_atlas_choords: Vector2i = FarmGrid.SOIL_POS):
 	atlas_choords = new_atlas_choords
 	growing_days = 0
 	harvest = 1
-	
-	
+
+
+func seed_plant(plant_to_seed: PlantType):
+	plant_type = plant_to_seed
+	if plant_to_seed == PlantType.POTATO:
+		atlas_choords = FarmGrid.POTATO_PLANT_POS
+	elif plant_to_seed == PlantType.TOMATO:
+		atlas_choords = FarmGrid.TOMATO_PLANT_POS
+	elif plant_to_seed == PlantType.BASIL:
+		atlas_choords = FarmGrid.BASIL_PLANT_POS
+
+
 func is_harvest_time() -> bool:
 	if plant_type == PlantType.POTATO:
 		if growing_days == 2:
