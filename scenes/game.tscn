@@ -12,4 +12,4 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = -0.785398
 offset = Vector2(130, 80)
-zoom = Vector2(3.5, 3.5)
+zoom = Vector2(1.2, 1.2)
