@@ -12,16 +12,54 @@ const CHOORDS_MAX = 4
 const RED_VECTOR: Vector3 = Vector3(0.6, 0.0, 0.0)
 const GREEN_VECTOR: Vector3 = Vector3(0.0, 0.6, 0.0)
 
+signal seed_chosen(plant_type: FarmTile.PlantType)
+
 @onready var tileMaterial: ShaderMaterial = load("res://shaders/farm_tile_shader_material.material")
 
-signal seed_chosen(plant_type: FarmTile.PlantType)
-	
 var farm_tiles: Array[FarmTile]
 var player_pos: Vector2 = Vector2.ZERO
 var pixel_art_size: Vector2
 var current_tile_pos: Vector2
 
 @export var reach_distance: float = 60.0
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pixel_art_size = self.tile_set.tile_size
+	tileMaterial.set_shader_parameter("pixelArtSize", pixel_art_size.x)
+	var all_cells_pos : Array[Vector2i] = get_used_cells()
+	for tile_pos in all_cells_pos:
+		var farm_tile = FarmTile.new()
+		farm_tile.farm_grid = self
+		farm_tile.tile_pos = tile_pos
+		farm_tile.atlas_choords = get_cell_atlas_coords(tile_pos)
+		if farm_tile.atlas_choords == TREE_POS:
+			farm_tile.plant_type = FarmTile.PlantType.TREE
+		farm_tiles.append(farm_tile)
+
+
+func _process(delta):
+	if current_tile_pos != get_tile_global_pos():
+		current_tile_pos = get_tile_global_pos()
+		tile_pos_changed()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("left_click"):
+		var mouse_pos = get_global_mouse_position()
+		var tile_mouse_pos = local_to_map(mouse_pos)
+		if tile_in_farm_grid(tile_mouse_pos):
+			var farm_tile = get_farm_tile(tile_mouse_pos)
+			process_click_on_farm_tile(farm_tile)
+	elif event.is_action_pressed("1"):
+		seed_chosen.emit(FarmTile.PlantType.POTATO)
+	elif event.is_action_pressed("2"):
+		seed_chosen.emit(FarmTile.PlantType.TOMATO)
+	elif event.is_action_pressed("3"):
+		seed_chosen.emit(FarmTile.PlantType.BASIL)
+	elif event.is_action_pressed("next_day"):
+		process_next_day()
 
 
 func set_player_pos(pos: Vector2):
@@ -51,29 +89,14 @@ func tile_in_farm_grid(farm_tile_pos: Vector2i) -> bool:
 	return false
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pixel_art_size = self.tile_set.tile_size
-	tileMaterial.set_shader_parameter("pixelArtSize", pixel_art_size.x)
-	var all_cells_pos : Array[Vector2i] = get_used_cells()
-	for tile_pos in all_cells_pos:
-		var farm_tile = FarmTile.new()
-		farm_tile.farm_grid = self
-		farm_tile.tile_pos = tile_pos
-		farm_tile.atlas_choords = get_cell_atlas_coords(tile_pos)
-		if farm_tile.atlas_choords == TREE_POS:
-			farm_tile.plant_type = FarmTile.PlantType.TREE
-		farm_tiles.append(farm_tile)
-
-
-func remove_float_base(num: float, base: int) -> float:
+func trim_float_to_multiple_of_base(num: float, base: int) -> float:
 	return num - fposmod(num, base)
 
 
 func get_tile_global_pos() -> Vector2:
 	var mouse_pos = get_global_mouse_position()
-	var mouseX = remove_float_base(mouse_pos.x, pixel_art_size.x)
-	var mouseY = remove_float_base(mouse_pos.y, pixel_art_size.y)
+	var mouseX = trim_float_to_multiple_of_base(mouse_pos.x, pixel_art_size.x)
+	var mouseY = trim_float_to_multiple_of_base(mouse_pos.y, pixel_art_size.y)
 	return Vector2(mouseX, mouseY)
 
 
@@ -85,35 +108,9 @@ func tile_pos_changed():
 			tileMaterial.set_shader_parameter("highlightColor", RED_VECTOR)
 		else:
 			tileMaterial.set_shader_parameter("highlightColor", GREEN_VECTOR)
-		print(current_tile_pos)
 		tileMaterial.set_shader_parameter("globalTilePos", current_tile_pos)
 	else:
-		print(Vector2(0,0))
 		tileMaterial.set_shader_parameter("globalTilePos", -pixel_art_size)
-
-
-func _process(delta):
-	if current_tile_pos != get_tile_global_pos():
-		current_tile_pos = get_tile_global_pos()
-		print("change")
-		tile_pos_changed()
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click"):
-		var mouse_pos = get_global_mouse_position()
-		var tile_mouse_pos = local_to_map(mouse_pos)
-		if tile_in_farm_grid(tile_mouse_pos):
-			var farm_tile = get_farm_tile(tile_mouse_pos)
-			process_click_on_farm_tile(farm_tile)
-	elif event.is_action_pressed("1"):
-		seed_chosen.emit(FarmTile.PlantType.POTATO)
-	elif event.is_action_pressed("2"):
-		seed_chosen.emit(FarmTile.PlantType.TOMATO)
-	elif event.is_action_pressed("3"):
-		seed_chosen.emit(FarmTile.PlantType.BASIL)
-	elif event.is_action_pressed("next_day"):
-		process_next_day()
 
 
 func process_click_on_farm_tile(farm_tile: FarmTile):
