@@ -18,8 +18,10 @@ signal seed_chosen(plant_type: FarmTile.PlantType)
 
 var farm_tiles: Array[FarmTile]
 var player_pos: Vector2 = Vector2.ZERO
+var player_pos_changed: bool = false
 var pixel_art_size: Vector2
 var current_tile_pos: Vector2
+var player_can_interact: bool = false
 
 @export var reach_distance: float = 60.0
 
@@ -40,9 +42,10 @@ func _ready() -> void:
 
 
 func _process(delta):
-	if current_tile_pos != get_tile_global_pos():
+	if current_tile_pos != get_tile_global_pos() or player_pos_changed:
 		current_tile_pos = get_tile_global_pos()
-		tile_pos_changed()
+		player_pos_changed = false
+		update_interaction_with_player()
 
 
 func _input(event: InputEvent) -> void:
@@ -64,6 +67,7 @@ func _input(event: InputEvent) -> void:
 
 func set_player_pos(pos: Vector2):
 	player_pos = pos
+	player_pos_changed = true
 
 
 func get_farm_tile(tile_pos: Vector2i) -> FarmTile:
@@ -100,29 +104,32 @@ func get_tile_global_pos() -> Vector2:
 	return Vector2(mouseX, mouseY)
 
 
-func tile_pos_changed():
+func update_interaction_with_player():
 	if (current_tile_pos.x >= CHOORDS_MIN and current_tile_pos.x <= CHOORDS_MAX * pixel_art_size.x 
 	and current_tile_pos.y >= CHOORDS_MIN and current_tile_pos.y <= CHOORDS_MAX * pixel_art_size.y):
 		var current_tile_pos_center = Vector2(current_tile_pos.x + (pixel_art_size.x/2), current_tile_pos.y + (pixel_art_size.y/2))
 		if current_tile_pos_center.distance_to(player_pos) > reach_distance:
 			tileMaterial.set_shader_parameter("highlightColor", RED_VECTOR)
+			player_can_interact = false
 		else:
 			tileMaterial.set_shader_parameter("highlightColor", GREEN_VECTOR)
+			player_can_interact = true
 		tileMaterial.set_shader_parameter("globalTilePos", current_tile_pos)
 	else:
 		tileMaterial.set_shader_parameter("globalTilePos", -pixel_art_size)
 
 
 func process_click_on_farm_tile(farm_tile: FarmTile):
-	if farm_tile.atlas_choords == GRASS_POS:
-		farm_tile.atlas_choords = SOIL_POS
-	elif farm_tile.atlas_choords == SOIL_POS:
-		farm_tile.atlas_choords = MULCH_POS
-	elif farm_tile.atlas_choords == MULCH_POS:
-		var plant_to_seed = await seed_chosen
-		farm_tile.seed_plant(plant_to_seed)
-	elif farm_tile.is_harvestable():
-		farm_tile.harvest()
+	if player_can_interact:
+		if farm_tile.atlas_choords == GRASS_POS:
+			farm_tile.atlas_choords = SOIL_POS
+		elif farm_tile.atlas_choords == SOIL_POS:
+			farm_tile.atlas_choords = MULCH_POS
+		elif farm_tile.atlas_choords == MULCH_POS:
+			var plant_to_seed = await seed_chosen
+			farm_tile.seed_plant(plant_to_seed)
+		elif farm_tile.is_harvestable():
+			farm_tile.harvest()
 
 
 func process_next_day():
