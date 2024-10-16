@@ -11,3 +11,6 @@ Grub'n'Grow is a game project developed as part of TLU's Game Development Projec
    - `3` -> basil seed 
 3. With `n` key go to next day.
 4. Harvest crops with clicking on them, then the number of harvested crops will be printed to console.
+
+## Bugs
+- when you click on two mulch - you can seed two plants at once
