@@ -119,8 +119,9 @@ func update_interaction_with_player():
 func process_click_on_farm_tile(farm_tile: FarmTile):
 	if player_can_interact:
 		if farm_tile.tile_state == FarmTile.TileState.GRASS:
-			farm_tile.tile_state = FarmTile.TileState.SOIL_1
-			_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS)
+			if farm_tile.plant_type != FarmTile.PlantType.TREE:
+				farm_tile.tile_state = FarmTile.TileState.SOIL_1
+				_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS)
 		elif farm_tile.tile_state == FarmTile.TileState.SOIL_1:
 			farm_tile.tile_state = FarmTile.TileState.MULCH
 			_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS, FarmTile.MULCH_POS)
