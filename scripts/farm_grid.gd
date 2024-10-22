@@ -3,8 +3,8 @@ class_name FarmGrid extends Node2D
 const CHOORDS_MIN = 0
 const CHOORDS_MAX = 4
 
-const RED_VECTOR: Vector3 = Vector3(0.6, 0.0, 0.0)
-const GREEN_VECTOR: Vector3 = Vector3(0.0, 0.6, 0.0)
+const RED_VECTOR: Vector3 = Vector3(1.0, 0.0, 0.0)
+const GREEN_VECTOR: Vector3 = Vector3(0.0, 1.0, 0.0)
 
 signal seed_chosen(plant_type: FarmTile.PlantType)
 
