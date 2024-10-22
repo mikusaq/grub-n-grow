@@ -1,69 +1,58 @@
 class_name FarmTile extends Object
 
+# Positions of general tiles in atlas
+const SOIL_1_POS = Vector2i(3, 0)
+const SOIL_2_POS = Vector2i(4, 0)
+const GRASS_POS = Vector2i(4, 1)
+const MULCH_POS = Vector2i(0, 3)
+const SEED_POS = Vector2i(1, 3)
+const TREE_POS = Vector2i(4, 2)
+
 # Positions of plant specific tiles in atlas
-const POTATO_SEED_POS = Vector2i(0, 1)
-const POTATO_PLANT_POS = Vector2i(1, 1)
-const POTATO_HARVEST_POS = Vector2i(2, 1)
-const TOMATO_SEED_POS = Vector2i(0, 2)
-const TOMATO_PLANT_POS = Vector2i(1, 2)
-const TOMATO_HARVEST_POS = Vector2i(2, 2)
-const BASIL_SEED_POS = Vector2i(0, 3)
-const BASIL_PLANT_POS = Vector2i(1, 3)
-const BASIL_HARVEST_POS = Vector2i(2, 3)
+const SPROUT_POS = Vector2i(2, 3)
+const POTATO_POS = Vector2i(3, 2)
+const TOMATO_POS = Vector2i(3, 1)
+const BASIL_POS = Vector2i(3, 3)
 
 # Grow days of plants
 const POTATO_GROW_DAYS = 2
 const TOMATO_GROW_DAYS = 3
 const BASIL_GROW_DAYS = 3
 
+enum TileState {GRASS, SOIL_1, SOIL_2, MULCH, SEED, SPROUT, HARVEST}
 enum PlantType {NO_TYPE, POTATO, TOMATO, BASIL, TREE}
 
+signal change_tile(tile_pos: Vector2i, ground_pos: Vector2i, plant_pos: Vector2i)
 
-var farm_grid: FarmGrid
+var farm_grid: FarmGrid 
+var tile_state: TileState = TileState.GRASS
 var plant_type: PlantType = PlantType.NO_TYPE
 var tile_pos: Vector2i
-var atlas_choords: Vector2i:
-	set(new_value):
-		atlas_choords = new_value
-		farm_grid.set_cell(tile_pos, 0, atlas_choords)
 var growing_days: int = 0
 var harvest_value: int = 1
 
 
 func is_harvestable() -> bool:
-	if atlas_choords in [POTATO_HARVEST_POS, TOMATO_HARVEST_POS, BASIL_HARVEST_POS]:
-		return true
-	return false
+	return tile_state == TileState.HARVEST
 
 
 func process_next_day():
-	if atlas_choords == POTATO_SEED_POS:
-		atlas_choords = POTATO_PLANT_POS
-	elif atlas_choords == TOMATO_SEED_POS:
-		atlas_choords = TOMATO_PLANT_POS
-	elif atlas_choords == BASIL_SEED_POS:
-		atlas_choords = BASIL_PLANT_POS
-	elif atlas_choords in [POTATO_PLANT_POS, TOMATO_PLANT_POS, BASIL_PLANT_POS]:
+	if tile_state == TileState.SEED:
+		tile_state = TileState.SPROUT
+		_update_tile()
+	elif tile_state == TileState.SPROUT:
 		growing_days += 1
 		if _is_harvest_time():
-			if plant_type == PlantType.POTATO:
-				atlas_choords = POTATO_HARVEST_POS
-			elif plant_type == FarmTile.PlantType.TOMATO:
-				atlas_choords = TOMATO_HARVEST_POS
-			elif plant_type == FarmTile.PlantType.BASIL:
-				atlas_choords = BASIL_HARVEST_POS
+			tile_state = TileState.HARVEST
+			_update_tile()
 			var surrounding_farm_tiles = farm_grid.get_surrounding_farm_tiles(self)
 			_determine_harvest_value(surrounding_farm_tiles)
 
 
 func seed_plant(plant_to_seed: PlantType):
+	tile_state = TileState.SEED
 	plant_type = plant_to_seed
-	if plant_to_seed == PlantType.POTATO:
-		atlas_choords = POTATO_PLANT_POS
-	elif plant_to_seed == PlantType.TOMATO:
-		atlas_choords = TOMATO_PLANT_POS
-	elif plant_to_seed == PlantType.BASIL:
-		atlas_choords = BASIL_PLANT_POS
+	_update_tile()
 
 
 func harvest():
@@ -76,9 +65,30 @@ func harvest():
 	_reset()
 
 
-func _reset(new_atlas_choords: Vector2i = FarmGrid.SOIL_POS):
+func _update_tile():
+	if tile_state == TileState.GRASS:
+		change_tile.emit(tile_pos, GRASS_POS, null)
+	elif tile_state == TileState.SOIL_1:
+		change_tile.emit(tile_pos, SOIL_1_POS, null)
+	elif tile_state == TileState.MULCH:
+		change_tile.emit(tile_pos, SOIL_1_POS, MULCH_POS)
+	elif tile_state == TileState.SEED:
+		change_tile.emit(tile_pos, SOIL_1_POS, SEED_POS)
+	elif tile_state == TileState.SPROUT:
+		change_tile.emit(tile_pos, SOIL_1_POS, SPROUT_POS)
+	elif tile_state == TileState.HARVEST:
+		if plant_type == PlantType.POTATO:
+			change_tile.emit(tile_pos, SOIL_1_POS, POTATO_POS)
+		elif plant_type == PlantType.TOMATO:
+			change_tile.emit(tile_pos, SOIL_1_POS, TOMATO_POS)
+		elif plant_type == PlantType.BASIL:
+			change_tile.emit(tile_pos, SOIL_1_POS, BASIL_POS)
+
+
+func _reset():
+	tile_state = TileState.SOIL_1
 	plant_type = PlantType.NO_TYPE
-	atlas_choords = new_atlas_choords
+	change_tile.emit(tile_pos, SOIL_1_POS, Vector2i(-1, -1))
 	growing_days = 0
 	harvest_value = 1
 

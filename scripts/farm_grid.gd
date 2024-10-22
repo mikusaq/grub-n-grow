@@ -1,10 +1,4 @@
-class_name FarmGrid extends TileMapLayer
-
-# Positions of general tiles in atlas
-const GRASS_POS = Vector2i(0, 0)
-const SOIL_POS = Vector2i(1, 0)
-const MULCH_POS = Vector2i(2, 0)
-const TREE_POS = Vector2i(3, 0)
+class_name FarmGrid extends Node2D
 
 const CHOORDS_MIN = 0
 const CHOORDS_MAX = 4
@@ -28,16 +22,19 @@ var player_can_interact: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pixel_art_size = self.tile_set.tile_size
+	pixel_art_size = $Ground.tile_set.tile_size
 	tileMaterial.set_shader_parameter("pixelArtSize", pixel_art_size.x)
-	var all_cells_pos : Array[Vector2i] = get_used_cells()
-	for tile_pos in all_cells_pos:
+	var all_ground_cells_pos: Array[Vector2i] = $Ground.get_used_cells()
+	var all_plants_cells_pos: Array[Vector2i] = $Plants.get_used_cells()
+	var it = 0
+	for tile_pos in all_ground_cells_pos:
 		var farm_tile = FarmTile.new()
 		farm_tile.farm_grid = self
 		farm_tile.tile_pos = tile_pos
-		farm_tile.atlas_choords = get_cell_atlas_coords(tile_pos)
-		if farm_tile.atlas_choords == TREE_POS:
+		var atlas_choords = $Plants.get_cell_atlas_coords(tile_pos)
+		if atlas_choords == FarmTile.TREE_POS:
 			farm_tile.plant_type = FarmTile.PlantType.TREE
+		farm_tile.change_tile.connect(_update_tile_atlas_choords)
 		farm_tiles.append(farm_tile)
 
 
@@ -51,7 +48,7 @@ func _process(delta):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		var mouse_pos = get_global_mouse_position()
-		var tile_mouse_pos = local_to_map(mouse_pos)
+		var tile_mouse_pos = $Ground.local_to_map(mouse_pos)
 		if tile_in_farm_grid(tile_mouse_pos):
 			var farm_tile = get_farm_tile(tile_mouse_pos)
 			process_click_on_farm_tile(farm_tile)
@@ -79,7 +76,7 @@ func get_farm_tile(tile_pos: Vector2i) -> FarmTile:
 
 func get_surrounding_farm_tiles(farm_tile: FarmTile) -> Array[FarmTile]:
 	var farm_tiles: Array[FarmTile]
-	var surrounding_cells = get_surrounding_cells(farm_tile.tile_pos)
+	var surrounding_cells = $Plants.get_surrounding_cells(farm_tile.tile_pos)
 	for cell in surrounding_cells:
 		if tile_in_farm_grid(cell):
 			farm_tiles.append(get_farm_tile(cell))
@@ -121,15 +118,24 @@ func update_interaction_with_player():
 
 func process_click_on_farm_tile(farm_tile: FarmTile):
 	if player_can_interact:
-		if farm_tile.atlas_choords == GRASS_POS:
-			farm_tile.atlas_choords = SOIL_POS
-		elif farm_tile.atlas_choords == SOIL_POS:
-			farm_tile.atlas_choords = MULCH_POS
-		elif farm_tile.atlas_choords == MULCH_POS:
+		if farm_tile.tile_state == FarmTile.TileState.GRASS:
+			farm_tile.tile_state = FarmTile.TileState.SOIL_1
+			_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS)
+		elif farm_tile.tile_state == FarmTile.TileState.SOIL_1:
+			farm_tile.tile_state = FarmTile.TileState.MULCH
+			_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS, FarmTile.MULCH_POS)
+		elif farm_tile.tile_state == FarmTile.TileState.MULCH:
 			var plant_to_seed = await seed_chosen
 			farm_tile.seed_plant(plant_to_seed)
 		elif farm_tile.is_harvestable():
 			farm_tile.harvest()
+
+
+func _update_tile_atlas_choords(tile_pos: Vector2i, ground_pos: Vector2i, plant_pos: Vector2i = Vector2i(-1, -1)):
+	assert(tile_pos != null)
+	assert(ground_pos != null)
+	$Ground.set_cell(tile_pos, 0, ground_pos)
+	$Plants.set_cell(tile_pos, 0, plant_pos)
 
 
 func process_next_day():
