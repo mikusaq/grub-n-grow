@@ -67,9 +67,9 @@ func harvest():
 
 func _update_tile():
 	if tile_state == TileState.GRASS:
-		change_tile.emit(tile_pos, GRASS_POS, null)
+		change_tile.emit(tile_pos, GRASS_POS)
 	elif tile_state == TileState.SOIL_1:
-		change_tile.emit(tile_pos, SOIL_1_POS, null)
+		change_tile.emit(tile_pos, SOIL_1_POS)
 	elif tile_state == TileState.MULCH:
 		change_tile.emit(tile_pos, SOIL_1_POS, MULCH_POS)
 	elif tile_state == TileState.SEED:
@@ -88,7 +88,7 @@ func _update_tile():
 func _reset():
 	tile_state = TileState.SOIL_1
 	plant_type = PlantType.NO_TYPE
-	change_tile.emit(tile_pos, SOIL_1_POS, Vector2i(-1, -1))
+	change_tile.emit(tile_pos, SOIL_1_POS)
 	growing_days = 0
 	harvest_value = 1
 
