@@ -19,3 +19,5 @@ offset = Vector2(80, 80)
 zoom = Vector2(1.05, 1.05)
 
 [node name="HUD" parent="." instance=ExtResource("4_c6ycp")]
+
+[connection signal="active_slot_changed" from="Player" to="." method="_on_player_active_slot_changed"]

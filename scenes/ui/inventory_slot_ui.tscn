@@ -22,3 +22,13 @@ color = Color(0.687215, 0.687215, 0.687215, 1)
 
 [node name="ItemDisplay" type="Sprite2D" parent="."]
 centered = false
+
+[node name="Highlight" type="ReferenceRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 31.0
+offset_bottom = 32.0
+border_width = 2.0
+editor_only = false
