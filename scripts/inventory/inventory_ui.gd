@@ -13,7 +13,11 @@ func _ready():
 
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
-		slots[i].update(inv.slots[i])
+		update_slot(i)
+
+
+func update_slot(slot_number: int):
+	slots[slot_number].update(inv.slots[slot_number])
 
 
 func change_active_slot(slot_number :int):
