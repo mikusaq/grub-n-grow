@@ -20,14 +20,13 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction vector
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	
-	# Flip the sprite
-	if input_direction.x > 0:
-		$AnimatedSprite2D.flip_h = false
-	elif input_direction.x < 0:
-		$AnimatedSprite2D.flip_h = true
-	
-	
+	# Set animations
 	if input_direction.x > 0 or input_direction.x < 0:
+		# Flip the sprite
+		if input_direction.x > 0:
+			$AnimatedSprite2D.flip_h = false
+		elif input_direction.x < 0:
+			$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.play("move_right")
 	elif input_direction.y > 0:
 		$AnimatedSprite2D.play("move_down")
