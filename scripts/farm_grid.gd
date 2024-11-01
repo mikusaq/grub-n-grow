@@ -6,8 +6,6 @@ const CHOORDS_MAX = 4
 const RED_VECTOR: Vector3 = Vector3(1.0, 0.0, 0.0)
 const GREEN_VECTOR: Vector3 = Vector3(0.0, 1.0, 0.0)
 
-signal seed_chosen(plant_type: FarmTile.PlantType)
-
 @onready var tileMaterial: ShaderMaterial = load("res://shaders/farm_tile_shader_material.material")
 
 var farm_tiles: Array[FarmTile]
@@ -16,6 +14,7 @@ var player_pos_changed: bool = false
 var pixel_art_size: Vector2
 var current_tile_pos: Vector2
 var player_can_interact: bool = false
+var active_item: InvItem = null
 
 @export var reach_distance: float = 60.0
 
@@ -52,12 +51,6 @@ func _input(event: InputEvent) -> void:
 		if tile_in_farm_grid(tile_mouse_pos):
 			var farm_tile = get_farm_tile(tile_mouse_pos)
 			process_click_on_farm_tile(farm_tile)
-	elif event.is_action_pressed("1"):
-		seed_chosen.emit(FarmTile.PlantType.POTATO)
-	elif event.is_action_pressed("2"):
-		seed_chosen.emit(FarmTile.PlantType.TOMATO)
-	elif event.is_action_pressed("3"):
-		seed_chosen.emit(FarmTile.PlantType.BASIL)
 	elif event.is_action_pressed("next_day"):
 		process_next_day()
 
@@ -66,6 +59,9 @@ func set_player_pos(pos: Vector2):
 	player_pos = pos
 	player_pos_changed = true
 
+
+func set_active_item(item: InvItem):
+	active_item = item
 
 func get_farm_tile(tile_pos: Vector2i) -> FarmTile:
 	for farm_tile in farm_tiles:
@@ -117,19 +113,27 @@ func update_interaction_with_player():
 
 
 func process_click_on_farm_tile(farm_tile: FarmTile):
-	if player_can_interact:
-		if farm_tile.tile_state == FarmTile.TileState.GRASS:
-			if farm_tile.plant_type != FarmTile.PlantType.TREE:
-				farm_tile.tile_state = FarmTile.TileState.SOIL_1
-				_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS)
-		elif farm_tile.tile_state == FarmTile.TileState.SOIL_1:
-			farm_tile.tile_state = FarmTile.TileState.MULCH
-			_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS, FarmTile.MULCH_POS)
-		elif farm_tile.tile_state == FarmTile.TileState.MULCH:
-			var plant_to_seed = await seed_chosen
-			farm_tile.seed_plant(plant_to_seed)
-		elif farm_tile.is_harvestable():
-			farm_tile.harvest()
+	if player_can_interact and active_item != null:
+		if active_item.name == "Scythe":
+			if farm_tile.tile_state == FarmTile.TileState.GRASS:
+				if farm_tile.plant_type != FarmTile.PlantType.TREE:
+					farm_tile.tile_state = FarmTile.TileState.SOIL_1
+					_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS)
+			elif farm_tile.tile_state == FarmTile.TileState.SOIL_1:
+				farm_tile.tile_state = FarmTile.TileState.MULCH
+				_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS, FarmTile.MULCH_POS)
+			elif farm_tile.is_harvestable():
+				farm_tile.harvest()
+		elif active_item.name in ["Potato seed", "Tomato seed", "Basil seed"]:
+			if farm_tile.tile_state == FarmTile.TileState.MULCH:
+				var plant_to_seed: FarmTile.PlantType
+				if active_item.name == "Potato seed":
+					plant_to_seed = FarmTile.PlantType.POTATO
+				elif active_item.name == "Tomato seed":
+					plant_to_seed = FarmTile.PlantType.TOMATO
+				elif active_item.name == "Basil seed":
+					plant_to_seed = FarmTile.PlantType.BASIL
+				farm_tile.seed_plant(plant_to_seed)
 
 
 func _update_tile_atlas_choords(tile_pos: Vector2i, ground_pos: Vector2i, plant_pos: Vector2i = Vector2i(-1, -1)):

@@ -20,7 +20,7 @@ func update_slot(slot_number: int):
 	slots[slot_number].update(inv.slots[slot_number])
 
 
-func change_active_slot(slot_number :int):
+func change_active_slot(slot_number: int):
 	slots[active_slot].set_highlight_visibility(false)
 	active_slot = slot_number
 	slots[active_slot].set_highlight_visibility(true)
