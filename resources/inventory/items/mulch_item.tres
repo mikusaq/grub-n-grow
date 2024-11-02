@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://nhxqx0ovnpo3"]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_iqwu6"]
+[ext_resource type="Texture2D" uid="uid://chd2i5hapamy8" path="res://assets/inventory_items/plant_items_placeholder.png" id="2_pm2xg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvkt6"]
+atlas = ExtResource("2_pm2xg")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_iqwu6")
+name = "Mulch"
+texture = SubResource("AtlasTexture_bvkt6")
+stackable = true
