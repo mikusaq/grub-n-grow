@@ -8,6 +8,8 @@ const GREEN_VECTOR: Vector3 = Vector3(0.0, 1.0, 0.0)
 
 @onready var tileMaterial: ShaderMaterial = load("res://shaders/farm_tile_shader_material.material")
 
+var mulch_item: InvItem = preload("res://resources/inventory/items/mulch_item.tres")
+
 var farm_tiles: Array[FarmTile]
 var player_pos: Vector2 = Vector2.ZERO
 var player_pos_changed: bool = false
@@ -116,11 +118,14 @@ func process_click_on_farm_tile(farm_tile: FarmTile):
 				if farm_tile.plant_type != FarmTile.PlantType.TREE:
 					farm_tile.tile_state = FarmTile.TileState.SOIL_1
 					_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS)
-			elif farm_tile.tile_state == FarmTile.TileState.SOIL_1:
-				farm_tile.tile_state = FarmTile.TileState.MULCH
-				_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS, FarmTile.MULCH_POS)
+					inv.add_item(mulch_item, 1)
 			elif farm_tile.is_harvestable():
 				farm_tile.harvest()
+		elif active_item.name == "Mulch":
+			if farm_tile.tile_state == FarmTile.TileState.SOIL_1:
+				farm_tile.tile_state = FarmTile.TileState.MULCH
+				_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS, FarmTile.MULCH_POS)
+				inv.remove_item(mulch_item, 1)
 		elif active_item.name in ["Potato seed", "Tomato seed", "Basil seed"]:
 			if farm_tile.tile_state == FarmTile.TileState.MULCH:
 				var plant_to_seed: FarmTile.PlantType
