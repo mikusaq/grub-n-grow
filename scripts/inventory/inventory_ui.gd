@@ -10,6 +10,7 @@ func _ready():
 	active_slot = inv.active_slot
 	slots[active_slot].set_highlight_visibility(true)
 	inv.active_slot_changed.connect(change_active_slot)
+	inv.slot_changed.connect(update_slot)
 
 
 func update_slots():
