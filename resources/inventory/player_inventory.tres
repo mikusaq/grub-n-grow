@@ -1,50 +1,50 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=14 format=3 uid="uid://do1c8t0k3e2rk"]
+[gd_resource type="Resource" script_class="PlayerInv" load_steps=14 format=3 uid="uid://behc610vpoq6t"]
 
-[ext_resource type="Script" path="res://scripts/inventory/inventory.gd" id="1_ex8t7"]
+[ext_resource type="Script" path="res://scripts/inventory/player_inventory.gd" id="1_d8xtu"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_slot.gd" id="2_pysrr"]
 [ext_resource type="Resource" uid="uid://cfro3hwvn4hn1" path="res://resources/inventory/items/tools/scythe_item.tres" id="3_nsw2x"]
 
-[sub_resource type="Resource" id="Resource_r5mbk"]
+[sub_resource type="Resource" id="Resource_onpay"]
 script = ExtResource("2_pysrr")
 item = ExtResource("3_nsw2x")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_riu6p"]
+[sub_resource type="Resource" id="Resource_e537i"]
 script = ExtResource("2_pysrr")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_bohtq"]
+[sub_resource type="Resource" id="Resource_uiqfe"]
 script = ExtResource("2_pysrr")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_42atp"]
+[sub_resource type="Resource" id="Resource_aghc3"]
 script = ExtResource("2_pysrr")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_cy777"]
+[sub_resource type="Resource" id="Resource_rfhsx"]
 script = ExtResource("2_pysrr")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_86h3k"]
+[sub_resource type="Resource" id="Resource_4ry2v"]
 script = ExtResource("2_pysrr")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_gq6vq"]
+[sub_resource type="Resource" id="Resource_ngai7"]
 script = ExtResource("2_pysrr")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_606ji"]
+[sub_resource type="Resource" id="Resource_jykpo"]
 script = ExtResource("2_pysrr")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_ky2oc"]
+[sub_resource type="Resource" id="Resource_5x2nw"]
 script = ExtResource("2_pysrr")
 amount = 0
 
-[sub_resource type="Resource" id="Resource_6p8uf"]
+[sub_resource type="Resource" id="Resource_swwtt"]
 script = ExtResource("2_pysrr")
 amount = 0
 
 [resource]
-script = ExtResource("1_ex8t7")
-slots = Array[ExtResource("2_pysrr")]([SubResource("Resource_r5mbk"), SubResource("Resource_riu6p"), SubResource("Resource_bohtq"), SubResource("Resource_42atp"), SubResource("Resource_cy777"), SubResource("Resource_86h3k"), SubResource("Resource_gq6vq"), SubResource("Resource_606ji"), SubResource("Resource_ky2oc"), SubResource("Resource_6p8uf")])
+script = ExtResource("1_d8xtu")
+slots = Array[ExtResource("2_pysrr")]([SubResource("Resource_onpay"), SubResource("Resource_e537i"), SubResource("Resource_uiqfe"), SubResource("Resource_aghc3"), SubResource("Resource_rfhsx"), SubResource("Resource_4ry2v"), SubResource("Resource_ngai7"), SubResource("Resource_jykpo"), SubResource("Resource_5x2nw"), SubResource("Resource_swwtt")])

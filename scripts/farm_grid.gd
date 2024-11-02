@@ -14,9 +14,9 @@ var player_pos_changed: bool = false
 var pixel_art_size: Vector2
 var current_tile_pos: Vector2
 var player_can_interact: bool = false
-var active_item: InvItem = null
 
 @export var reach_distance: float = 60.0
+@export var inv: PlayerInv
 
 
 # Called when the node enters the scene tree for the first time.
@@ -58,10 +58,6 @@ func _input(event: InputEvent) -> void:
 func set_player_pos(pos: Vector2):
 	player_pos = pos
 	player_pos_changed = true
-
-
-func set_active_item(item: InvItem):
-	active_item = item
 
 func get_farm_tile(tile_pos: Vector2i) -> FarmTile:
 	for farm_tile in farm_tiles:
@@ -113,6 +109,7 @@ func update_interaction_with_player():
 
 
 func process_click_on_farm_tile(farm_tile: FarmTile):
+	var active_item = inv.get_active_item()
 	if player_can_interact and active_item != null:
 		if active_item.name == "Scythe":
 			if farm_tile.tile_state == FarmTile.TileState.GRASS:

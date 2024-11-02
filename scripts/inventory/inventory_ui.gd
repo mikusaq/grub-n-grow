@@ -1,14 +1,15 @@
 extends Control
 
-@export var inv: Inv
+@export var inv: PlayerInv
 @onready var slots: Array = $GridContainer.get_children()
 var active_slot: int
 
 
 func _ready():
 	update_slots()
-	active_slot = 0
+	active_slot = inv.active_slot
 	slots[active_slot].set_highlight_visibility(true)
+	inv.active_slot_changed.connect(change_active_slot)
 
 
 func update_slots():
@@ -20,8 +21,8 @@ func update_slot(slot_number: int):
 	slots[slot_number].update(inv.slots[slot_number])
 
 
-func change_active_slot(slot_number: int):
+func change_active_slot():
 	slots[active_slot].set_highlight_visibility(false)
-	active_slot = slot_number
+	active_slot = inv.active_slot
 	slots[active_slot].set_highlight_visibility(true)
 	

@@ -20,6 +20,3 @@ position = Vector2(230, 80)
 rotation = -0.785398
 offset = Vector2(80, 80)
 zoom = Vector2(1.05, 1.05)
-
-[connection signal="active_slot_changed" from="Player" to="." method="_on_player_active_slot_changed"]
-[connection signal="slot_changed" from="Player" to="." method="_on_player_slot_changed"]
