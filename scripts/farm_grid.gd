@@ -9,6 +9,9 @@ const GREEN_VECTOR: Vector3 = Vector3(0.0, 1.0, 0.0)
 @onready var tileMaterial: ShaderMaterial = load("res://shaders/farm_tile_shader_material.material")
 
 var mulch_item: InvItem = preload("res://resources/inventory/items/mulch_item.tres")
+var potato_seed_item: InvItem = preload("res://resources/inventory/items/seeds/potato_seed_item.tres")
+var tomato_seed_item: InvItem = preload("res://resources/inventory/items/seeds/tomato_seed_item.tres")
+var basil_seed_item: InvItem = preload("res://resources/inventory/items/seeds/basil_seed_item.tres")
 
 var farm_tiles: Array[FarmTile]
 var player_pos: Vector2 = Vector2.ZERO
@@ -131,10 +134,13 @@ func process_click_on_farm_tile(farm_tile: FarmTile):
 				var plant_to_seed: FarmTile.PlantType
 				if active_item.name == "Potato seed":
 					plant_to_seed = FarmTile.PlantType.POTATO
+					inv.remove_item(potato_seed_item, 1)
 				elif active_item.name == "Tomato seed":
 					plant_to_seed = FarmTile.PlantType.TOMATO
+					inv.remove_item(tomato_seed_item, 1)
 				elif active_item.name == "Basil seed":
 					plant_to_seed = FarmTile.PlantType.BASIL
+					inv.remove_item(basil_seed_item, 1)
 				farm_tile.seed_plant(plant_to_seed)
 
 
