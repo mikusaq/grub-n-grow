@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgsm66od2xnu1"]
+[gd_scene load_steps=3 format=3 uid="uid://bgsm66od2xnu1"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_slot_ui.gd" id="1_55vau"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_23gsb"]
+font_size = 8
 
 [node name="InventorySlotUI" type="Control"]
 custom_minimum_size = Vector2(32, 32)
@@ -32,3 +35,13 @@ offset_right = 31.0
 offset_bottom = 32.0
 border_width = 2.0
 editor_only = false
+
+[node name="ItemAmount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 20.0
+offset_right = 30.0
+offset_bottom = 32.0
+label_settings = SubResource("LabelSettings_23gsb")
+horizontal_alignment = 2
+vertical_alignment = 2
