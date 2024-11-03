@@ -2,15 +2,18 @@
 
 Grub'n'Grow is a game project developed as part of TLU's Game Development Project course.
 
+## Controls
+
+- Move player with `WASD` keys
+- Change active tool in inventory with number keys
+- interact with tiles on farm grid with mouse left click
+- Change season state with `N` key
+
 ## Tutorial
 
-1. Click on tiles to change their state.
-2. When you click on a tile with `MULCH` state, you can then select which seed to plant. Select with keyboard keys:
-   - `1` -> potato seed 
-   - `2` -> tomato seed 
-   - `3` -> basil seed 
-3. With `n` key go to next day.
-4. Harvest crops with clicking on them, then the number of harvested crops will be printed to console.
+From the beginning you are in the season. You can cut the grass, which gives you mulch into your inventory.
+Place mulch on empty soil. On tiles with placed mulch you can then seed plants. When you want, click the `N`
+key to end the season. Now the plants will grow and you can harvest them. The harvested value is printed to the
+console. Then go to the next season with `N` key.
 
 ## Bugs
-- when you click on two mulch - you can seed two plants at once
