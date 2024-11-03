@@ -26,6 +26,8 @@ var harvest_value: int = 1
 
 
 func is_harvestable() -> bool:
+	if plant_type == PlantType.TREE:
+		return false
 	return tile_state == TileState.HARVEST
 
 
