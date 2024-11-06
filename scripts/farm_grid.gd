@@ -48,6 +48,7 @@ func _process(delta):
 		current_tile_pos = get_tile_global_pos()
 		player_pos_changed = false
 		update_interaction_with_player()
+		$Plants.notify_runtime_tile_data_update()
 
 
 func _input(event: InputEvent) -> void:
@@ -66,6 +67,10 @@ func _input(event: InputEvent) -> void:
 
 func set_player_pos(pos: Vector2):
 	player_pos = pos
+	if player_pos.x < 0 or player_pos.y < 0:
+		$Plants.player_tile_pos = Vector2i(-1, -1)
+	else:
+		$Plants.player_tile_pos = Vector2i(pos) / pixel_art_size.x
 	player_pos_changed = true
 
 
