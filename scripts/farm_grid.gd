@@ -30,13 +30,13 @@ func _ready() -> void:
 	pixel_art_size = $Ground.tile_set.tile_size
 	tileMaterial.set_shader_parameter("pixelArtSize", pixel_art_size.x)
 	var all_ground_cells_pos: Array[Vector2i] = $Ground.get_used_cells()
-	var all_plants_cells_pos: Array[Vector2i] = $Plants.get_used_cells()
+	var all_plants_cells_pos: Array[Vector2i] = $OnGround.get_used_cells()
 	var it = 0
 	for tile_pos in all_ground_cells_pos:
 		var farm_tile = FarmTile.new()
 		farm_tile.farm_grid = self
 		farm_tile.tile_pos = tile_pos
-		var atlas_choords = $Plants.get_cell_atlas_coords(tile_pos)
+		var atlas_choords = $OnGround.get_cell_atlas_coords(tile_pos)
 		if atlas_choords == FarmTile.TREE_POS:
 			farm_tile.plant_type = FarmTile.PlantType.TREE
 		farm_tile.change_tile.connect(_update_tile_atlas_choords)
@@ -48,7 +48,7 @@ func _process(delta):
 		current_tile_pos = get_tile_global_pos()
 		player_pos_changed = false
 		update_interaction_with_player()
-		$Plants.notify_runtime_tile_data_update()
+		$OnGround.notify_runtime_tile_data_update()
 
 
 func _input(event: InputEvent) -> void:
@@ -68,9 +68,9 @@ func _input(event: InputEvent) -> void:
 func set_player_pos(pos: Vector2):
 	player_pos = pos
 	if player_pos.x < 0 or player_pos.y < 0:
-		$Plants.player_tile_pos = Vector2i(-1, -1)
+		$OnGround.player_tile_pos = Vector2i(-1, -1)
 	else:
-		$Plants.player_tile_pos = Vector2i(pos) / pixel_art_size.x
+		$OnGround.player_tile_pos = Vector2i(pos) / pixel_art_size.x
 	player_pos_changed = true
 
 
@@ -83,7 +83,7 @@ func get_farm_tile(tile_pos: Vector2i) -> FarmTile:
 
 func get_surrounding_farm_tiles(farm_tile: FarmTile) -> Array[FarmTile]:
 	var farm_tiles: Array[FarmTile]
-	var surrounding_cells = $Plants.get_surrounding_cells(farm_tile.tile_pos)
+	var surrounding_cells = $OnGround.get_surrounding_cells(farm_tile.tile_pos)
 	for cell in surrounding_cells:
 		if tile_in_farm_grid(cell):
 			farm_tiles.append(get_farm_tile(cell))
@@ -158,7 +158,7 @@ func _update_tile_atlas_choords(tile_pos: Vector2i, ground_pos: Vector2i, plant_
 	assert(tile_pos != null)
 	assert(ground_pos != null)
 	$Ground.set_cell(tile_pos, 0, ground_pos)
-	$Plants.set_cell(tile_pos, 0, plant_pos)
+	$OnGround.set_cell(tile_pos, 0, plant_pos)
 
 
 func process_end_of_season():

@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://ssbc1q5j0pts" path="res://shaders/farm_tile_shader_material.material" id="2_4cbld"]
 [ext_resource type="Texture2D" uid="uid://d314k07eage2b" path="res://assets/tiles.png" id="3_4mf1e"]
 [ext_resource type="Resource" uid="uid://behc610vpoq6t" path="res://resources/inventory/player_inventory.tres" id="3_33r3p"]
-[ext_resource type="Script" path="res://scripts/plants.gd" id="6_3g3vv"]
+[ext_resource type="Script" path="res://scripts/on_ground.gd" id="6_3g3vv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgry4"]
 texture = ExtResource("1_a7ran")
@@ -99,7 +99,7 @@ scale = Vector2(1.00154, 1)
 tile_map_data = PackedByteArray("AAADAAEAAAADAAAAAAABAAMAAAADAAAAAAAEAAMAAAADAAAAAAADAAIAAAAEAAEAAAAEAAIAAAAEAAEAAAAEAAEAAAAEAAEAAAAEAAAAAAAEAAEAAAADAAAAAAAEAAEAAAACAAAAAAAEAAEAAAABAAAAAAAEAAEAAAAAAAAAAAADAAAAAAAAAAEAAAAEAAEAAAABAAEAAAAEAAEAAAACAAEAAAAEAAEAAAACAAIAAAAEAAEAAAABAAIAAAAEAAEAAAAAAAIAAAAEAAEAAAAAAAMAAAAEAAEAAAAAAAQAAAAEAAEAAAABAAQAAAAEAAEAAAACAAQAAAAEAAEAAAADAAQAAAAEAAEAAAAEAAQAAAAEAAEAAAADAAMAAAAEAAEAAAACAAMAAAAEAAEAAAA=")
 tile_set = SubResource("TileSet_mhbuc")
 
-[node name="Plants" type="TileMapLayer" parent="FarmGrid"]
+[node name="OnGround" type="TileMapLayer" parent="FarmGrid"]
 z_index = 1
 y_sort_enabled = true
 scale = Vector2(1.00154, 1)
