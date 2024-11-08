@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dg7o4qlnmdeoi"]
+[gd_scene load_steps=17 format=4 uid="uid://dg7o4qlnmdeoi"]
 
 [ext_resource type="Texture2D" uid="uid://ocb3muo17dxw" path="res://assets/surroundings_placeholder.png" id="1_a7ran"]
 [ext_resource type="Script" path="res://scripts/farm_grid.gd" id="1_qy2y8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d314k07eage2b" path="res://assets/tiles.png" id="3_4mf1e"]
 [ext_resource type="Resource" uid="uid://behc610vpoq6t" path="res://resources/inventory/player_inventory.tres" id="3_33r3p"]
 [ext_resource type="Script" path="res://scripts/on_ground.gd" id="6_3g3vv"]
+[ext_resource type="FontFile" uid="uid://br0ytyvgenot2" path="res://assets/fonts/pointfree.ttf" id="7_4gv7d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgry4"]
 texture = ExtResource("1_a7ran")
@@ -75,10 +76,16 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ars3n")
 
-[sub_resource type="LabelSettings" id="LabelSettings_gahxd"]
+[sub_resource type="LabelSettings" id="LabelSettings_u7wys"]
+font = ExtResource("7_4gv7d")
 font_size = 20
 
-[sub_resource type="LabelSettings" id="LabelSettings_8chp0"]
+[sub_resource type="LabelSettings" id="LabelSettings_pkqmn"]
+font = ExtResource("7_4gv7d")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_lv3ha"]
+font = ExtResource("7_4gv7d")
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -113,7 +120,7 @@ offset_top = 60.0
 offset_right = -136.0
 offset_bottom = 88.0
 text = "Cafe"
-label_settings = SubResource("LabelSettings_gahxd")
+label_settings = SubResource("LabelSettings_u7wys")
 
 [node name="HouseLabel" type="Label" parent="."]
 offset_left = 290.0
@@ -121,7 +128,7 @@ offset_top = 60.0
 offset_right = 352.0
 offset_bottom = 88.0
 text = "House"
-label_settings = SubResource("LabelSettings_gahxd")
+label_settings = SubResource("LabelSettings_pkqmn")
 
 [node name="WellLabel" type="Label" parent="."]
 offset_left = 143.0
@@ -129,4 +136,4 @@ offset_top = 225.0
 offset_right = 177.0
 offset_bottom = 248.0
 text = "Well"
-label_settings = SubResource("LabelSettings_8chp0")
+label_settings = SubResource("LabelSettings_lv3ha")

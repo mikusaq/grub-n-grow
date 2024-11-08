@@ -2,9 +2,8 @@ extends CharacterBody2D
 
 
 @export var speed = 100
-
-# Inventory specific
 @export var inv_resource: PlayerInv
+@export var money: int
 var playing_animation: bool = false
 
 

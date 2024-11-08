@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b8prix2n6p0hv"]
+
+[ext_resource type="FontFile" uid="uid://br0ytyvgenot2" path="res://assets/fonts/pointfree.ttf" id="1_sutv3"]
+
+[resource]
+default_font = ExtResource("1_sutv3")
