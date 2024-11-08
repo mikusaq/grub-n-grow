@@ -58,11 +58,6 @@ func _input(event: InputEvent) -> void:
 		if tile_in_farm_grid(tile_mouse_pos):
 			var farm_tile = get_farm_tile(tile_mouse_pos)
 			process_click_on_farm_tile(farm_tile)
-	elif event.is_action_pressed("next_day"):
-		if in_season:
-			process_end_of_season()
-		else:
-			process_next_season()
 
 
 func set_player_pos(pos: Vector2):
