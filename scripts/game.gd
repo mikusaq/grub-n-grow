@@ -1,8 +1,11 @@
 extends Node2D
 
+@export var task_cards: Array[TaskCard]
+
 
 func _ready() -> void:
 	$HUD.set_money($Player.money)
+	set_random_tasks()
 
 
 func _process(delta: float) -> void:
@@ -15,3 +18,15 @@ func _input(event: InputEvent) -> void:
 			$World/FarmGrid.process_end_of_season()
 		else:
 			$World/FarmGrid.process_next_season()
+
+
+func set_random_tasks() -> void:
+	var random_tasks: Array[TaskCard] = []
+	var used_nums: Array[int] = []
+	while random_tasks.size() < 3:
+		var rand_num = randi_range(0, task_cards.size() - 1)
+		if rand_num not in used_nums:
+			random_tasks.append(task_cards[rand_num])
+			used_nums.append(rand_num)
+	
+	$HUD.set_task_cards(random_tasks)

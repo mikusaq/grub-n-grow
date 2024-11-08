@@ -21,3 +21,9 @@ offset_bottom = 352.0
 theme = ExtResource("3_u5c0e")
 text = "$20"
 horizontal_alignment = 2
+
+[node name="TaskContainer" type="HBoxContainer" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 241.0
+offset_bottom = 108.0
