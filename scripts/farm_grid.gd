@@ -38,7 +38,8 @@ func _ready() -> void:
 		farm_tile.tile_pos = tile_pos
 		var atlas_choords = $OnGround.get_cell_atlas_coords(tile_pos)
 		if atlas_choords == FarmTile.TREE_POS:
-			farm_tile.plant_type = Enums.PlantType.TREE
+			farm_tile.plant_type = Enums.PlantType.BaseTree
+			
 		farm_tile.change_tile.connect(_update_tile_atlas_choords)
 		farm_tiles.append(farm_tile)
 
@@ -123,7 +124,7 @@ func process_click_on_farm_tile(farm_tile: FarmTile):
 	if player_can_interact and active_item != null:
 		if active_item.name == "Scythe":
 			if farm_tile.tile_state == FarmTile.TileState.GRASS:
-				if farm_tile.plant_type != Enums.PlantType.TREE:
+				if farm_tile.plant_type != Enums.PlantType.BaseTree:
 					farm_tile.tile_state = FarmTile.TileState.SOIL_1
 					_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS)
 					inv.add_item(mulch_item, 1)
@@ -138,13 +139,13 @@ func process_click_on_farm_tile(farm_tile: FarmTile):
 			if farm_tile.tile_state == FarmTile.TileState.MULCH:
 				var plant_to_seed: Enums.PlantType
 				if active_item.name == "Potato seed":
-					plant_to_seed = Enums.PlantType.POTATO
+					plant_to_seed = Enums.PlantType.Potato
 					inv.remove_item(potato_seed_item, 1)
 				elif active_item.name == "Tomato seed":
-					plant_to_seed = Enums.PlantType.TOMATO
+					plant_to_seed = Enums.PlantType.Tomato
 					inv.remove_item(tomato_seed_item, 1)
 				elif active_item.name == "Basil seed":
-					plant_to_seed = Enums.PlantType.BASIL
+					plant_to_seed = Enums.PlantType.Basil
 					inv.remove_item(basil_seed_item, 1)
 				farm_tile.seed_plant(plant_to_seed)
 
