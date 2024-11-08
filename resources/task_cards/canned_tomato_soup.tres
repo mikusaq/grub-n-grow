@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TaskCard" load_steps=5 format=3 uid="uid://cwpsufrwfc7n0"]
+
+[ext_resource type="Script" path="res://scripts/tasks/task_card.gd" id="1_0xvfy"]
+[ext_resource type="Script" path="res://scripts/tasks/task.gd" id="2_s5aiq"]
+
+[sub_resource type="Resource" id="Resource_nrerl"]
+script = ExtResource("2_s5aiq")
+plant_type = 2
+amount = 5
+
+[sub_resource type="Resource" id="Resource_52yl7"]
+script = ExtResource("2_s5aiq")
+plant_type = 3
+amount = 2
+
+[resource]
+script = ExtResource("1_0xvfy")
+name = "Canned Tomato Soup"
+tasks = Array[ExtResource("2_s5aiq")]([SubResource("Resource_nrerl"), SubResource("Resource_52yl7")])
+reward = 15
