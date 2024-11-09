@@ -50,6 +50,7 @@ func seed_plant(plant_to_seed: Const.PlantType):
 
 
 func harvest(crop_inv: Inv):
+	print(harvest_value)
 	var inv_item: InvItem
 	if plant_type == Const.PlantType.Potato:
 		inv_item = preload("res://resources/inventory/items/crops/potato_item.tres")
@@ -63,6 +64,9 @@ func harvest(crop_inv: Inv):
 		inv_item = preload("res://resources/inventory/items/crops/garlic_item.tres")
 	elif plant_type == Const.PlantType.Pea:
 		inv_item = preload("res://resources/inventory/items/crops/pea_item.tres")
+		crop_inv.add_item(inv_item, harvest_value)
+		_reset(2)
+		return
 	crop_inv.add_item(inv_item, harvest_value)
 	_reset()
 
@@ -91,11 +95,11 @@ func _update_tile():
 			change_tile.emit(tile_pos, SOIL_1_POS, PEA_POS)
 
 
-func _reset():
+func _reset(new_harvest_value: int = 1):
 	tile_state = TileState.SOIL_1
 	plant_type = Const.PlantType.NoType
 	change_tile.emit(tile_pos, SOIL_1_POS)
-	harvest_value = 1
+	harvest_value = new_harvest_value
 
 
 func _determine_harvest_value() -> void:
