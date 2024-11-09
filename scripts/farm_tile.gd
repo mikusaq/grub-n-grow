@@ -4,14 +4,17 @@ class_name FarmTile extends Object
 const SOIL_1_POS = Vector2i(3, 0)
 const SOIL_2_POS = Vector2i(4, 0)
 const GRASS_POS = Vector2i(4, 1)
-const MULCH_POS = Vector2i(0, 3)
-const SEED_POS = Vector2i(1, 3)
-const TREE_POS = Vector2i(4, 2)
+const MULCH_POS = Vector2i(3, 1)
+const SEED_POS = Vector2i(3, 2)
+const TREE_POS = Vector2i(7, 0)
 
 # Positions of plant specific tiles in atlas
-const POTATO_POS = Vector2i(3, 2)
-const TOMATO_POS = Vector2i(3, 1)
-const BASIL_POS = Vector2i(3, 3)
+const POTATO_POS = Vector2i(6, 0)
+const TOMATO_POS = Vector2i(5, 0)
+const BASIL_POS = Vector2i(5, 1)
+const STRAWBERRY_POS = Vector2i(6, 1)
+const GARLIC_POS = Vector2i(5, 2)
+const PEA_POS = Vector2i(6, 2)
 
 enum TileState {GRASS, SOIL_1, SOIL_2, MULCH, SEED, HARVEST}
 
@@ -56,6 +59,12 @@ func harvest(crop_inv: Inv):
 		inv_item = preload("res://resources/inventory/items/crops/tomato_item.tres")
 	elif plant_type == Const.PlantType.Basil:
 		inv_item = preload("res://resources/inventory/items/crops/basil_item.tres")
+	elif plant_type == Const.PlantType.Strawberry:
+		inv_item = preload("res://resources/inventory/items/crops/strawberry_item.tres")
+	elif plant_type == Const.PlantType.Garlic:
+		inv_item = preload("res://resources/inventory/items/crops/garlic_item.tres")
+	elif plant_type == Const.PlantType.Pea:
+		inv_item = preload("res://resources/inventory/items/crops/pea_item.tres")
 	crop_inv.add_item(inv_item, harvest_value)
 	_reset()
 
@@ -76,6 +85,12 @@ func _update_tile():
 			change_tile.emit(tile_pos, SOIL_1_POS, TOMATO_POS)
 		elif plant_type == Const.PlantType.Basil:
 			change_tile.emit(tile_pos, SOIL_1_POS, BASIL_POS)
+		elif plant_type == Const.PlantType.Strawberry:
+			change_tile.emit(tile_pos, SOIL_1_POS, STRAWBERRY_POS)
+		elif plant_type == Const.PlantType.Garlic:
+			change_tile.emit(tile_pos, SOIL_1_POS, GARLIC_POS)
+		elif plant_type == Const.PlantType.Pea:
+			change_tile.emit(tile_pos, SOIL_1_POS, PEA_POS)
 
 
 func _reset():
@@ -91,4 +106,6 @@ func _determine_harvest_value() -> void:
 		if farm_tile.plant_type == Const.PlantType.BaseTree:
 			harvest_value += 1
 		elif farm_tile.plant_type == Const.PlantType.Basil and plant_type == Const.PlantType.Tomato:
+			harvest_value += 1
+		elif farm_tile.plant_type == Const.PlantType.Garlic and plant_type == Const.PlantType.Strawberry:
 			harvest_value += 1

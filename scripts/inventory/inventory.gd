@@ -11,9 +11,10 @@ signal slot_changed(slot_number: int)
 func add_item(item_to_add: InvItem, amount: int) -> bool:
 	var first_empty_number: int = -1
 	for i in range(slots.size()):
-		if slots[i].is_empty() and first_empty_number == -1:
-			first_empty_number = i
-		if slots[i].item == item_to_add and slots[i].item.stackable:
+		if slots[i].is_empty():
+			if first_empty_number == -1:
+				first_empty_number = i
+		elif slots[i].item == item_to_add and slots[i].item.stackable:
 			slots[i].add_item(item_to_add, amount)
 			slot_changed.emit(i)
 			return true
