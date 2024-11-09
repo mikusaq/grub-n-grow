@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=2 format=3 uid="uid://3fexmonkbgyc"]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_5iswq"]
+
+[resource]
+script = ExtResource("1_5iswq")
+name = "Pea"
+stackable = true

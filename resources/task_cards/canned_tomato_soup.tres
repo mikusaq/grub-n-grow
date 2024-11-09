@@ -1,16 +1,18 @@
-[gd_resource type="Resource" script_class="TaskCard" load_steps=5 format=3 uid="uid://cwpsufrwfc7n0"]
+[gd_resource type="Resource" script_class="TaskCard" load_steps=7 format=3 uid="uid://cwpsufrwfc7n0"]
 
 [ext_resource type="Script" path="res://scripts/tasks/task_card.gd" id="1_0xvfy"]
 [ext_resource type="Script" path="res://scripts/tasks/task.gd" id="2_s5aiq"]
+[ext_resource type="Resource" uid="uid://4snklmp365gk" path="res://resources/inventory/items/crops/tomato_item.tres" id="3_vbuns"]
+[ext_resource type="Resource" uid="uid://db1jg2uceljm8" path="res://resources/inventory/items/crops/basil_item.tres" id="4_oskg2"]
 
 [sub_resource type="Resource" id="Resource_nrerl"]
 script = ExtResource("2_s5aiq")
-plant_type = 2
+item = ExtResource("3_vbuns")
 amount = 5
 
 [sub_resource type="Resource" id="Resource_52yl7"]
 script = ExtResource("2_s5aiq")
-plant_type = 3
+item = ExtResource("4_oskg2")
 amount = 2
 
 [resource]

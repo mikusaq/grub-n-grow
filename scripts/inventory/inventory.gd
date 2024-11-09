@@ -35,3 +35,11 @@ func remove_item(item_to_remove: InvItem, amount: int) -> bool:
 			return true
 	
 	return false
+
+# Checks if item of amount is in inventory. Returns true if it is, else false.
+func has_item(item: InvItem, amount: int) -> bool:
+	for slot in slots:
+		if slot.item == item and slot.amount >= amount:
+			return true
+	
+	return false

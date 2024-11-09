@@ -54,6 +54,7 @@ offset_top = 74.0
 offset_right = 64.0
 offset_bottom = 96.0
 theme = ExtResource("1_uf5lu")
+disabled = true
 
 [node name="MoneyAmount" type="Label" parent="CompleteButton"]
 layout_mode = 0
@@ -64,3 +65,5 @@ theme_override_font_sizes/font_size = 14
 text = "$10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="CompleteButton" to="." method="_on_complete_button_pressed"]
