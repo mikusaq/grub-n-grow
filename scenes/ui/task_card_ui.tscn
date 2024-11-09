@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkmao3uuabg7v"]
+[gd_scene load_steps=3 format=3 uid="uid://dkmao3uuabg7v"]
 
 [ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="1_uf5lu"]
+[ext_resource type="Script" path="res://scripts/task_card_ui.gd" id="2_xrk0i"]
 
 [node name="TaskCardUI" type="Control"]
 custom_minimum_size = Vector2(75, 100)
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_uf5lu")
+script = ExtResource("2_xrk0i")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

@@ -19,13 +19,13 @@ signal change_tile(tile_pos: Vector2i, ground_pos: Vector2i, plant_pos: Vector2i
 
 var farm_grid: FarmGrid 
 var tile_state: TileState = TileState.GRASS
-var plant_type: Enums.PlantType = Enums.PlantType.NoType
+var plant_type: Const.PlantType = Const.PlantType.NoType
 var tile_pos: Vector2i
 var harvest_value: int = 1
 
 
 func is_harvestable() -> bool:
-	if plant_type == Enums.PlantType.BaseTree:
+	if plant_type == Const.PlantType.BaseTree:
 		return false
 	return tile_state == TileState.HARVEST
 
@@ -42,18 +42,18 @@ func process_next_season():
 		_update_tile()
 
 
-func seed_plant(plant_to_seed: Enums.PlantType):
+func seed_plant(plant_to_seed: Const.PlantType):
 	tile_state = TileState.SEED
 	plant_type = plant_to_seed
 	_update_tile()
 
 
 func harvest():
-	if plant_type == Enums.PlantType.Potato:
+	if plant_type == Const.PlantType.Potato:
 		print("Potatoes harvested: ", harvest_value)
-	elif plant_type == Enums.PlantType.Tomato:
+	elif plant_type == Const.PlantType.Tomato:
 		print("Tomatoes harvested: ", harvest_value)
-	elif plant_type == Enums.PlantType.Basil:
+	elif plant_type == Const.PlantType.Basil:
 		print("Basils harvested: ", harvest_value)
 	_reset()
 
@@ -68,17 +68,17 @@ func _update_tile():
 	elif tile_state == TileState.SEED:
 		change_tile.emit(tile_pos, SOIL_1_POS, SEED_POS)
 	elif tile_state == TileState.HARVEST:
-		if plant_type == Enums.PlantType.Potato:
+		if plant_type == Const.PlantType.Potato:
 			change_tile.emit(tile_pos, SOIL_1_POS, POTATO_POS)
-		elif plant_type == Enums.PlantType.Tomato:
+		elif plant_type == Const.PlantType.Tomato:
 			change_tile.emit(tile_pos, SOIL_1_POS, TOMATO_POS)
-		elif plant_type == Enums.PlantType.Basil:
+		elif plant_type == Const.PlantType.Basil:
 			change_tile.emit(tile_pos, SOIL_1_POS, BASIL_POS)
 
 
 func _reset():
 	tile_state = TileState.SOIL_1
-	plant_type = Enums.PlantType.NoType
+	plant_type = Const.PlantType.NoType
 	change_tile.emit(tile_pos, SOIL_1_POS)
 	harvest_value = 1
 
@@ -86,7 +86,7 @@ func _reset():
 func _determine_harvest_value() -> void:
 	var surrounding_farm_tiles = farm_grid.get_surrounding_farm_tiles(self)
 	for farm_tile in surrounding_farm_tiles:
-		if farm_tile.plant_type == Enums.PlantType.BaseTree:
+		if farm_tile.plant_type == Const.PlantType.BaseTree:
 			harvest_value += 1
-		elif farm_tile.plant_type == Enums.PlantType.Basil and plant_type == Enums.PlantType.Tomato:
+		elif farm_tile.plant_type == Const.PlantType.Basil and plant_type == Const.PlantType.Tomato:
 			harvest_value += 1

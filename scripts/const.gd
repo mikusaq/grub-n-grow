@@ -1,6 +1,8 @@
 extends Node
 
-class_name Enums
+class_name Const
+
+const MONEY_SYMBOL = "$"
 
 enum PlantType {
 	NoType,
