@@ -22,7 +22,6 @@ var player_pos_changed: bool = false
 var pixel_art_size: Vector2
 var current_tile_pos: Vector2
 var player_can_interact: bool = false
-var in_season = true
 
 @export var reach_distance: float = 60.0
 @export var player_inv: PlayerInv
@@ -170,11 +169,6 @@ func _update_tile_atlas_choords(tile_pos: Vector2i, ground_pos: Vector2i, plant_
 	$OnGround.set_cell(tile_pos, 0, plant_pos)
 
 
-func process_end_of_season():
+func process_next_turn():
 	for farm_tile in farm_tiles:
-		farm_tile.process_end_of_season()
-
-
-func process_next_season():
-	for farm_tile in farm_tiles:
-		farm_tile.process_next_season()
+		farm_tile.process_next_turn()

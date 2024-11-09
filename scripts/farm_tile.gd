@@ -33,17 +33,14 @@ func is_harvestable() -> bool:
 	return tile_state == TileState.HARVEST
 
 
-func process_end_of_season():
-	if tile_state == TileState.SEED:
-		tile_state = TileState.HARVEST
-		_update_tile()
-		_determine_harvest_value()
-
-
-func process_next_season():
+func process_next_turn():
 	if tile_state == TileState.SOIL_1:
 		tile_state = TileState.GRASS
 		_update_tile()
+	elif tile_state == TileState.SEED:
+		tile_state = TileState.HARVEST
+		_update_tile()
+		_determine_harvest_value()
 
 
 func seed_plant(plant_to_seed: Const.PlantType):
