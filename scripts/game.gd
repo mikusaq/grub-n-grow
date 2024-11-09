@@ -30,3 +30,8 @@ func set_random_tasks() -> void:
 			used_nums.append(rand_num)
 	
 	$HUD.set_task_cards(random_tasks)
+
+
+func _on_hud_add_money(money: int) -> void:
+	$Player.money += money
+	$HUD.set_money($Player.money)

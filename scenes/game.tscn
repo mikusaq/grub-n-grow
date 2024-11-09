@@ -27,3 +27,5 @@ position = Vector2(230, 80)
 rotation = -0.785398
 offset = Vector2(80, 80)
 zoom = Vector2(1.05, 1.05)
+
+[connection signal="add_money" from="HUD" to="." method="_on_hud_add_money"]
