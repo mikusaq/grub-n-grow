@@ -116,14 +116,6 @@ tile_map_data = PackedByteArray("AAAEAAMAAAAHAAAAAAABAAMAAAAHAAAAAAADAAEAAAAHAAA
 tile_set = SubResource("TileSet_cxjv3")
 script = ExtResource("6_3g3vv")
 
-[node name="OnGround2" type="TileMapLayer" parent="FarmGrid"]
-z_index = 1
-y_sort_enabled = true
-scale = Vector2(1.00154, 1)
-tile_map_data = PackedByteArray("AAAEAAMAAAAHAAAAAAABAAMAAAAHAAAAAAADAAEAAAAHAAAAAAAAAAAAAAAHAAAAAAA=")
-tile_set = SubResource("TileSet_cxjv3")
-script = ExtResource("6_3g3vv")
-
 [node name="CafeLabel" type="Label" parent="."]
 offset_left = -180.0
 offset_top = 60.0
