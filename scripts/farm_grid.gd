@@ -22,7 +22,8 @@ var player_can_interact: bool = false
 var in_season = true
 
 @export var reach_distance: float = 60.0
-@export var inv: PlayerInv
+@export var player_inv: PlayerInv
+@export var crop_inv: Inv
 
 
 # Called when the node enters the scene tree for the first time.
@@ -120,33 +121,33 @@ func update_interaction_with_player():
 
 
 func process_click_on_farm_tile(farm_tile: FarmTile):
-	var active_item = inv.get_active_item()
+	var active_item = player_inv.get_active_item()
 	if player_can_interact and active_item != null:
 		if active_item.name == "Scythe":
 			if farm_tile.tile_state == FarmTile.TileState.GRASS:
 				if farm_tile.plant_type != Const.PlantType.BaseTree:
 					farm_tile.tile_state = FarmTile.TileState.SOIL_1
 					_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS)
-					inv.add_item(mulch_item, 1)
+					player_inv.add_item(mulch_item, 1)
 			elif farm_tile.is_harvestable():
-				farm_tile.harvest()
+				farm_tile.harvest(crop_inv)
 		elif active_item.name == "Mulch":
 			if farm_tile.tile_state == FarmTile.TileState.SOIL_1:
 				farm_tile.tile_state = FarmTile.TileState.MULCH
 				_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS, FarmTile.MULCH_POS)
-				inv.remove_item(mulch_item, 1)
+				player_inv.remove_item(mulch_item, 1)
 		elif active_item.name in ["Potato seed", "Tomato seed", "Basil seed"]:
 			if farm_tile.tile_state == FarmTile.TileState.MULCH:
 				var plant_to_seed: Const.PlantType
 				if active_item.name == "Potato seed":
 					plant_to_seed = Const.PlantType.Potato
-					inv.remove_item(potato_seed_item, 1)
+					player_inv.remove_item(potato_seed_item, 1)
 				elif active_item.name == "Tomato seed":
 					plant_to_seed = Const.PlantType.Tomato
-					inv.remove_item(tomato_seed_item, 1)
+					player_inv.remove_item(tomato_seed_item, 1)
 				elif active_item.name == "Basil seed":
 					plant_to_seed = Const.PlantType.Basil
-					inv.remove_item(basil_seed_item, 1)
+					player_inv.remove_item(basil_seed_item, 1)
 				farm_tile.seed_plant(plant_to_seed)
 
 

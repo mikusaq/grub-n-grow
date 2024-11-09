@@ -1,5 +1,7 @@
 extends Control
 
+class_name TaskCardUI
+
 var task_card: TaskCard
 
 signal task_completed(task_card: TaskCard)

@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://beuaftpgggkw2"]
+[gd_scene load_steps=5 format=3 uid="uid://beuaftpgggkw2"]
 
 [ext_resource type="PackedScene" uid="uid://ciksfu7s6lkq3" path="res://scenes/ui/inventory_ui.tscn" id="1_xkm4c"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_ykett"]
+[ext_resource type="Resource" uid="uid://m1lque6lxlpi" path="res://resources/inventory/crop_inventory.tres" id="2_exxnp"]
 [ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="3_u5c0e"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ykett")
+crop_inv = ExtResource("2_exxnp")
 
 [node name="InventoryUI" parent="." instance=ExtResource("1_xkm4c")]
 offset_left = 142.0

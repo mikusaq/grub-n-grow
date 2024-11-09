@@ -48,13 +48,15 @@ func seed_plant(plant_to_seed: Const.PlantType):
 	_update_tile()
 
 
-func harvest():
+func harvest(crop_inv: Inv):
+	var inv_item: InvItem
 	if plant_type == Const.PlantType.Potato:
-		print("Potatoes harvested: ", harvest_value)
+		inv_item = preload("res://resources/inventory/items/crops/potato_item.tres")
 	elif plant_type == Const.PlantType.Tomato:
-		print("Tomatoes harvested: ", harvest_value)
+		inv_item = preload("res://resources/inventory/items/crops/tomato_item.tres")
 	elif plant_type == Const.PlantType.Basil:
-		print("Basils harvested: ", harvest_value)
+		inv_item = preload("res://resources/inventory/items/crops/basil_item.tres")
+	crop_inv.add_item(inv_item, harvest_value)
 	_reset()
 
 
