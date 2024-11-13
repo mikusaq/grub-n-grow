@@ -21,11 +21,11 @@ task_cards = Array[ExtResource("2_3n6aa")]([ExtResource("3_fv3lp"), ExtResource(
 [node name="World" parent="." instance=ExtResource("1_llcn5")]
 
 [node name="Player" parent="." instance=ExtResource("2_vd225")]
-position = Vector2(230, 80)
+position = Vector2(-30, 100)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-20, 80)
 rotation = -0.785398
-offset = Vector2(80, 80)
-zoom = Vector2(1.05, 1.05)
+zoom = Vector2(1.4, 1.4)
 
 [connection signal="add_money" from="HUD" to="." method="_on_hud_add_money"]
