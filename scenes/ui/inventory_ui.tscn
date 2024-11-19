@@ -1,53 +1,105 @@
-[gd_scene load_steps=4 format=3 uid="uid://ciksfu7s6lkq3"]
+[gd_scene load_steps=7 format=3 uid="uid://ciksfu7s6lkq3"]
 
 [ext_resource type="PackedScene" uid="uid://bgsm66od2xnu1" path="res://scenes/ui/inventory_slot_ui.tscn" id="1_235ug"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_ui.gd" id="1_jhtfs"]
 [ext_resource type="Resource" uid="uid://behc610vpoq6t" path="res://resources/inventory/player_inventory.tres" id="2_6ana3"]
+[ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="3_jhg5r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyrfb"]
+atlas = ExtResource("3_jhg5r")
+region = Rect2(2, 1, 202, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nc7u"]
+atlas = ExtResource("3_jhg5r")
+region = Rect2(9, 137, 13, 14)
 
 [node name="InventoryUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -284.0
-offset_bottom = -328.0
+offset_right = -438.0
+offset_bottom = -266.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jhtfs")
 inv = ExtResource("2_6ana3")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="BackgroundTexture" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 356.0
-offset_bottom = 32.0
-columns = 10
+offset_right = 202.0
+offset_bottom = 94.0
+texture = SubResource("AtlasTexture_yyrfb")
 
-[node name="InventorySlotUI1" parent="GridContainer" instance=ExtResource("1_235ug")]
-layout_mode = 2
+[node name="CoinTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 24.0
+offset_bottom = 21.0
+texture = SubResource("AtlasTexture_4nc7u")
 
-[node name="InventorySlotUI2" parent="GridContainer" instance=ExtResource("1_235ug")]
-layout_mode = 2
+[node name="InventorySlots" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="InventorySlotUI3" parent="GridContainer" instance=ExtResource("1_235ug")]
-layout_mode = 2
+[node name="InventorySlotUI1" parent="InventorySlots" instance=ExtResource("1_235ug")]
+offset_left = 6.0
+offset_top = 33.0
+offset_right = 32.0
+offset_bottom = 59.0
 
-[node name="InventorySlotUI4" parent="GridContainer" instance=ExtResource("1_235ug")]
-layout_mode = 2
+[node name="InventorySlotUI2" parent="InventorySlots" instance=ExtResource("1_235ug")]
+offset_left = 6.0
+offset_top = 62.0
+offset_right = 32.0
+offset_bottom = 88.0
 
-[node name="InventorySlotUI5" parent="GridContainer" instance=ExtResource("1_235ug")]
-layout_mode = 2
+[node name="InventorySlotUI3" parent="InventorySlots" instance=ExtResource("1_235ug")]
+offset_left = 40.0
+offset_top = 33.0
+offset_right = 66.0
+offset_bottom = 59.0
 
-[node name="InventorySlotUI6" parent="GridContainer" instance=ExtResource("1_235ug")]
-layout_mode = 2
+[node name="InventorySlotUI4" parent="InventorySlots" instance=ExtResource("1_235ug")]
+offset_left = 74.0
+offset_top = 33.0
+offset_right = 100.0
+offset_bottom = 59.0
 
-[node name="InventorySlotUI7" parent="GridContainer" instance=ExtResource("1_235ug")]
-layout_mode = 2
+[node name="InventorySlotUI5" parent="InventorySlots" instance=ExtResource("1_235ug")]
+offset_left = 106.0
+offset_top = 33.0
+offset_right = 132.0
+offset_bottom = 59.0
 
-[node name="InventorySlotUI8" parent="GridContainer" instance=ExtResource("1_235ug")]
-layout_mode = 2
+[node name="InventorySlotUI6" parent="InventorySlots" instance=ExtResource("1_235ug")]
+offset_left = 138.0
+offset_top = 33.0
+offset_right = 164.0
+offset_bottom = 59.0
 
-[node name="InventorySlotUI9" parent="GridContainer" instance=ExtResource("1_235ug")]
-layout_mode = 2
+[node name="InventorySlotUI7" parent="InventorySlots" instance=ExtResource("1_235ug")]
+offset_left = 170.0
+offset_top = 33.0
+offset_right = 196.0
+offset_bottom = 59.0
 
-[node name="InventorySlotUI10" parent="GridContainer" instance=ExtResource("1_235ug")]
-layout_mode = 2
+[node name="InventorySlotUI8" parent="InventorySlots" instance=ExtResource("1_235ug")]
+offset_left = 74.0
+offset_top = 62.0
+offset_right = 100.0
+offset_bottom = 88.0
+
+[node name="InventorySlotUI9" parent="InventorySlots" instance=ExtResource("1_235ug")]
+offset_left = 106.0
+offset_top = 62.0
+offset_right = 132.0
+offset_bottom = 88.0
+
+[node name="InventorySlotUI10" parent="InventorySlots" instance=ExtResource("1_235ug")]
+offset_left = 138.0
+offset_top = 62.0
+offset_right = 164.0
+offset_bottom = 88.0

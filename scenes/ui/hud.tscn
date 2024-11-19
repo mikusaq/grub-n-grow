@@ -10,19 +10,20 @@ script = ExtResource("1_ykett")
 crop_inv = ExtResource("2_exxnp")
 
 [node name="InventoryUI" parent="." instance=ExtResource("1_xkm4c")]
-offset_left = 142.0
-offset_top = 320.0
-offset_right = -142.0
-offset_bottom = -8.0
+offset_left = 7.0
+offset_top = 259.0
+offset_right = -431.0
+offset_bottom = -7.0
 
 [node name="MoneyAmount" type="Label" parent="."]
-offset_left = 584.0
-offset_top = 329.0
-offset_right = 627.0
-offset_bottom = 352.0
+offset_left = 34.0
+offset_top = 263.0
+offset_right = 73.0
+offset_bottom = 285.0
 theme = ExtResource("3_u5c0e")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
 text = "$20"
-horizontal_alignment = 2
 
 [node name="TaskContainer" type="HBoxContainer" parent="."]
 offset_left = 8.0

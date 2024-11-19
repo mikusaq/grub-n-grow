@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://cfefl2hfuy8pv"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_d7gaw"]
-[ext_resource type="Texture2D" uid="uid://chd2i5hapamy8" path="res://assets/inventory_items/plant_items_placeholder.png" id="2_xv33a"]
+[ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="2_4d1go"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ymlfb"]
-atlas = ExtResource("2_xv33a")
-region = Rect2(160, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_coovm"]
+atlas = ExtResource("2_4d1go")
+region = Rect2(198, 104, 22, 22)
 
 [resource]
 script = ExtResource("1_d7gaw")
 name = "Garlic seed"
-texture = SubResource("AtlasTexture_ymlfb")
+texture = SubResource("AtlasTexture_coovm")
 stackable = true

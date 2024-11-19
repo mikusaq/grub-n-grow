@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://c7njhcoogkkgg"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_vgtgq"]
-[ext_resource type="Texture2D" uid="uid://chd2i5hapamy8" path="res://assets/inventory_items/plant_items_placeholder.png" id="2_8b8hg"]
+[ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="2_5s8mr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ymlfb"]
-atlas = ExtResource("2_8b8hg")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w81wx"]
+atlas = ExtResource("2_5s8mr")
+region = Rect2(166, 104, 22, 22)
 
 [resource]
 script = ExtResource("1_vgtgq")
 name = "Basil seed"
-texture = SubResource("AtlasTexture_ymlfb")
+texture = SubResource("AtlasTexture_w81wx")
 stackable = true

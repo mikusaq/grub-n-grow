@@ -1,7 +1,7 @@
 extends Control
 
 @export var inv: PlayerInv
-@onready var slots: Array = $GridContainer.get_children()
+@onready var slots: Array = $InventorySlots.get_children()
 var active_slot: int
 
 
