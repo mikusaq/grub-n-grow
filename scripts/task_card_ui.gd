@@ -14,7 +14,7 @@ func set_task_card(new_task_card: TaskCard) -> void:
 	for task in task_card.tasks:
 		tasks_str += str(task.amount) + "x " + task.item.name + "\n"
 	$Tasks.text = tasks_str
-	$CompleteButton/MoneyAmount.text = Const.MONEY_SYMBOL + str(task_card.reward)
+	$CompleteButton.text = Const.MONEY_SYMBOL + str(task_card.reward)
 
 
 func update_fulfill_condition() -> void:
