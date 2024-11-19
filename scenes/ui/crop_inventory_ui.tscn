@@ -1,0 +1,154 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0m4nmaiyebmi"]
+
+[ext_resource type="Script" path="res://scripts/inventory/crop_inventory_ui.gd" id="1_5w12v"]
+[ext_resource type="Texture2D" uid="uid://fuy6ajgsehry" path="res://assets/crops_inventory.png" id="2_df3bb"]
+[ext_resource type="Resource" uid="uid://m1lque6lxlpi" path="res://resources/inventory/crop_inventory.tres" id="2_kfxjw"]
+[ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="3_qm6qf"]
+
+[node name="CropInventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 96.0
+script = ExtResource("1_5w12v")
+crop_inventory = ExtResource("2_kfxjw")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_df3bb")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 30.0
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 6
+text = "Stock"
+
+[node name="CropList" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 18.0
+offset_right = 76.0
+offset_bottom = 79.0
+theme_override_constants/separation = 3
+
+[node name="PotatoContainer" type="HBoxContainer" parent="CropList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="CropList/PotatoContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "Potato"
+
+[node name="AmountLabel" type="Label" parent="CropList/PotatoContainer"]
+layout_mode = 2
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "x0"
+
+[node name="TomatoContainer" type="HBoxContainer" parent="CropList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="CropList/TomatoContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "Tomato"
+
+[node name="AmountLabel" type="Label" parent="CropList/TomatoContainer"]
+layout_mode = 2
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "x0"
+
+[node name="BasilContainer" type="HBoxContainer" parent="CropList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="CropList/BasilContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "Basil"
+
+[node name="AmountLabel" type="Label" parent="CropList/BasilContainer"]
+layout_mode = 2
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "x0"
+
+[node name="GarlicContainer" type="HBoxContainer" parent="CropList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="CropList/GarlicContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "Garlic
+"
+
+[node name="AmountLabel" type="Label" parent="CropList/GarlicContainer"]
+layout_mode = 2
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "x0"
+
+[node name="StrawberryContainer" type="HBoxContainer" parent="CropList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="CropList/StrawberryContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "Strawberry
+"
+
+[node name="AmountLabel" type="Label" parent="CropList/StrawberryContainer"]
+layout_mode = 2
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "x0"
+
+[node name="PeaContainer" type="HBoxContainer" parent="CropList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="CropList/PeaContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "Pea
+"
+
+[node name="AmountLabel" type="Label" parent="CropList/PeaContainer"]
+layout_mode = 2
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "x0"
+
+[node name="AppleContainer" type="HBoxContainer" parent="CropList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="CropList/AppleContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "Apple
+"
+
+[node name="AmountLabel" type="Label" parent="CropList/AppleContainer"]
+layout_mode = 2
+theme = ExtResource("3_qm6qf")
+theme_override_font_sizes/font_size = 4
+text = "x0"
