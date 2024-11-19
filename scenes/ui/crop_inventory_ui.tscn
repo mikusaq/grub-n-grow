@@ -8,33 +8,33 @@
 [node name="CropInventoryUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 96.0
-offset_bottom = 96.0
+offset_right = 132.0
+offset_bottom = 132.0
 script = ExtResource("1_5w12v")
 crop_inventory = ExtResource("2_kfxjw")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 132.0
+offset_bottom = 132.0
 texture = ExtResource("2_df3bb")
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 18.0
-offset_right = 40.0
-offset_bottom = 30.0
+offset_left = 21.0
+offset_top = 25.0
+offset_right = 46.0
+offset_bottom = 37.0
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 8
 text = "Stock"
 
 [node name="CropList" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 18.0
-offset_right = 76.0
-offset_bottom = 79.0
+offset_left = 59.0
+offset_top = 25.0
+offset_right = 108.0
+offset_bottom = 106.0
 theme_override_constants/separation = 3
 
 [node name="PotatoContainer" type="HBoxContainer" parent="CropList"]
@@ -44,13 +44,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "Potato"
 
 [node name="AmountLabel" type="Label" parent="CropList/PotatoContainer"]
 layout_mode = 2
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "x0"
 
 [node name="TomatoContainer" type="HBoxContainer" parent="CropList"]
@@ -60,13 +60,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "Tomato"
 
 [node name="AmountLabel" type="Label" parent="CropList/TomatoContainer"]
 layout_mode = 2
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "x0"
 
 [node name="BasilContainer" type="HBoxContainer" parent="CropList"]
@@ -76,13 +76,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "Basil"
 
 [node name="AmountLabel" type="Label" parent="CropList/BasilContainer"]
 layout_mode = 2
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "x0"
 
 [node name="GarlicContainer" type="HBoxContainer" parent="CropList"]
@@ -92,14 +92,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "Garlic
 "
 
 [node name="AmountLabel" type="Label" parent="CropList/GarlicContainer"]
 layout_mode = 2
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "x0"
 
 [node name="StrawberryContainer" type="HBoxContainer" parent="CropList"]
@@ -109,14 +109,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "Strawberry
 "
 
 [node name="AmountLabel" type="Label" parent="CropList/StrawberryContainer"]
 layout_mode = 2
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "x0"
 
 [node name="PeaContainer" type="HBoxContainer" parent="CropList"]
@@ -126,14 +126,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "Pea
 "
 
 [node name="AmountLabel" type="Label" parent="CropList/PeaContainer"]
 layout_mode = 2
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "x0"
 
 [node name="AppleContainer" type="HBoxContainer" parent="CropList"]
@@ -143,12 +143,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "Apple
 "
 
 [node name="AmountLabel" type="Label" parent="CropList/AppleContainer"]
 layout_mode = 2
 theme = ExtResource("3_qm6qf")
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 6
 text = "x0"

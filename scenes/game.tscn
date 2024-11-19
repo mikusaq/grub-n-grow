@@ -24,7 +24,7 @@ task_cards = Array[ExtResource("2_3n6aa")]([ExtResource("3_fv3lp"), ExtResource(
 position = Vector2(-30, 100)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-20, 80)
+position = Vector2(-30, 60)
 rotation = -0.785398
 zoom = Vector2(1.4, 1.4)
 

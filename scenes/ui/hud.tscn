@@ -33,7 +33,7 @@ offset_right = 241.0
 offset_bottom = 108.0
 
 [node name="CropInventoryUI" parent="." instance=ExtResource("5_15bp6")]
-offset_left = 7.0
-offset_top = 126.0
-offset_right = 103.0
-offset_bottom = 222.0
+offset_left = 27.0
+offset_top = 96.0
+offset_right = 123.0
+offset_bottom = 192.0
