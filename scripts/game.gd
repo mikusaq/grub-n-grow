@@ -26,9 +26,12 @@ func set_random_tasks() -> void:
 			random_tasks.append(task_cards[rand_num])
 			used_nums.append(rand_num)
 	
-	$HUD.set_task_cards(random_tasks)
+	$HUD.add_task_cards(random_tasks)
 
 
-func _on_hud_add_money(money: int) -> void:
-	$Player.money += money
+func _on_hud_task_completed(reward: int) -> void:
+	$Player.money += reward
 	$HUD.set_money($Player.money)
+	var rand_num = randi_range(0, task_cards.size() - 1)
+	var task_array: Array[TaskCard] = [task_cards[rand_num]]
+	$HUD.add_task_cards(task_array)

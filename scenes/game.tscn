@@ -28,4 +28,4 @@ position = Vector2(-30, 60)
 rotation = -0.785398
 zoom = Vector2(1.4, 1.4)
 
-[connection signal="add_money" from="HUD" to="." method="_on_hud_add_money"]
+[connection signal="task_completed" from="HUD" to="." method="_on_hud_task_completed"]
