@@ -12,3 +12,5 @@ script = ExtResource("1_evme0")
 name = "Pea seed"
 texture = SubResource("AtlasTexture_awnye")
 stackable = true
+enable_hover = true
+description = "[ul] Great for the soil![/ul]"

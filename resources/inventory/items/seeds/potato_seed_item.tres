@@ -12,3 +12,5 @@ script = ExtResource("1_ckk6l")
 name = "Potato seed"
 texture = SubResource("AtlasTexture_pbe2t")
 stackable = true
+enable_hover = true
+description = "[ul] For better results, use mulch[/ul]"

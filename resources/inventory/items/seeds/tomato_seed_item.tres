@@ -12,3 +12,5 @@ script = ExtResource("1_i2mui")
 name = "Tomato seed"
 texture = SubResource("AtlasTexture_vxj3k")
 stackable = true
+enable_hover = true
+description = "[ul] Watch out for pests![/ul]"

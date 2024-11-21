@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgsm66od2xnu1"]
+[gd_scene load_steps=7 format=3 uid="uid://bgsm66od2xnu1"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_slot_ui.gd" id="1_55vau"]
 [ext_resource type="FontFile" uid="uid://br0ytyvgenot2" path="res://assets/fonts/pointfree.ttf" id="2_1yq2b"]
 [ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="2_3rksa"]
+[ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="4_aq8xx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jixj"]
 atlas = ExtResource("2_3rksa")
@@ -26,9 +27,12 @@ offset_right = 26.0
 offset_bottom = 26.0
 texture = SubResource("AtlasTexture_5jixj")
 
-[node name="ItemDisplay" type="Sprite2D" parent="."]
-position = Vector2(2, 2)
-centered = false
+[node name="ItemDisplay" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 24.0
+offset_bottom = 24.0
 
 [node name="Highlight" type="ReferenceRect" parent="."]
 visible = false
@@ -49,3 +53,41 @@ offset_bottom = 28.0
 label_settings = SubResource("LabelSettings_gahxd")
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="HoverDescription" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = -55.0
+offset_right = 95.0
+
+[node name="ItemName" type="Label" parent="HoverDescription"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 87.0
+offset_bottom = 16.0
+theme = ExtResource("4_aq8xx")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ItemDescription" type="RichTextLabel" parent="HoverDescription"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 17.0
+offset_right = 84.0
+offset_bottom = 54.0
+theme = ExtResource("4_aq8xx")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 0
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+scroll_active = false
+tab_size = 2
+
+[connection signal="mouse_entered" from="ItemDisplay" to="." method="_on_item_display_mouse_entered"]
+[connection signal="mouse_exited" from="ItemDisplay" to="." method="_on_item_display_mouse_exited"]

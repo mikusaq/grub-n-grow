@@ -1,4 +1,7 @@
-extends Control 
+extends Control
+
+var hover_enabled: bool
+
 
 func update(slot: InvSlot):
 	if slot and slot.item:
@@ -6,9 +9,23 @@ func update(slot: InvSlot):
 		$ItemDisplay.visible = true
 		if slot.item.stackable:
 			$ItemAmount.text = str(slot.amount)
+		hover_enabled = slot.item.enable_hover
+		if hover_enabled:
+			$HoverDescription/ItemName.text = slot.item.name
+			$HoverDescription/ItemDescription.text = slot.item.description
 	else:
 		$ItemDisplay.visible = false
 		$ItemAmount.text = ""
+		hover_enabled = false
 
 func set_highlight_visibility(highlight_visible: bool):
 	$Highlight.visible = highlight_visible
+
+
+func _on_item_display_mouse_entered() -> void:
+	if hover_enabled:
+		$HoverDescription.visible = true
+
+
+func _on_item_display_mouse_exited() -> void:
+	$HoverDescription.visible = false

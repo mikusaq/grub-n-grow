@@ -12,3 +12,6 @@ script = ExtResource("1_7j62u")
 name = "Strawberry seed"
 texture = SubResource("AtlasTexture_vrc12")
 stackable = true
+enable_hover = true
+description = "[ul] Watch out for pests![/ul]
+[ul] Long-lived[/ul]"
