@@ -15,6 +15,7 @@ var basil_seed_item: InvItem = preload("res://resources/inventory/items/seeds/ba
 var strawberry_seed_item: InvItem = preload("res://resources/inventory/items/seeds/strawberry_seed_item.tres")
 var garlic_seed_item: InvItem = preload("res://resources/inventory/items/seeds/garlic_seed_item.tres")
 var pea_seed_item: InvItem = preload("res://resources/inventory/items/seeds/pea_seed_item.tres")
+var apple_seed_item: InvItem = preload("res://resources/inventory/items/seeds/apple_seed_item.tres")
 
 var farm_tiles: Array[FarmTile]
 var player_pos: Vector2 = Vector2.ZERO
@@ -138,7 +139,7 @@ func process_click_on_farm_tile(farm_tile: FarmTile):
 				farm_tile.tile_state = FarmTile.TileState.MULCH
 				_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS, FarmTile.MULCH_POS)
 				player_inv.remove_item(mulch_item, 1)
-		elif active_item.name in ["Potato seed", "Tomato seed", "Basil seed", "Strawberry seed", "Garlic seed", "Pea seed"]:
+		else:
 			process_seeding(farm_tile, active_item)
 
 
@@ -157,6 +158,8 @@ func process_seeding(farm_tile: FarmTile, active_item: InvItem) -> void:
 			plant_to_seed = Const.PlantType.Garlic
 		elif active_item == pea_seed_item:
 			plant_to_seed = Const.PlantType.Pea
+		elif active_item == apple_seed_item:
+			plant_to_seed = Const.PlantType.Apple
 			
 		player_inv.remove_item(active_item, 1)
 		farm_tile.seed_plant(plant_to_seed)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerInv" load_steps=20 format=3 uid="uid://behc610vpoq6t"]
+[gd_resource type="Resource" script_class="PlayerInv" load_steps=21 format=3 uid="uid://behc610vpoq6t"]
 
 [ext_resource type="Script" path="res://scripts/inventory/player_inventory.gd" id="1_7ynoe"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_slot.gd" id="2_pysrr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://cs0xfya48jcs7" path="res://resources/inventory/items/seeds/strawberry_seed_item.tres" id="7_qkgqk"]
 [ext_resource type="Resource" uid="uid://cfefl2hfuy8pv" path="res://resources/inventory/items/seeds/garlic_seed_item.tres" id="8_kqxk1"]
 [ext_resource type="Resource" uid="uid://bvlyvlrpb7d8h" path="res://resources/inventory/items/seeds/pea_seed_item.tres" id="9_07r4t"]
+[ext_resource type="Resource" uid="uid://buhs4tk02vgmp" path="res://resources/inventory/items/seeds/apple_seed_item.tres" id="10_cgr3u"]
 
 [sub_resource type="Resource" id="Resource_onpay"]
 script = ExtResource("2_pysrr")
@@ -55,7 +56,8 @@ amount = 5
 
 [sub_resource type="Resource" id="Resource_swwtt"]
 script = ExtResource("2_pysrr")
-amount = 0
+item = ExtResource("10_cgr3u")
+amount = 5
 
 [resource]
 script = ExtResource("1_7ynoe")

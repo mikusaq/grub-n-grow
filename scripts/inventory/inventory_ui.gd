@@ -26,4 +26,3 @@ func change_active_slot():
 	slots[active_slot].set_highlight_visibility(false)
 	active_slot = inv.active_slot
 	slots[active_slot].set_highlight_visibility(true)
-	

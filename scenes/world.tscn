@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dg7o4qlnmdeoi"]
+[gd_scene load_steps=20 format=4 uid="uid://dg7o4qlnmdeoi"]
 
 [ext_resource type="Script" path="res://scripts/farm_grid.gd" id="1_qy2y8"]
 [ext_resource type="Material" uid="uid://ssbc1q5j0pts" path="res://shaders/farm_tile_shader_material.material" id="2_4cbld"]
@@ -6,11 +6,14 @@
 [ext_resource type="Resource" uid="uid://behc610vpoq6t" path="res://resources/inventory/player_inventory.tres" id="3_33r3p"]
 [ext_resource type="Texture2D" uid="uid://b682p1xtn8esj" path="res://assets/house.png" id="3_w2bcj"]
 [ext_resource type="Resource" uid="uid://m1lque6lxlpi" path="res://resources/inventory/crop_inventory.tres" id="4_2usl0"]
-[ext_resource type="Texture2D" uid="uid://bkwcnfynoudoi" path="res://assets/farm_tiles.png" id="6_0t1jv"]
+[ext_resource type="Texture2D" uid="uid://tq2bophe3vhb" path="res://assets/farm_tiles.png" id="6_0t1jv"]
 [ext_resource type="Script" path="res://scripts/on_ground.gd" id="6_3g3vv"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tex5p"]
+load_path = "res://.godot/imported/farm_tiles.png-0427ff57fc9bee065f6fdbe343bc44f6.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgry4"]
-texture = ExtResource("6_0t1jv")
+texture = SubResource("CompressedTexture2D_tex5p")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -101,6 +104,12 @@ use_texture_padding = false
 8:0/0/texture_origin = Vector2i(0, 16)
 8:0/0/y_sort_origin = -6
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.96875, 6, 4.59375, 6, 5.53125, 13.9375, -5.71875, 14)
+7:2/0 = 0
+7:2/0/y_sort_origin = -35
+9:0/size_in_atlas = Vector2i(1, 2)
+9:0/0 = 0
+9:0/0/texture_origin = Vector2i(0, 16)
+9:0/0/y_sort_origin = -6
 
 [sub_resource type="TileSet" id="TileSet_cxjv3"]
 tile_size = Vector2i(32, 32)

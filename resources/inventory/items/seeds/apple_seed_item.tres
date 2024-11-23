@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://buhs4tk02vgmp"]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_6s4fl"]
+[ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="2_tmrvy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxj3k"]
+atlas = ExtResource("2_tmrvy")
+region = Rect2(166, 133, 22, 22)
+
+[resource]
+script = ExtResource("1_6s4fl")
+name = "Apple seed"
+texture = SubResource("AtlasTexture_vxj3k")
+stackable = true
+enable_hover = true
+description = "[ul] Great for the whole garden[/ul]
+[ul] Iron pot not included[/ul]"
