@@ -29,7 +29,7 @@ enum TileState {GRASS, SOIL_1, SOIL_2, MULCH, SEED, SPROUT, PLANT, HARVEST}
 
 signal change_tile(tile_pos: Vector2i, ground_pos: Vector2i, plant_pos: Vector2i)
 
-var farm_grid: FarmGrid 
+var farm_grid: FarmGrid
 var tile_state: TileState = TileState.GRASS
 var plant_type: Const.PlantType = Const.PlantType.NoType
 var tile_pos: Vector2i
@@ -42,6 +42,14 @@ func is_harvestable() -> bool:
 	if plant_type == Const.PlantType.BaseTree:
 		return false
 	return tile_state == TileState.HARVEST
+
+
+func is_fully_grown_tree() -> bool:
+	if plant_type == Const.PlantType.BaseTree:
+		return true
+	elif plant_type == Const.PlantType.Apple and growing_day >= APPLE_TREE_GROW_TIME:
+		return true
+	return false
 
 
 func process_next_turn():
@@ -100,7 +108,7 @@ func harvest(crop_inv: Inv):
 	elif plant_type == Const.PlantType.Pea:
 		inv_item = preload("res://resources/inventory/items/crops/pea_item.tres")
 		crop_inv.add_item(inv_item, harvest_value)
-		_reset(2)
+		reset(2)
 		return
 	elif plant_type == Const.PlantType.Apple:
 		inv_item = preload("res://resources/inventory/items/crops/apple_item.tres")
@@ -112,7 +120,7 @@ func harvest(crop_inv: Inv):
 		return
 	
 	crop_inv.add_item(inv_item, harvest_value)
-	_reset()
+	reset()
 
 
 func _update_tile():
@@ -147,7 +155,7 @@ func _update_tile():
 			change_tile.emit(tile_pos, SOIL_1_POS, APPLE_POS)
 
 
-func _reset(new_harvest_value: int = 1):
+func reset(new_harvest_value: int = 1):
 	tile_state = TileState.SOIL_1
 	plant_type = Const.PlantType.NoType
 	change_tile.emit(tile_pos, SOIL_1_POS)

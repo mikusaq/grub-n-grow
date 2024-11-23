@@ -139,6 +139,9 @@ func process_click_on_farm_tile(farm_tile: FarmTile):
 				farm_tile.tile_state = FarmTile.TileState.MULCH
 				_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS, FarmTile.MULCH_POS)
 				player_inv.remove_item(mulch_item, 1)
+		elif active_item.name == "Axe":
+			if farm_tile.is_fully_grown_tree():
+				farm_tile.reset()
 		else:
 			process_seeding(farm_tile, active_item)
 
