@@ -4,7 +4,8 @@ var player_tile_pos: Vector2i
 
 func _use_tile_data_runtime_update(coords):
 	if player_tile_pos == coords:
-		return get_cell_atlas_coords(coords) == FarmTile.TREE_POS
+		var atlas_choords = get_cell_atlas_coords(coords)
+		return atlas_choords in [FarmTile.TREE_POS, FarmTile.APPLE_HARVESTED_POS, FarmTile.APPLE_POS]
 	return true
 
 
