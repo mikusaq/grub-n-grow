@@ -163,8 +163,7 @@ func process_seeding(farm_tile: FarmTile, active_item: InvItem) -> void:
 			plant_to_seed = Const.PlantType.Pea
 		elif active_item == apple_seed_item:
 			plant_to_seed = Const.PlantType.Apple
-			
-		player_inv.remove_item(active_item, 1)
+		
 		farm_tile.seed_plant(plant_to_seed)
 
 

@@ -11,7 +11,7 @@ region = Rect2(102, 133, 22, 22)
 script = ExtResource("1_7j62u")
 name = "Strawberry seed"
 texture = SubResource("AtlasTexture_vrc12")
-stackable = true
+stackable = false
 enable_hover = true
 description = "[ul] Watch out for pests![/ul]
 [ul] Long-lived[/ul]"

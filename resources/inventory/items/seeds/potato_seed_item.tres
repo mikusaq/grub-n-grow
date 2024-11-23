@@ -11,6 +11,6 @@ region = Rect2(102, 104, 22, 22)
 script = ExtResource("1_ckk6l")
 name = "Potato seed"
 texture = SubResource("AtlasTexture_pbe2t")
-stackable = true
+stackable = false
 enable_hover = true
 description = "[ul] For better results, use mulch[/ul]"

@@ -11,7 +11,7 @@ region = Rect2(166, 133, 22, 22)
 script = ExtResource("1_6s4fl")
 name = "Apple seed"
 texture = SubResource("AtlasTexture_vxj3k")
-stackable = true
+stackable = false
 enable_hover = true
 description = "[ul] Great for the whole garden[/ul]
 [ul] Iron pot not included[/ul]"
