@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://beuaftpgggkw2"]
+[gd_scene load_steps=7 format=3 uid="uid://beuaftpgggkw2"]
 
 [ext_resource type="PackedScene" uid="uid://ciksfu7s6lkq3" path="res://scenes/ui/inventory_ui.tscn" id="1_xkm4c"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_ykett"]
 [ext_resource type="Resource" uid="uid://m1lque6lxlpi" path="res://resources/inventory/crop_inventory.tres" id="2_exxnp"]
 [ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="3_u5c0e"]
 [ext_resource type="PackedScene" uid="uid://d0m4nmaiyebmi" path="res://scenes/ui/crop_inventory_ui.tscn" id="5_15bp6"]
+[ext_resource type="PackedScene" uid="uid://crusmt8j7pmoe" path="res://scenes/ui/game_over_screen.tscn" id="6_1njct"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ykett")
@@ -37,3 +38,8 @@ offset_left = 27.0
 offset_top = 96.0
 offset_right = 123.0
 offset_bottom = 192.0
+
+[node name="GameOverScreen" parent="." instance=ExtResource("6_1njct")]
+visible = false
+
+[connection signal="start_new_game" from="GameOverScreen" to="." method="_on_game_over_screen_start_new_game"]

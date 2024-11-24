@@ -28,4 +28,5 @@ position = Vector2(-30, 60)
 rotation = -0.785398
 zoom = Vector2(1.4, 1.4)
 
+[connection signal="restart_game" from="HUD" to="." method="_on_hud_restart_game"]
 [connection signal="task_completed" from="HUD" to="." method="_on_hud_task_completed"]
