@@ -12,3 +12,5 @@ script = ExtResource("1_iqwu6")
 name = "Mulch"
 texture = SubResource("AtlasTexture_t74j3")
 stackable = true
+enable_hover = false
+description = ""

@@ -5,9 +5,11 @@ var turn_number: int = 0
 var completed_tasks_in_turn: int = 0
 
 
+
 func _ready() -> void:
 	$HUD.set_money($Player.money)
 	set_random_tasks()
+		
 
 
 func _process(delta: float) -> void:
@@ -38,6 +40,7 @@ func set_random_tasks() -> void:
 func _on_hud_task_completed(reward: int) -> void:
 	$Player.money += reward
 	$HUD.set_money($Player.money)
+	$CompletedTaskSound.play()
 	var rand_num = randi_range(0, task_cards.size() - 1)
 	var task_array: Array[TaskCard] = [task_cards[rand_num]]
 	completed_tasks_in_turn += 1
