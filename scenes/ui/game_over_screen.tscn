@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://crusmt8j7pmoe"]
+[gd_scene load_steps=4 format=3 uid="uid://crusmt8j7pmoe"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_5pyg6"]
 [ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="1_vhbbn"]
+[ext_resource type="Texture2D" uid="uid://cbe775rmgsih3" path="res://assets/game_over_frame.png" id="2_oagep"]
 
 [node name="GameOverScreen" type="Control"]
 self_modulate = Color(0.252028, 0.252028, 0.252028, 1)
@@ -13,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5pyg6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,6 +27,7 @@ offset_right = 87.5
 offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_oagep")
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
