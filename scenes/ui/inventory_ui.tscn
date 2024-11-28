@@ -14,6 +14,7 @@ atlas = ExtResource("3_jhg5r")
 region = Rect2(9, 137, 13, 14)
 
 [node name="InventoryUI" type="Control"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

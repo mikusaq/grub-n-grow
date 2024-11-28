@@ -131,7 +131,7 @@ tile_set = SubResource("TileSet_a1an5")
 [node name="WorldHouse" type="TileMapLayer" parent="."]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD7/wAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD7/wEAAAAAAAAAAAD7/wAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_68rut")
 
 [node name="FarmGrid" type="Node2D" parent="."]
