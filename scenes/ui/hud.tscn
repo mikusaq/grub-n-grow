@@ -11,6 +11,12 @@
 script = ExtResource("1_ykett")
 crop_inv = ExtResource("2_exxnp")
 
+[node name="CropInventoryUI" parent="." instance=ExtResource("5_15bp6")]
+offset_left = 27.0
+offset_top = 132.0
+offset_right = 123.0
+offset_bottom = 228.0
+
 [node name="InventoryUI" parent="." instance=ExtResource("1_xkm4c")]
 offset_left = 7.0
 offset_top = 259.0
@@ -32,12 +38,6 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 241.0
 offset_bottom = 108.0
-
-[node name="CropInventoryUI" parent="." instance=ExtResource("5_15bp6")]
-offset_left = 27.0
-offset_top = 132.0
-offset_right = 123.0
-offset_bottom = 228.0
 
 [node name="GameOverScreen" parent="." instance=ExtResource("6_1njct")]
 visible = false
