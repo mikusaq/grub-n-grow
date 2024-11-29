@@ -170,9 +170,9 @@ func reset(new_harvest_value: int = 1):
 func _determine_harvest_value() -> void:
 	var surrounding_farm_tiles = farm_grid.get_surrounding_farm_tiles(self)
 	for farm_tile in surrounding_farm_tiles:
-		if farm_tile.plant_type == Const.PlantType.BaseTree:
-			if plant_type != Const.PlantType.Apple:
+		if farm_tile.is_fully_grown_tree():
 				harvest_value += 1
+				break
 		elif farm_tile.plant_type == Const.PlantType.Apple and farm_tile.growing_day >= APPLE_TREE_GROW_TIME:
 			if plant_type in [Const.PlantType.Tomato, Const.PlantType.Pea, Const.PlantType.Strawberry, Const.PlantType,GARLIC_POS]:
 				harvest_value += 2
