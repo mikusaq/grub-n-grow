@@ -21,6 +21,7 @@ func _input(event: InputEvent) -> void:
 		if turn_number > 1 and completed_tasks_in_turn == 0:
 			Engine.time_scale = 0
 			$HUD.show_game_over_screen()
+		completed_tasks_in_turn = 0
 
 
 func set_random_tasks() -> void:
