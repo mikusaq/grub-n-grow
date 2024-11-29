@@ -1,0 +1,142 @@
+[gd_scene load_steps=4 format=3 uid="uid://pspk4juh8rv8"]
+
+[ext_resource type="Script" path="res://scripts/letter_ui.gd" id="1_7odb3"]
+[ext_resource type="Texture2D" uid="uid://e6iswo5jc3hn" path="res://assets/letter_frame.png" id="1_k2xtt"]
+[ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="2_qw6l1"]
+
+[node name="LetterUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7odb3")
+
+[node name="Shade" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.647059)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Letter2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Letter2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -112.0
+offset_right = 160.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k2xtt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Letter2"]
+layout_mode = 0
+offset_left = -106.0
+offset_top = -38.0
+offset_right = 142.0
+offset_bottom = 107.0
+theme = ExtResource("2_qw6l1")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+text = "Hey neighbor!
+
+It’s me, Marta, from down the road. Sven told me he’s opened a restaurant and has enlisted you to help grow the food. I thought you might like some tips to help you along!
+
+Remember to cut the grass before you try to plant anything. Most plants can’t compete with grass. 
+
+Using mulch will help keep moisture in the ground so you don’t have to water the plants. (You can use the cut grass as mulch!)
+
+Try to plant close to trees. Trees provide homes for birds that like to eat the little bugs that eat your plants. If the plants aren’t spending energy healing from bug bites, they might make more food for you!
+
+Some plants help each other out! Be sure to check the seed packets before planting to see if there are any special instructions. 
+
+Best of luck!
+Marta
+"
+
+[node name="Letter1" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Letter1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -112.0
+offset_right = 160.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k2xtt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Letter1"]
+layout_mode = 0
+offset_left = -106.0
+offset_top = -38.0
+offset_right = 142.0
+offset_bottom = 107.0
+theme = ExtResource("2_qw6l1")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+text = "Hey friend!
+
+It’s me, your old buddy Sven. How’s the new home? Have you found a use for that big yard yet? 
+
+I’ve just started a new restaurant, and I could use your help. My customers are super picky, and they want only the freshest local ingredients, and they won’t accept any chemicals! Can you believe it? 
+
+I’ll send you orders as I figure out what the restaurant needs, and I’ll pay you for your time, of course! 
+
+We need to complete orders every day, or the customers might give up on us! So make sure to complete at least one request before you go to bed, or the restaurant might not make it.
+
+I sure appreciate your help!
+
+Sven
+"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 295.0
+offset_right = 461.0
+offset_bottom = 324.0
+theme = ExtResource("2_qw6l1")
+text = "Next"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
