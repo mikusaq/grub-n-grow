@@ -39,6 +39,16 @@ offset_top = 8.0
 offset_right = 241.0
 offset_bottom = 108.0
 
+[node name="Shade" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.647059)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="GameOverScreen" parent="." instance=ExtResource("6_1njct")]
 visible = false
 

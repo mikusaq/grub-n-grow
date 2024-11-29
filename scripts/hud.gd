@@ -33,9 +33,11 @@ func complete_task(reward: int) -> void:
 
 
 func show_game_over_screen():
+	$Shade.show()
 	$GameOverScreen.show()
 
 
 func _on_game_over_screen_start_new_game() -> void:
+	$Shade.hide()
 	$GameOverScreen.hide()
 	restart_game.emit()
