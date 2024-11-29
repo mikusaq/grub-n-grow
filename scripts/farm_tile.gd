@@ -108,7 +108,11 @@ func harvest(crop_inv: Inv):
 	elif plant_type == Const.PlantType.Pea:
 		inv_item = preload("res://resources/inventory/items/crops/pea_item.tres")
 		crop_inv.add_item(inv_item, harvest_value)
-		reset(2)
+		tile_state = TileState.SOIL_2
+		plant_type = Const.PlantType.NoType
+		change_tile.emit(tile_pos, SOIL_2_POS)
+		harvest_value = 2
+		since_harvest = 0
 		return
 	elif plant_type == Const.PlantType.Apple:
 		inv_item = preload("res://resources/inventory/items/crops/apple_item.tres")
