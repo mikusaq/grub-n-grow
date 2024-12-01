@@ -20,6 +20,7 @@ func add_task_cards(task_cards: Array[TaskCard]):
 		var task_card_ui: TaskCardUI = task_card_ui_scene.instantiate()
 		task_card_ui.set_task_card(task_card)
 		task_card_ui.task_completed.connect(complete_task)
+		task_card_ui.update_fulfill_condition()
 		$TaskContainer.add_child(task_card_ui)
 
 
