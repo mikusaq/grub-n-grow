@@ -3,7 +3,7 @@ extends CanvasLayer
 var task_card_ui_scene = preload("res://scenes/ui/task_card_ui.tscn")
 @export var crop_inv: Inv
 
-signal task_completed(reward: int)
+signal task_completed(task: TaskCard)
 signal restart_game
 
 
@@ -28,8 +28,8 @@ func update_fulfill_conditions(slot_number: int) -> void:
 		task_card_ui.update_fulfill_condition()
 
 
-func complete_task(reward: int) -> void:
-	task_completed.emit(reward)
+func complete_task(task: TaskCard) -> void:
+	task_completed.emit(task)
 
 
 func show_game_over_screen():
