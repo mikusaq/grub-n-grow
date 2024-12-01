@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://rvhtk3bqid4l"]
+
+[ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="1_36jfb"]
+[ext_resource type="Script" path="res://scripts/spawn_text.gd" id="2_geuol"]
+
+[node name="SpawnText" type="Label"]
+z_index = 2
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 13.0
+offset_bottom = 13.0
+theme = ExtResource("1_36jfb")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 8
+script = ExtResource("2_geuol")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

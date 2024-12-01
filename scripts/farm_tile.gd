@@ -99,7 +99,7 @@ func harvest(crop_inv: Inv):
 	elif plant_type == Const.PlantType.Strawberry:
 		inv_item = preload("res://resources/inventory/items/crops/strawberry_item.tres")
 		if growing_day < STRAWBERRY_LAST_TIME:
-			crop_inv.add_item(inv_item, harvest_value)
+			add_harvest_to_inv(inv_item, crop_inv)
 			tile_state = TileState.PLANT
 			change_tile.emit(tile_pos, SOIL_1_POS, STRAWBERRY_HARVESTED_POS)
 			harvest_value = 1
@@ -108,7 +108,7 @@ func harvest(crop_inv: Inv):
 		inv_item = preload("res://resources/inventory/items/crops/garlic_item.tres")
 	elif plant_type == Const.PlantType.Pea:
 		inv_item = preload("res://resources/inventory/items/crops/pea_item.tres")
-		crop_inv.add_item(inv_item, harvest_value)
+		add_harvest_to_inv(inv_item, crop_inv)
 		tile_state = TileState.SOIL_2
 		plant_type = Const.PlantType.NoType
 		change_tile.emit(tile_pos, SOIL_2_POS)
@@ -117,15 +117,23 @@ func harvest(crop_inv: Inv):
 		return
 	elif plant_type == Const.PlantType.Apple:
 		inv_item = preload("res://resources/inventory/items/crops/apple_item.tres")
-		crop_inv.add_item(inv_item, harvest_value)
+		add_harvest_to_inv(inv_item, crop_inv)
 		tile_state = TileState.PLANT
 		change_tile.emit(tile_pos, SOIL_1_POS, APPLE_HARVESTED_POS)
 		harvest_value = 1
 		since_harvest = 0
 		return
 	
-	crop_inv.add_item(inv_item, harvest_value)
+	add_harvest_to_inv(inv_item, crop_inv)
 	reset()
+
+
+func add_harvest_to_inv(inv_item: InvItem, crop_inv: Inv) -> void:
+	crop_inv.add_item(inv_item, harvest_value)
+	var text = preload("res://scenes/ui/spawn_text.tscn").instantiate()
+	text.text = "+" + str(harvest_value)
+	text.position = farm_grid.get_global_mouse_position()
+	farm_grid.add_child(text)
 
 
 func _update_tile():
