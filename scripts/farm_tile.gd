@@ -64,13 +64,13 @@ func process_next_turn():
 		soil_type = SoilType.BASE_SOIL
 		update_tile()
 	elif tile_state == TileState.SEED:
+		growing_day += 1
 		if plant_type == Const.PlantType.Apple:
 			tile_state = TileState.SPROUT
-			harvest_value = 1
 			soil_type = SoilType.BASE_SOIL
+			harvest_value = 1
 			update_tile()
 			return
-		growing_day += 1
 		tile_state = TileState.HARVEST
 		update_tile()
 		_determine_harvest_value()
@@ -110,6 +110,7 @@ func harvest(crop_inv: Inv):
 		if growing_day < STRAWBERRY_LAST_TIME:
 			add_harvest_to_inv(inv_item, crop_inv)
 			tile_state = TileState.PLANT
+			soil_type = SoilType.BASE_SOIL
 			update_tile()
 			harvest_value = 1
 			return
@@ -152,10 +153,9 @@ func update_tile():
 	elif tile_state == TileState.MULCH:
 		change_tile.emit(tile_pos, soil_pos, MULCH_POS)
 	elif tile_state == TileState.SEED:
-			change_tile.emit(tile_pos, soil_pos, SEED_POS)
+		change_tile.emit(tile_pos, soil_pos, SEED_POS)
 	elif tile_state == TileState.SPROUT:
-		if plant_type == Const.PlantType.Apple:
-			change_tile.emit(tile_pos, soil_pos, SPROUT_POS)
+		change_tile.emit(tile_pos, soil_pos, SPROUT_POS)
 	elif tile_state == TileState.PLANT:
 		if plant_type == Const.PlantType.Apple:
 			change_tile.emit(tile_pos, soil_pos, APPLE_HARVESTED_POS)
