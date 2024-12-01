@@ -47,7 +47,11 @@ func is_harvestable() -> bool:
 func is_fully_grown_tree() -> bool:
 	if plant_type == Const.PlantType.BaseTree:
 		return true
-	elif plant_type == Const.PlantType.Apple and growing_day >= APPLE_TREE_GROW_TIME:
+	return is_fully_grown_apple_tree()
+
+
+func is_fully_grown_apple_tree() -> bool:
+	if plant_type == Const.PlantType.Apple and growing_day >= APPLE_TREE_GROW_TIME:
 		return true
 	return false
 
@@ -179,15 +183,17 @@ func reset(new_harvest_value: int = 1):
 func _determine_harvest_value() -> void:
 	var surrounding_farm_tiles = farm_grid.get_surrounding_farm_tiles(self)
 	var bonus_tree = false
+	var apple_bonus_tree = false
 	for farm_tile in surrounding_farm_tiles:
-		if farm_tile.is_fully_grown_tree() and not bonus_tree:
-			harvest_value += 1
-			bonus_tree = true
-		elif farm_tile.plant_type == Const.PlantType.Apple and farm_tile.growing_day >= APPLE_TREE_GROW_TIME:
-			if plant_type in [Const.PlantType.Tomato, Const.PlantType.Pea, Const.PlantType.Strawberry, Const.PlantType,GARLIC_POS]:
-				harvest_value += 2
-			else:
+		if farm_tile.is_fully_grown_tree():
+			if not bonus_tree:
 				harvest_value += 1
+				bonus_tree = true
+			if is_fully_grown_apple_tree():
+				var flowering_crops = [Const.PlantType.Tomato, Const.PlantType.Pea, Const.PlantType.Strawberry, Const.PlantType.Garlic]
+				if plant_type in flowering_crops and not apple_bonus_tree:
+					harvest_value += 1
+					apple_bonus_tree = true
 		elif farm_tile.plant_type == Const.PlantType.Basil and plant_type == Const.PlantType.Tomato:
 			harvest_value += 1
 		elif farm_tile.plant_type == Const.PlantType.Garlic and plant_type == Const.PlantType.Strawberry:
