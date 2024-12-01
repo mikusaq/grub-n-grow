@@ -61,11 +61,13 @@ func is_fully_grown_apple_tree() -> bool:
 func process_next_turn():
 	if tile_state == TileState.SOIL:
 		tile_state = TileState.GRASS
+		soil_type = SoilType.BASE_SOIL
 		update_tile()
 	elif tile_state == TileState.SEED:
 		if plant_type == Const.PlantType.Apple:
 			tile_state = TileState.SPROUT
 			harvest_value = 1
+			soil_type = SoilType.BASE_SOIL
 			update_tile()
 			return
 		growing_day += 1
@@ -85,6 +87,7 @@ func process_next_turn():
 				tile_state = TileState.HARVEST
 		elif plant_type == Const.PlantType.Strawberry:
 			tile_state = TileState.HARVEST
+			_determine_harvest_value()
 		update_tile()
 
 
@@ -114,7 +117,9 @@ func harvest(crop_inv: Inv):
 		inv_item = preload("res://resources/inventory/items/crops/garlic_item.tres")
 	elif plant_type == Const.PlantType.Pea:
 		inv_item = preload("res://resources/inventory/items/crops/pea_item.tres")
-		soil_type = SoilType.BONUS_SOIL
+		add_harvest_to_inv(inv_item, crop_inv)
+		reset(SoilType.BONUS_SOIL)
+		return
 	elif plant_type == Const.PlantType.Apple:
 		inv_item = preload("res://resources/inventory/items/crops/apple_item.tres")
 		add_harvest_to_inv(inv_item, crop_inv)
@@ -173,11 +178,12 @@ func update_tile():
 			change_tile.emit(tile_pos, soil_pos, APPLE_POS)
 
 
-func reset(new_harvest_value: int = 1):
+func reset(new_soil_type: SoilType = SoilType.BASE_SOIL):
 	tile_state = TileState.SOIL
 	plant_type = Const.PlantType.NoType
+	soil_type = new_soil_type
 	update_tile()
-	harvest_value = new_harvest_value
+	harvest_value = 1
 	since_harvest = 0
 
 
@@ -185,6 +191,8 @@ func _determine_harvest_value() -> void:
 	var surrounding_farm_tiles = farm_grid.get_surrounding_farm_tiles(self)
 	var bonus_tree = false
 	var apple_bonus_tree = false
+	if soil_type == SoilType.BONUS_SOIL:
+		harvest_value += 1
 	for farm_tile in surrounding_farm_tiles:
 		if farm_tile.is_fully_grown_tree():
 			if not bonus_tree:
