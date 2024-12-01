@@ -24,13 +24,15 @@ const STRAWBERRY_LAST_TIME = 3
 const APPLE_TREE_GROW_TIME = 3
 const APPLE_TREE_RIPE_TIME = 3
 
+enum SoilType {BASE_SOIL, BONUS_SOIL}
 
-enum TileState {GRASS, SOIL_1, SOIL_2, MULCH, SEED, SPROUT, PLANT, HARVEST}
+enum TileState {GRASS, SOIL, MULCH, SEED, SPROUT, PLANT, HARVEST}
 
 signal change_tile(tile_pos: Vector2i, ground_pos: Vector2i, plant_pos: Vector2i)
 
 var farm_grid: FarmGrid
 var tile_state: TileState = TileState.GRASS
+var soil_type: SoilType = SoilType.BASE_SOIL
 var plant_type: Const.PlantType = Const.PlantType.NoType
 var tile_pos: Vector2i
 var harvest_value: int = 1
@@ -57,24 +59,24 @@ func is_fully_grown_apple_tree() -> bool:
 
 
 func process_next_turn():
-	if tile_state in [TileState.SOIL_1, TileState.SOIL_2]:
+	if tile_state == TileState.SOIL:
 		tile_state = TileState.GRASS
-		_update_tile()
+		update_tile()
 	elif tile_state == TileState.SEED:
 		if plant_type == Const.PlantType.Apple:
 			tile_state = TileState.SPROUT
 			harvest_value = 1
-			_update_tile()
+			update_tile()
 			return
 		growing_day += 1
 		tile_state = TileState.HARVEST
-		_update_tile()
+		update_tile()
 		_determine_harvest_value()
 	elif tile_state == TileState.SPROUT:
 		growing_day += 1
 		if plant_type == Const.PlantType.Apple and growing_day == APPLE_TREE_GROW_TIME:
 			tile_state = TileState.PLANT
-			_update_tile()
+			update_tile()
 	elif tile_state == TileState.PLANT:
 		growing_day += 1
 		since_harvest += 1
@@ -83,13 +85,13 @@ func process_next_turn():
 				tile_state = TileState.HARVEST
 		elif plant_type == Const.PlantType.Strawberry:
 			tile_state = TileState.HARVEST
-		_update_tile()
+		update_tile()
 
 
 func seed_plant(plant_to_seed: Const.PlantType):
 	tile_state = TileState.SEED
 	plant_type = plant_to_seed
-	_update_tile()
+	update_tile()
 
 
 func harvest(crop_inv: Inv):
@@ -105,20 +107,14 @@ func harvest(crop_inv: Inv):
 		if growing_day < STRAWBERRY_LAST_TIME:
 			add_harvest_to_inv(inv_item, crop_inv)
 			tile_state = TileState.PLANT
-			change_tile.emit(tile_pos, SOIL_1_POS, STRAWBERRY_HARVESTED_POS)
+			update_tile()
 			harvest_value = 1
 			return
 	elif plant_type == Const.PlantType.Garlic:
 		inv_item = preload("res://resources/inventory/items/crops/garlic_item.tres")
 	elif plant_type == Const.PlantType.Pea:
 		inv_item = preload("res://resources/inventory/items/crops/pea_item.tres")
-		add_harvest_to_inv(inv_item, crop_inv)
-		tile_state = TileState.SOIL_2
-		plant_type = Const.PlantType.NoType
-		change_tile.emit(tile_pos, SOIL_2_POS)
-		harvest_value = 2
-		since_harvest = 0
-		return
+		soil_type = SoilType.BONUS_SOIL
 	elif plant_type == Const.PlantType.Apple:
 		inv_item = preload("res://resources/inventory/items/crops/apple_item.tres")
 		add_harvest_to_inv(inv_item, crop_inv)
@@ -140,42 +136,47 @@ func add_harvest_to_inv(inv_item: InvItem, crop_inv: Inv) -> void:
 	farm_grid.add_child(text)
 
 
-func _update_tile():
+func update_tile():
+	var soil_pos = SOIL_1_POS
+	if soil_type == SoilType.BONUS_SOIL:
+		soil_pos = SOIL_2_POS
 	if tile_state == TileState.GRASS:
 		change_tile.emit(tile_pos, GRASS_POS)
-	elif tile_state == TileState.SOIL_1:
-		change_tile.emit(tile_pos, SOIL_1_POS)
+	elif tile_state == TileState.SOIL:
+		change_tile.emit(tile_pos, soil_pos)
 	elif tile_state == TileState.MULCH:
-		change_tile.emit(tile_pos, SOIL_1_POS, MULCH_POS)
+		change_tile.emit(tile_pos, soil_pos, MULCH_POS)
 	elif tile_state == TileState.SEED:
-		change_tile.emit(tile_pos, SOIL_1_POS, SEED_POS)
+			change_tile.emit(tile_pos, soil_pos, SEED_POS)
 	elif tile_state == TileState.SPROUT:
 		if plant_type == Const.PlantType.Apple:
-			change_tile.emit(tile_pos, SOIL_1_POS, SPROUT_POS)
+			change_tile.emit(tile_pos, soil_pos, SPROUT_POS)
 	elif tile_state == TileState.PLANT:
 		if plant_type == Const.PlantType.Apple:
-			change_tile.emit(tile_pos, SOIL_1_POS, APPLE_HARVESTED_POS)
+			change_tile.emit(tile_pos, soil_pos, APPLE_HARVESTED_POS)
+		elif plant_type == Const.PlantType.Strawberry:
+			change_tile.emit(tile_pos, soil_pos, STRAWBERRY_HARVESTED_POS)
 	elif tile_state == TileState.HARVEST:
 		if plant_type == Const.PlantType.Potato:
-			change_tile.emit(tile_pos, SOIL_1_POS, POTATO_POS)
+			change_tile.emit(tile_pos, soil_pos, POTATO_POS)
 		elif plant_type == Const.PlantType.Tomato:
-			change_tile.emit(tile_pos, SOIL_1_POS, TOMATO_POS)
+			change_tile.emit(tile_pos, soil_pos, TOMATO_POS)
 		elif plant_type == Const.PlantType.Basil:
-			change_tile.emit(tile_pos, SOIL_1_POS, BASIL_POS)
+			change_tile.emit(tile_pos, soil_pos, BASIL_POS)
 		elif plant_type == Const.PlantType.Strawberry:
-			change_tile.emit(tile_pos, SOIL_1_POS, STRAWBERRY_POS)
+			change_tile.emit(tile_pos, soil_pos, STRAWBERRY_POS)
 		elif plant_type == Const.PlantType.Garlic:
-			change_tile.emit(tile_pos, SOIL_1_POS, GARLIC_POS)
+			change_tile.emit(tile_pos, soil_pos, GARLIC_POS)
 		elif plant_type == Const.PlantType.Pea:
-			change_tile.emit(tile_pos, SOIL_1_POS, PEA_POS)
+			change_tile.emit(tile_pos, soil_pos, PEA_POS)
 		elif plant_type == Const.PlantType.Apple:
-			change_tile.emit(tile_pos, SOIL_1_POS, APPLE_POS)
+			change_tile.emit(tile_pos, soil_pos, APPLE_POS)
 
 
 func reset(new_harvest_value: int = 1):
-	tile_state = TileState.SOIL_1
+	tile_state = TileState.SOIL
 	plant_type = Const.PlantType.NoType
-	change_tile.emit(tile_pos, SOIL_1_POS)
+	update_tile()
 	harvest_value = new_harvest_value
 	since_harvest = 0
 

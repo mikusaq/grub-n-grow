@@ -129,19 +129,15 @@ func process_click_on_farm_tile(farm_tile: FarmTile):
 		if active_item.name == "Scythe":
 			if farm_tile.tile_state == FarmTile.TileState.GRASS:
 				if farm_tile.plant_type != Const.PlantType.BaseTree:
-					farm_tile.tile_state = FarmTile.TileState.SOIL_1
+					farm_tile.tile_state = FarmTile.TileState.SOIL
 					_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS)
 					player_inv.add_item(mulch_item, 1)
 			elif farm_tile.is_harvestable():
 				farm_tile.harvest(crop_inv)
 		elif active_item.name == "Mulch":
-			if farm_tile.tile_state == FarmTile.TileState.SOIL_1:
+			if farm_tile.tile_state == FarmTile.TileState.SOIL:
 				farm_tile.tile_state = FarmTile.TileState.MULCH
-				_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS, FarmTile.MULCH_POS)
-				player_inv.remove_item(mulch_item, 1)
-			elif farm_tile.tile_state == FarmTile.TileState.SOIL_2:
-				farm_tile.tile_state = FarmTile.TileState.MULCH
-				_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_2_POS, FarmTile.MULCH_POS)
+				farm_tile.update_tile()
 				player_inv.remove_item(mulch_item, 1)
 		elif active_item.name == "Axe":
 			if farm_tile.is_fully_grown_tree():
