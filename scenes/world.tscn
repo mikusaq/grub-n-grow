@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://dg7o4qlnmdeoi"]
+[gd_scene load_steps=27 format=4 uid="uid://dg7o4qlnmdeoi"]
 
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_241gj"]
 [ext_resource type="Script" path="res://scripts/farm_grid.gd" id="1_qy2y8"]
 [ext_resource type="Material" uid="uid://ssbc1q5j0pts" path="res://shaders/farm_tile_shader_material.material" id="2_4cbld"]
 [ext_resource type="Texture2D" uid="uid://1yg5atoc6j4" path="res://assets/environment_tree.png" id="2_tq4rq"]
@@ -27,7 +28,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_lo2ln"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_xgry4")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbguw"]
@@ -44,7 +46,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_a1an5"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_gbguw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wtmhl"]
@@ -57,7 +60,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_68rut"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_wtmhl")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ht08u"]
@@ -114,12 +118,32 @@ use_texture_padding = false
 
 [sub_resource type="TileSet" id="TileSet_cxjv3"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_ars3n")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pj4o3"]
+size = Vector2(39.9385, 18)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fi781"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iiphn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bd75l"]
+bg_color = Color(1, 0, 0, 0.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0tu2"]
+bg_color = Color(1, 0, 0, 0.4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_581x3"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 scale = Vector2(1.00154, 1)
+script = ExtResource("1_241gj")
+active_door_color = Color(0, 1, 0, 0.4)
+inactive_door_color = Color(1, 0, 0, 0.4)
+pressed_door_color = Color(0, 0.533333, 0, 0.658824)
 
 [node name="WorldTileMap" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAFAAQAAAACAAEAAAAFAAMAAAACAAEAAAAFAAIAAAACAAEAAAAFAAEAAAACAAEAAAAFAAAAAAACAAEAAAAFAAUAAAACAAIAAAAEAAUAAAABAAIAAAADAAUAAAABAAIAAAACAAUAAAABAAIAAAABAAUAAAABAAIAAAAAAAUAAAABAAIAAAD//wUAAAAAAAIAAAD//wQAAAAAAAEAAAD//wMAAAAAAAEAAAD//wIAAAAAAAEAAAD//wEAAAAAAAEAAAD//wAAAAAAAAEAAAD/////AAAAAAAAAAAAAP//AAABAAAAAAABAP//AAABAAAAAAACAP//AAABAAAAAAADAP//AAABAAAAAAAEAP//AAABAAAAAAAFAP//AAACAAAAAAD+/wMAAAABAAEAAAD+/wIAAAABAAEAAAD+/wEAAAABAAEAAAD+/wAAAAABAAEAAAD+////AAABAAEAAAAGAP//AAABAAEAAAAGAAAAAAABAAEAAAAGAAEAAAABAAEAAAAGAAIAAAABAAEAAAAGAAMAAAABAAEAAAAGAAQAAAABAAEAAAAGAAUAAAABAAEAAAAGAAYAAAABAAEAAAAFAAYAAAABAAEAAAAEAAYAAAABAAEAAAADAAYAAAABAAEAAAACAAYAAAABAAEAAAABAAYAAAABAAEAAAAAAAYAAAABAAEAAAD//wYAAAABAAEAAAD+/wYAAAABAAEAAAD+/wUAAAABAAEAAAD+/wQAAAABAAEAAAD9/wYAAAABAAEAAAD8/wYAAAABAAEAAAD7/wYAAAABAAEAAAD6/wYAAAABAAEAAAD5/wYAAAABAAEAAAD4/wYAAAABAAEAAAD4/wUAAAABAAEAAAD4/wQAAAABAAEAAAD4/wMAAAABAAEAAAD4/wIAAAABAAEAAAD4/wEAAAABAAEAAAD4/wAAAAABAAEAAAD4////AAABAAEAAAD9////AAABAAEAAAD9/wAAAAABAAEAAAD9/wEAAAABAAEAAAD9/wIAAAABAAEAAAD9/wMAAAABAAEAAAD9/wQAAAABAAEAAAD9/wUAAAABAAEAAAD8/wUAAAABAAEAAAD8/wQAAAABAAEAAAD8/wMAAAABAAEAAAD8/wIAAAABAAEAAAD8/wEAAAABAAEAAAD8/wAAAAABAAEAAAD8////AAABAAEAAAD7////AAABAAEAAAD6////AAABAAEAAAD6/wAAAAABAAEAAAD7/wAAAAABAAEAAAD7/wEAAAABAAEAAAD7/wIAAAABAAEAAAD7/wMAAAABAAEAAAD7/wQAAAABAAEAAAD7/wUAAAABAAEAAAD6/wUAAAABAAEAAAD6/wQAAAABAAEAAAD6/wMAAAABAAEAAAD6/wIAAAABAAEAAAD6/wEAAAABAAEAAAD5/wUAAAABAAEAAAD5/wQAAAABAAEAAAD5/wMAAAABAAEAAAD5/wIAAAABAAEAAAD5/wEAAAABAAEAAAD5/wAAAAABAAEAAAD5////AAABAAEAAAD3/wcAAAABAAEAAAD4/wcAAAABAAEAAAD5/wcAAAABAAEAAAD6/wcAAAABAAEAAAD7/wcAAAABAAEAAAD8/wcAAAABAAEAAAD9/wcAAAABAAEAAAD+/wcAAAABAAEAAAD//wcAAAABAAEAAAAAAAcAAAABAAEAAAABAAcAAAABAAEAAAACAAcAAAABAAEAAAADAAcAAAABAAEAAAAEAAcAAAABAAEAAAAFAAcAAAABAAEAAAAGAAcAAAABAAEAAAAHAAcAAAABAAEAAAAHAAYAAAABAAEAAAAHAAUAAAABAAEAAAAHAAQAAAABAAEAAAAHAAMAAAABAAEAAAAHAAIAAAABAAEAAAAHAAEAAAABAAEAAAAHAAAAAAABAAEAAAAHAP//AAABAAEAAAD3////AAABAAEAAAD3/wAAAAABAAEAAAD3/wEAAAABAAEAAAD3/wIAAAABAAEAAAD3/wMAAAABAAEAAAD3/wQAAAABAAEAAAD3/wUAAAABAAEAAAD3/wYAAAABAAEAAAAHAP7/AAABAAEAAAAGAP7/AAABAAEAAAAFAP7/AAABAAEAAAAEAP7/AAABAAEAAAADAP7/AAABAAEAAAACAP7/AAABAAEAAAABAP7/AAABAAEAAAAAAP7/AAABAAEAAAD///7/AAABAAEAAAD+//7/AAABAAEAAAD9//7/AAABAAEAAAD8//7/AAABAAEAAAD7//7/AAABAAEAAAD6//7/AAABAAEAAAD5//7/AAABAAEAAAD4//7/AAABAAEAAAD3//7/AAABAAEAAAD3//3/AAABAAEAAAD4//3/AAABAAEAAAD5//3/AAABAAEAAAD6//3/AAABAAEAAAD7//3/AAABAAEAAAD8//3/AAABAAEAAAD9//3/AAABAAEAAAD+//3/AAABAAEAAAD///3/AAABAAEAAAAAAP3/AAABAAEAAAABAP3/AAABAAEAAAACAP3/AAABAAEAAAADAP3/AAABAAEAAAAEAP3/AAABAAEAAAAFAP3/AAABAAEAAAAGAP3/AAABAAEAAAAHAP3/AAABAAEAAAD2//3/AAABAAEAAAD2//7/AAABAAEAAAD2////AAABAAEAAAD2/wAAAAABAAEAAAD2/wEAAAABAAEAAAD2/wIAAAABAAEAAAD2/wMAAAABAAEAAAD2/wQAAAABAAEAAAD2/wUAAAABAAEAAAD2/wYAAAABAAEAAAD2/wcAAAABAAEAAAA=")
@@ -154,3 +178,30 @@ scale = Vector2(1.00154, 1)
 tile_map_data = PackedByteArray("AAAEAAMAAAAHAAAAAAABAAMAAAAHAAAAAAADAAEAAAAHAAAAAAAAAAAAAAAHAAAAAAA=")
 tile_set = SubResource("TileSet_cxjv3")
 script = ExtResource("6_3g3vv")
+
+[node name="Door" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-98.8478, 97)
+
+[node name="DoorArea" type="Area2D" parent="Door"]
+position = Vector2(-0.827786, 10)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/DoorArea"]
+shape = SubResource("RectangleShape2D_pj4o3")
+
+[node name="NextTurnButton" type="Button" parent="Door"]
+offset_left = 10.9831
+offset_right = 33.9831
+offset_bottom = 30.0
+rotation = 3.14159
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fi781")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iiphn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bd75l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d0tu2")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_581x3")
+
+[connection signal="body_entered" from="Door/DoorArea" to="." method="_on_door_area_body_entered"]
+[connection signal="body_exited" from="Door/DoorArea" to="." method="_on_door_area_body_exited"]
+[connection signal="pressed" from="Door/NextTurnButton" to="." method="_on_next_turn_button_pressed"]

@@ -15,16 +15,6 @@ func _process(delta: float) -> void:
 	$World/FarmGrid.set_player_pos($Player.position)
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("next_turn"):
-		turn_number += 1
-		$World/FarmGrid.process_next_turn()
-		if completed_tasks_in_turn == 0 and turn_number > 1:
-			Engine.time_scale = 0
-			$HUD.show_game_over_screen()
-		completed_tasks_in_turn = 0
-
-
 func get_not_present_task() -> TaskCard:
 	var task_card: TaskCard = null
 	while not task_card:
@@ -58,3 +48,12 @@ func _on_hud_restart_game() -> void:
 	var scene_path := tree.current_scene.scene_file_path
 	tree.call_deferred("unload_current_scene")
 	tree.call_deferred("change_scene_to_file", scene_path)
+
+
+func _on_world_next_turn() -> void:
+	turn_number += 1
+	$World/FarmGrid.process_next_turn()
+	if completed_tasks_in_turn == 0 and turn_number > 1:
+		Engine.time_scale = 0
+		$HUD.show_game_over_screen()
+	completed_tasks_in_turn = 0
