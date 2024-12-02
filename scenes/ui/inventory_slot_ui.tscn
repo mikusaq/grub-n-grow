@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgsm66od2xnu1"]
+[gd_scene load_steps=7 format=3 uid="uid://bgsm66od2xnu1"]
 
 [ext_resource type="Script" path="res://scripts/inventory/inventory_slot_ui.gd" id="1_55vau"]
 [ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="2_3rksa"]
@@ -9,11 +9,14 @@
 atlas = ExtResource("2_3rksa")
 region = Rect2(3, 100, 26, 26)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xvnog"]
+
 [node name="InventorySlotUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 26.0
 offset_bottom = 26.0
+tooltip_text = "lol"
 script = ExtResource("1_55vau")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -53,6 +56,17 @@ theme_override_font_sizes/font_size = 8
 horizontal_alignment = 2
 vertical_alignment = 2
 
+[node name="KeyDescription" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 9.0
+offset_bottom = 12.0
+theme = ExtResource("4_aq8xx")
+theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 8
+
 [node name="HoverDescription" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
@@ -89,5 +103,15 @@ bbcode_enabled = true
 scroll_active = false
 tab_size = 2
 
-[connection signal="mouse_entered" from="ItemDisplay" to="." method="_on_item_display_mouse_entered"]
-[connection signal="mouse_exited" from="ItemDisplay" to="." method="_on_item_display_mouse_exited"]
+[node name="SetActiveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 25.0
+offset_bottom = 24.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xvnog")
+flat = true
+
+[connection signal="mouse_entered" from="SetActiveButton" to="." method="_on_set_active_button_mouse_entered"]
+[connection signal="mouse_exited" from="SetActiveButton" to="." method="_on_set_active_button_mouse_exited"]
+[connection signal="pressed" from="SetActiveButton" to="." method="_on_set_active_button_pressed"]

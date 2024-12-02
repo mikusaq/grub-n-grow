@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ciksfu7s6lkq3"]
+[gd_scene load_steps=7 format=3 uid="uid://ciksfu7s6lkq3"]
 
 [ext_resource type="PackedScene" uid="uid://bgsm66od2xnu1" path="res://scenes/ui/inventory_slot_ui.tscn" id="1_235ug"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_ui.gd" id="1_jhtfs"]
 [ext_resource type="Resource" uid="uid://behc610vpoq6t" path="res://resources/inventory/player_inventory.tres" id="2_6ana3"]
 [ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="3_jhg5r"]
-[ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="5_5t4xx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yyrfb"]
 atlas = ExtResource("3_jhg5r")
@@ -50,185 +49,76 @@ offset_left = 6.0
 offset_top = 33.0
 offset_right = 32.0
 offset_bottom = 59.0
+key_display = "1"
 
 [node name="InventorySlotUI2" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 6.0
 offset_top = 62.0
 offset_right = 32.0
 offset_bottom = 88.0
+index = 1
+key_display = "2"
 
 [node name="InventorySlotUI3" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 40.0
 offset_top = 33.0
 offset_right = 66.0
 offset_bottom = 59.0
+index = 2
+key_display = "3"
 
 [node name="InventorySlotUI4" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 74.0
 offset_top = 33.0
 offset_right = 100.0
 offset_bottom = 59.0
+index = 3
+key_display = "4"
 
 [node name="InventorySlotUI5" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 106.0
 offset_top = 33.0
 offset_right = 132.0
 offset_bottom = 59.0
+index = 4
+key_display = "5"
 
 [node name="InventorySlotUI6" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 138.0
 offset_top = 33.0
 offset_right = 164.0
 offset_bottom = 59.0
+index = 5
+key_display = "6"
 
 [node name="InventorySlotUI7" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 170.0
 offset_top = 33.0
 offset_right = 196.0
 offset_bottom = 59.0
+index = 6
+key_display = "7"
 
 [node name="InventorySlotUI8" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 74.0
 offset_top = 62.0
 offset_right = 100.0
 offset_bottom = 88.0
+index = 7
+key_display = "8"
 
 [node name="InventorySlotUI9" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 106.0
 offset_top = 62.0
 offset_right = 132.0
 offset_bottom = 88.0
+index = 8
+key_display = "9"
 
 [node name="InventorySlotUI10" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 138.0
 offset_top = 62.0
 offset_right = 164.0
 offset_bottom = 88.0
-
-[node name="Labels" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Labels"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 33.0
-offset_right = 14.0
-offset_bottom = 45.0
-theme = ExtResource("5_5t4xx")
-theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
-text = "1"
-
-[node name="Label2" type="Label" parent="Labels"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 62.0
-offset_right = 14.0
-offset_bottom = 74.0
-theme = ExtResource("5_5t4xx")
-theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
-text = "2"
-
-[node name="Label3" type="Label" parent="Labels"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 33.0
-offset_right = 48.0
-offset_bottom = 45.0
-theme = ExtResource("5_5t4xx")
-theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
-text = "3"
-
-[node name="Label4" type="Label" parent="Labels"]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 33.0
-offset_right = 82.0
-offset_bottom = 45.0
-theme = ExtResource("5_5t4xx")
-theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
-text = "4"
-
-[node name="Label5" type="Label" parent="Labels"]
-layout_mode = 0
-offset_left = 108.0
-offset_top = 33.0
-offset_right = 114.0
-offset_bottom = 45.0
-theme = ExtResource("5_5t4xx")
-theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
-text = "5"
-
-[node name="Label6" type="Label" parent="Labels"]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 33.0
-offset_right = 146.0
-offset_bottom = 45.0
-theme = ExtResource("5_5t4xx")
-theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
-text = "6"
-
-[node name="Label7" type="Label" parent="Labels"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 33.0
-offset_right = 178.0
-offset_bottom = 45.0
-theme = ExtResource("5_5t4xx")
-theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
-text = "7"
-
-[node name="Label8" type="Label" parent="Labels"]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 62.0
-offset_right = 82.0
-offset_bottom = 74.0
-theme = ExtResource("5_5t4xx")
-theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
-text = "8"
-
-[node name="Label9" type="Label" parent="Labels"]
-layout_mode = 0
-offset_left = 108.0
-offset_top = 62.0
-offset_right = 114.0
-offset_bottom = 74.0
-theme = ExtResource("5_5t4xx")
-theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
-text = "9"
-
-[node name="Label10" type="Label" parent="Labels"]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 62.0
-offset_right = 145.0
-offset_bottom = 74.0
-theme = ExtResource("5_5t4xx")
-theme_override_colors/font_color = Color(0.564706, 0.639216, 0.74902, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 8
-text = "0"
+index = 9
+key_display = "0"
