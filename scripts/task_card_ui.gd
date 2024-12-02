@@ -4,7 +4,7 @@ class_name TaskCardUI
 
 var task_card: TaskCard
 
-signal task_completed(reward: int)
+signal task_completed(task: TaskCard)
 
 
 func set_task_card(new_task_card: TaskCard) -> void:
@@ -25,5 +25,5 @@ func update_fulfill_condition() -> void:
 func _on_complete_button_pressed() -> void:
 	$CompleteButton.disabled = true
 	if task_card.fulfill_task():
-		task_completed.emit(task_card.reward)
+		task_completed.emit(task_card)
 		queue_free()

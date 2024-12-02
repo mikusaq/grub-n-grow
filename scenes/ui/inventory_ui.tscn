@@ -49,57 +49,76 @@ offset_left = 6.0
 offset_top = 33.0
 offset_right = 32.0
 offset_bottom = 59.0
+key_display = "1"
 
 [node name="InventorySlotUI2" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 6.0
 offset_top = 62.0
 offset_right = 32.0
 offset_bottom = 88.0
+index = 1
+key_display = "2"
 
 [node name="InventorySlotUI3" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 40.0
 offset_top = 33.0
 offset_right = 66.0
 offset_bottom = 59.0
+index = 2
+key_display = "3"
 
 [node name="InventorySlotUI4" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 74.0
 offset_top = 33.0
 offset_right = 100.0
 offset_bottom = 59.0
+index = 3
+key_display = "4"
 
 [node name="InventorySlotUI5" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 106.0
 offset_top = 33.0
 offset_right = 132.0
 offset_bottom = 59.0
+index = 4
+key_display = "5"
 
 [node name="InventorySlotUI6" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 138.0
 offset_top = 33.0
 offset_right = 164.0
 offset_bottom = 59.0
+index = 5
+key_display = "6"
 
 [node name="InventorySlotUI7" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 170.0
 offset_top = 33.0
 offset_right = 196.0
 offset_bottom = 59.0
+index = 6
+key_display = "7"
 
 [node name="InventorySlotUI8" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 74.0
 offset_top = 62.0
 offset_right = 100.0
 offset_bottom = 88.0
+index = 7
+key_display = "8"
 
 [node name="InventorySlotUI9" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 106.0
 offset_top = 62.0
 offset_right = 132.0
 offset_bottom = 88.0
+index = 8
+key_display = "9"
 
 [node name="InventorySlotUI10" parent="InventorySlots" instance=ExtResource("1_235ug")]
 offset_left = 138.0
 offset_top = 62.0
 offset_right = 164.0
 offset_bottom = 88.0
+index = 9
+key_display = "0"

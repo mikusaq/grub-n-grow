@@ -1,6 +1,14 @@
 extends Control
 
 var hover_enabled: bool
+@export var index: int
+@export var key_display: String = ""
+
+@onready var inv: PlayerInv = preload("res://resources/inventory/player_inventory.tres")
+
+
+func _ready() -> void:
+	$KeyDescription.text = key_display
 
 
 func update(slot: InvSlot):
@@ -22,10 +30,14 @@ func set_highlight_visibility(highlight_visible: bool):
 	$Highlight.visible = highlight_visible
 
 
-func _on_item_display_mouse_entered() -> void:
+func _on_set_active_button_mouse_entered() -> void:
 	if hover_enabled:
 		$HoverDescription.visible = true
 
 
-func _on_item_display_mouse_exited() -> void:
+func _on_set_active_button_mouse_exited() -> void:
 	$HoverDescription.visible = false
+
+
+func _on_set_active_button_pressed() -> void:
+	inv.active_slot = index
