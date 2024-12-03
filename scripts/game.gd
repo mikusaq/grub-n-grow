@@ -59,3 +59,4 @@ func _on_world_next_turn() -> void:
 	if completed_tasks_in_turn == 0 and turn_number > 1:
 		Engine.time_scale = 0
 		$HUD.show_game_over_screen()
+	completed_tasks_in_turn = 0

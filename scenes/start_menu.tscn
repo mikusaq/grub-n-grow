@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://d0mo5suio30gj"]
+[gd_scene load_steps=28 format=3 uid="uid://d0mo5suio30gj"]
 
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_4iumh"]
 [ext_resource type="Texture2D" uid="uid://uhmd43gupktj" path="res://assets/player/character_move.png" id="1_cw15h"]
 [ext_resource type="Texture2D" uid="uid://b5u1t83w5rf6q" path="res://assets/player/character_work.png" id="2_f4887"]
 [ext_resource type="Texture2D" uid="uid://vriu1em4b63s" path="res://assets/main_menu_sprite.png" id="2_w8rma"]
 [ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="3_gbawg"]
+[ext_resource type="AudioStream" uid="uid://b7ynoch6iifbm" path="res://Sounds/optomistic_day_masteredloopable.mp3" id="6_cq6xt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrr78"]
 atlas = ExtResource("1_cw15h")
@@ -188,5 +189,9 @@ offset_right = 284.0
 offset_bottom = 214.0
 theme = ExtResource("3_gbawg")
 text = "Start"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cq6xt")
+autoplay = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

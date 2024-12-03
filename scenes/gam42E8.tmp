@@ -31,7 +31,6 @@ position = Vector2(-30, 100)
 
 [node name="Walk" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("11_42k22")
-volume_db = 20.675
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-30, 60)
