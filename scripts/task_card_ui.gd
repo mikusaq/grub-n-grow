@@ -18,8 +18,7 @@ func set_task_card(new_task_card: TaskCard) -> void:
 
 
 func update_fulfill_condition() -> void:
-	if task_card.condition_fulfilled():
-		$CompleteButton.disabled = false
+	$CompleteButton.disabled = not task_card.condition_fulfilled()
 
 
 func _on_complete_button_pressed() -> void:
