@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://b8prix2n6p0hv"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://b8prix2n6p0hv"]
 
 [ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="1_ewsur"]
 [ext_resource type="FontFile" uid="uid://br0ytyvgenot2" path="res://assets/fonts/pointfree.ttf" id="1_sutv3"]
@@ -28,6 +28,14 @@ region = Rect2(65, 165, 34, 16)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c2lvt"]
 texture = SubResource("AtlasTexture_rla23")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2we57"]
+atlas = ExtResource("1_ewsur")
+region = Rect2(65, 165, 34, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jsqs4"]
+texture = SubResource("AtlasTexture_2we57")
+modulate_color = Color(0.466181, 0.466181, 0.466181, 1)
+
 [resource]
 default_font = ExtResource("1_sutv3")
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -41,4 +49,4 @@ Button/styles/disabled = SubResource("StyleBoxTexture_67dgu")
 Button/styles/focus = SubResource("StyleBoxEmpty_4cjpx")
 Button/styles/hover = SubResource("StyleBoxTexture_i77rk")
 Button/styles/normal = SubResource("StyleBoxTexture_c2lvt")
-Button/styles/pressed = null
+Button/styles/pressed = SubResource("StyleBoxTexture_jsqs4")
