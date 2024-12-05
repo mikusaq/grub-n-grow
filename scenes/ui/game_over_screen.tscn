@@ -41,9 +41,9 @@ texture = ExtResource("2_oagep")
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 33.0
 offset_top = 13.0
-offset_right = 142.0
+offset_right = 143.0
 offset_bottom = 42.0
 theme = ExtResource("1_vhbbn")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -53,10 +53,10 @@ text = "Game Over
 
 [node name="Button" type="Button" parent="ColorRect"]
 layout_mode = 0
-offset_left = 44.0
-offset_top = 61.0
-offset_right = 125.0
-offset_bottom = 88.0
+offset_left = 55.5
+offset_top = 62.5
+offset_right = 116.5
+offset_bottom = 77.5
 theme = ExtResource("1_vhbbn")
 theme_override_font_sizes/font_size = 10
 text = "Play again"
