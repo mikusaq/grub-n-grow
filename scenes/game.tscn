@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ock54d8bs2a2"]
+[gd_scene load_steps=16 format=3 uid="uid://ock54d8bs2a2"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ayhn2"]
 [ext_resource type="PackedScene" uid="uid://dg7o4qlnmdeoi" path="res://scenes/world.tscn" id="1_llcn5"]
@@ -11,7 +11,6 @@
 [ext_resource type="Resource" uid="uid://clevem1vlevgt" path="res://resources/task_cards/pea_hummus.tres" id="6_apsyw"]
 [ext_resource type="Resource" uid="uid://cjif74mp7qji7" path="res://resources/task_cards/strawberry_jam.tres" id="7_8hqmb"]
 [ext_resource type="AudioStream" uid="uid://holutf6qxmd1" path="res://Sounds/walk.wav" id="11_42k22"]
-[ext_resource type="AudioStream" uid="uid://c2newqlsq1jk" path="res://Sounds/pick_crop.wav" id="11_pbo81"]
 [ext_resource type="AudioStream" uid="uid://bji4tdlafiair" path="res://Sounds/cash-register-fake.wav" id="12_pkugc"]
 [ext_resource type="AudioStream" uid="uid://k5wnthxi7oc1" path="res://Sounds/apple_cider.ogg" id="13_xj5av"]
 [ext_resource type="AudioStream" uid="uid://bqe6sf4qm6ufs" path="res://Sounds/birds.ogg" id="14_ola2i"]
@@ -37,9 +36,6 @@ volume_db = 20.675
 position = Vector2(-30, 60)
 rotation = -0.785398
 zoom = Vector2(1.4, 1.4)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_pbo81")
 
 [node name="CompletedTaskSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_pkugc")

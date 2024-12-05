@@ -13,4 +13,4 @@ name = "Potato seed"
 texture = SubResource("AtlasTexture_pbe2t")
 stackable = false
 enable_hover = true
-description = "[ul] For better results, use mulch[/ul]"
+description = "[ul] Boil 'em, mash 'em, stick 'em in a stew. [/ul]"

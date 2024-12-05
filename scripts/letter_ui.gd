@@ -8,7 +8,7 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	if state == 0:
 		$Letter1.queue_free()
-		$Button.text = "Quit"
+		$Button.text = "Continue"
 		state += 1
 	elif state == 1:
 		self.queue_free()
