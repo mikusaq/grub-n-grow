@@ -34,7 +34,7 @@ func complete_task(task: TaskCard) -> void:
 
 
 func show_game_over_screen():
-	$GameOverScreen.show()
+	$GameOverScreen.show_screen()
 
 
 func _on_game_over_screen_start_new_game() -> void:
