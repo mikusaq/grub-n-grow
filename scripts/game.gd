@@ -8,12 +8,13 @@ var game_enabled: bool:
 	set(new_value):
 		game_enabled = new_value
 		$Player.game_enabled = new_value
+		$World.game_enabled = new_value
 
 
 func _ready() -> void:
 	$HUD.set_money($Player.money)
 	set_random_tasks()
-	game_enabled = true
+	game_enabled = false
 
 
 func _process(delta: float) -> void:
@@ -78,3 +79,7 @@ func _fade_out_and_update_farm():
 
 func _on_world_work_on_farm_grid() -> void:
 	$Player.play_work_animation()
+
+
+func _on_hud_enable_game() -> void:
+	game_enabled = true

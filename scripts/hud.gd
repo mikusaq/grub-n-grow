@@ -4,6 +4,7 @@ var task_card_ui_scene = preload("res://scenes/ui/task_card_ui.tscn")
 @export var crop_inv: Inv
 
 signal task_completed(task: TaskCard)
+signal enable_game
 signal restart_game
 
 
@@ -40,3 +41,7 @@ func show_game_over_screen():
 func _on_game_over_screen_start_new_game() -> void:
 	$GameOverScreen.hide()
 	restart_game.emit()
+
+
+func _on_letter_ui_tree_exited() -> void:
+	enable_game.emit()

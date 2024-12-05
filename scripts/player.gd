@@ -1,11 +1,10 @@
 extends CharacterBody2D
 
-
 @export var speed = 100
 @export var inv_resource: PlayerInv
 @export var money: int
 var moving: bool = false
-var game_enabled: bool
+var game_enabled: bool = true
 
 enum FaceDirection {DOWN, RIGHT, UP, LEFT}
 var face_direction: FaceDirection
@@ -51,6 +50,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if not game_enabled:
+		return
 	if event.is_action_pressed("slot_1"):
 		inv_resource.active_slot = 0
 	elif event.is_action_pressed("slot_2"):

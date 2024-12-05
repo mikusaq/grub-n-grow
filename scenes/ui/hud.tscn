@@ -46,3 +46,4 @@ visible = false
 [node name="LetterUI" parent="." instance=ExtResource("7_anx5h")]
 
 [connection signal="start_new_game" from="GameOverScreen" to="." method="_on_game_over_screen_start_new_game"]
+[connection signal="tree_exited" from="LetterUI" to="." method="_on_letter_ui_tree_exited"]
