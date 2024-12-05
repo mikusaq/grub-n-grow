@@ -51,12 +51,23 @@ func _on_hud_restart_game() -> void:
 
 
 func _on_world_next_turn() -> void:
+	_fade_out_and_update_farm()
 	turn_number += 1
-	$World/FarmGrid.process_next_turn()
 	if completed_tasks_in_turn == 0 and turn_number > 1:
 		Engine.time_scale = 0
 		$HUD.show_game_over_screen()
 	completed_tasks_in_turn = 0
+
+
+func _fade_out_and_update_farm():
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.BLACK, 0.8)
+	await tween.finished
+	$World/FarmGrid.process_next_turn()
+	await get_tree().create_timer(0.4).timeout
+	tween = create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE, 0.8)
+	await tween.finished
 
 
 func _on_world_work_on_farm_grid() -> void:
