@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var inv_resource: PlayerInv
 @export var money: int
 var moving: bool = false
+var game_enabled: bool
 
 enum FaceDirection {DOWN, RIGHT, UP, LEFT}
 var face_direction: FaceDirection
@@ -16,6 +17,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not game_enabled:
+		return
 	# Get the input direction vector
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	

@@ -4,11 +4,16 @@ extends Node2D
 var used_tasks: Array[TaskCard] = []
 var turn_number: int = 0
 var completed_tasks_in_turn: int = 0
+var game_enabled: bool:
+	set(new_value):
+		game_enabled = new_value
+		$Player.game_enabled = new_value
 
 
 func _ready() -> void:
 	$HUD.set_money($Player.money)
 	set_random_tasks()
+	game_enabled = true
 
 
 func _process(delta: float) -> void:
@@ -43,7 +48,6 @@ func _on_hud_task_completed(completed_task: TaskCard) -> void:
 
 
 func _on_hud_restart_game() -> void:
-	Engine.time_scale = 1
 	var tree := get_tree()
 	var scene_path := tree.current_scene.scene_file_path
 	tree.call_deferred("unload_current_scene")
@@ -51,11 +55,13 @@ func _on_hud_restart_game() -> void:
 
 
 func _on_world_next_turn() -> void:
-	_fade_out_and_update_farm()
+	game_enabled = false
 	turn_number += 1
 	if completed_tasks_in_turn == 0 and turn_number > 1:
-		Engine.time_scale = 0
 		$HUD.show_game_over_screen()
+	else:
+		await _fade_out_and_update_farm()
+		game_enabled = true
 	completed_tasks_in_turn = 0
 
 
