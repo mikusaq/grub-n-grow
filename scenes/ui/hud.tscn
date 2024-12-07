@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://beuaftpgggkw2"]
+[gd_scene load_steps=9 format=3 uid="uid://beuaftpgggkw2"]
 
 [ext_resource type="PackedScene" uid="uid://ciksfu7s6lkq3" path="res://scenes/ui/inventory_ui.tscn" id="1_xkm4c"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_ykett"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d0m4nmaiyebmi" path="res://scenes/ui/crop_inventory_ui.tscn" id="5_15bp6"]
 [ext_resource type="PackedScene" uid="uid://crusmt8j7pmoe" path="res://scenes/ui/game_over_screen.tscn" id="6_1njct"]
 [ext_resource type="PackedScene" uid="uid://pspk4juh8rv8" path="res://scenes/ui/letter_ui.tscn" id="7_anx5h"]
+[ext_resource type="PackedScene" uid="uid://5p26f876ydg5" path="res://scenes/ui/pause_screen.tscn" id="8_nk4jr"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ykett")
@@ -44,6 +45,9 @@ offset_bottom = 108.0
 visible = false
 
 [node name="LetterUI" parent="." instance=ExtResource("7_anx5h")]
+
+[node name="PauseScreen" parent="." instance=ExtResource("8_nk4jr")]
+visible = false
 
 [connection signal="start_new_game" from="GameOverScreen" to="." method="_on_game_over_screen_start_new_game"]
 [connection signal="tree_exited" from="LetterUI" to="." method="_on_letter_ui_tree_exited"]

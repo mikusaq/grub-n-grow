@@ -38,6 +38,10 @@ func show_game_over_screen():
 	$GameOverScreen.show_screen()
 
 
+func show_pause_screen():
+	$PauseScreen.show_screen()
+
+
 func _on_game_over_screen_start_new_game() -> void:
 	$GameOverScreen.hide()
 	restart_game.emit()

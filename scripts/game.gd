@@ -20,6 +20,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$World/FarmGrid.set_player_pos($Player.position)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		pause_game()
+
 
 func get_not_present_task() -> TaskCard:
 	var task_card: TaskCard = null
@@ -35,6 +39,22 @@ func set_random_tasks() -> void:
 		used_tasks.append(get_not_present_task())
 	
 	$HUD.add_task_cards(used_tasks)
+
+
+func _fade_out_and_update_farm():
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.BLACK, 0.8)
+	await tween.finished
+	$World/FarmGrid.process_next_turn()
+	await get_tree().create_timer(0.4).timeout
+	tween = create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE, 0.8)
+	await tween.finished
+
+
+func pause_game():
+	game_enabled = false
+	$HUD.show_pause_screen()
 
 
 func _on_hud_task_completed(completed_task: TaskCard) -> void:
@@ -64,17 +84,6 @@ func _on_world_next_turn() -> void:
 		await _fade_out_and_update_farm()
 		game_enabled = true
 	completed_tasks_in_turn = 0
-
-
-func _fade_out_and_update_farm():
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color.BLACK, 0.8)
-	await tween.finished
-	$World/FarmGrid.process_next_turn()
-	await get_tree().create_timer(0.4).timeout
-	tween = create_tween()
-	tween.tween_property(self, "modulate", Color.WHITE, 0.8)
-	await tween.finished
 
 
 func _on_world_work_on_farm_grid() -> void:
