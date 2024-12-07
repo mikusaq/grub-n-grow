@@ -11,4 +11,6 @@ region = Rect2(134, 104, 22, 22)
 script = ExtResource("1_i2mui")
 name = "Tomato seed"
 texture = SubResource("AtlasTexture_vxj3k")
-stackable = true
+stackable = false
+enable_hover = true
+description = "[ul] Watch out for pests![/ul]"

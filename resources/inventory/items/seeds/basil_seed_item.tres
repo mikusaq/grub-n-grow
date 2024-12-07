@@ -11,4 +11,6 @@ region = Rect2(166, 104, 22, 22)
 script = ExtResource("1_vgtgq")
 name = "Basil seed"
 texture = SubResource("AtlasTexture_w81wx")
-stackable = true
+stackable = false
+enable_hover = true
+description = "[ul] Deters certain types of pests[/ul]"

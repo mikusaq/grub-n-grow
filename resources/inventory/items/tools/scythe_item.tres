@@ -12,3 +12,5 @@ script = ExtResource("1_n8jwx")
 name = "Scythe"
 texture = SubResource("AtlasTexture_m83xv")
 stackable = false
+enable_hover = false
+description = ""

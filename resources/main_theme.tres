@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://b8prix2n6p0hv"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://b8prix2n6p0hv"]
 
 [ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="1_ewsur"]
 [ext_resource type="FontFile" uid="uid://br0ytyvgenot2" path="res://assets/fonts/pointfree.ttf" id="1_sutv3"]
@@ -9,6 +9,10 @@ region = Rect2(65, 165, 34, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67dgu"]
 texture = SubResource("AtlasTexture_vd160")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 modulate_color = Color(0.695503, 0.695503, 0.695503, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cjpx"]
@@ -19,6 +23,10 @@ region = Rect2(65, 165, 34, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i77rk"]
 texture = SubResource("AtlasTexture_8ytfi")
+expand_margin_left = 16.0
+expand_margin_top = 8.0
+expand_margin_right = 16.0
+expand_margin_bottom = 8.0
 modulate_color = Color(0.903598, 0.903598, 0.903598, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rla23"]
@@ -27,6 +35,22 @@ region = Rect2(65, 165, 34, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c2lvt"]
 texture = SubResource("AtlasTexture_rla23")
+expand_margin_left = 16.0
+expand_margin_top = 8.0
+expand_margin_right = 16.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2we57"]
+atlas = ExtResource("1_ewsur")
+region = Rect2(65, 165, 34, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jsqs4"]
+texture = SubResource("AtlasTexture_2we57")
+expand_margin_left = 16.0
+expand_margin_top = 8.0
+expand_margin_right = 16.0
+expand_margin_bottom = 8.0
+modulate_color = Color(0.466181, 0.466181, 0.466181, 1)
 
 [resource]
 default_font = ExtResource("1_sutv3")
@@ -36,9 +60,11 @@ Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/h_text_margin = 16
+Button/constants/v_text_margin = 8
 Button/font_sizes/font_size = 14
 Button/styles/disabled = SubResource("StyleBoxTexture_67dgu")
 Button/styles/focus = SubResource("StyleBoxEmpty_4cjpx")
 Button/styles/hover = SubResource("StyleBoxTexture_i77rk")
 Button/styles/normal = SubResource("StyleBoxTexture_c2lvt")
-Button/styles/pressed = null
+Button/styles/pressed = SubResource("StyleBoxTexture_jsqs4")

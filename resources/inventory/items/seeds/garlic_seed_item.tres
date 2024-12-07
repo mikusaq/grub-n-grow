@@ -11,4 +11,6 @@ region = Rect2(198, 104, 22, 22)
 script = ExtResource("1_d7gaw")
 name = "Garlic seed"
 texture = SubResource("AtlasTexture_coovm")
-stackable = true
+stackable = false
+enable_hover = true
+description = "[ul] Deters certain types of pests[/ul]"

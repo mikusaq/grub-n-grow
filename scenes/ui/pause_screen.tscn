@@ -1,0 +1,166 @@
+[gd_scene load_steps=4 format=3 uid="uid://5p26f876ydg5"]
+
+[ext_resource type="Texture2D" uid="uid://bo71g1kp8hk7s" path="res://assets/pause_frame.png" id="1_l52ne"]
+[ext_resource type="Script" path="res://scripts/pause_screen.gd" id="2_fnt7l"]
+[ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="2_pvyr4"]
+
+[node name="PauseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pvyr4")
+script = ExtResource("2_fnt7l")
+
+[node name="Shade" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.647059)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Frame" type="TextureRect" parent="MainScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.5
+offset_top = -137.5
+offset_right = 211.5
+offset_bottom = 137.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l52ne")
+
+[node name="Heading" type="Label" parent="MainScreen"]
+layout_mode = 0
+offset_left = -165.0
+offset_top = -92.0
+offset_right = 168.0
+offset_bottom = -69.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="HowToPlayButton" type="Button" parent="MainScreen"]
+layout_mode = 2
+offset_left = -49.0
+offset_top = -16.0
+offset_right = 54.0
+offset_bottom = 5.0
+text = "How To Play"
+
+[node name="BackToMenuButton" type="Button" parent="MainScreen"]
+layout_mode = 2
+offset_left = -49.0
+offset_top = 28.0
+offset_right = 54.0
+offset_bottom = 49.0
+text = "Back To Menu"
+
+[node name="HowToPlayScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Frame" type="TextureRect" parent="HowToPlayScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.5
+offset_top = -137.5
+offset_right = 211.5
+offset_bottom = 137.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l52ne")
+
+[node name="Heading" type="Label" parent="HowToPlayScreen"]
+layout_mode = 0
+offset_left = -165.0
+offset_top = -92.0
+offset_right = 168.0
+offset_bottom = -69.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HowToPlayScreen"]
+layout_mode = 0
+offset_left = -156.0
+offset_top = -56.0
+offset_right = 160.0
+offset_bottom = 81.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 4
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[ul]
+ Use WASD or arrow keys to move
+[/ul]
+[img]assets/arrows.png[/img]
+[ul]
+ Use number keys to change tools and seeds
+[/ul]
+[img]assets/keys.png[/img]
+[ul]
+ Use the Scythe (1) to seed and cut plants
+[/ul]
+[ul]
+ Use Axe (3) to cut trees
+[/ul]
+[ul]
+ Place mulch (2) on bare soil to allow planting seeds
+[/ul]
+[ul]
+ Click on the door of the house to go to sleep and begin new day (crops grow at night)
+[/ul]
+[img]assets/mouse.png[/img]
+[ul]
+ Grow enough plants to fulfill tasks
+[/ul]
+[ul]
+ Failing to fulfill at least one task per day will lead to game over
+[/ul]
+[ul]
+ Some plants interact with each other, providing bonus crops at harvest (watch the numbers carefully)
+[/ul]"
+tab_size = 0
+
+[node name="BackButton" type="Button" parent="HowToPlayScreen"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 107.0
+offset_right = 143.0
+offset_bottom = 128.0
+text = "Back"
+
+[connection signal="pressed" from="MainScreen/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="MainScreen/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="HowToPlayScreen/BackButton" to="." method="_on_back_button_pressed"]

@@ -14,6 +14,5 @@ void fragment() {
 	float isWithinY = step(vertexPos.y, globalTilePos.y + pixelArtSize) * step(globalTilePos.y, vertexPos.y);
 	float isWithin = isWithinX * isWithinY;
 
-	vec4 textureColor = texture(TEXTURE, UV);
-	COLOR = mix(textureColor, vec4(highlightColor, 1.0), .4 * isWithin);
+	COLOR = mix(COLOR, vec4(highlightColor, 1.0), .4 * isWithin);
 }

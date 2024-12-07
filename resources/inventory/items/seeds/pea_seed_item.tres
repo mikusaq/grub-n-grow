@@ -11,4 +11,6 @@ region = Rect2(134, 133, 22, 22)
 script = ExtResource("1_evme0")
 name = "Pea seed"
 texture = SubResource("AtlasTexture_awnye")
-stackable = true
+stackable = false
+enable_hover = true
+description = "[ul] Great for the soil![/ul]"

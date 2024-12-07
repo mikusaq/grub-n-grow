@@ -1,0 +1,61 @@
+[gd_scene load_steps=17 format=3 uid="uid://ock54d8bs2a2"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_ayhn2"]
+[ext_resource type="PackedScene" uid="uid://dg7o4qlnmdeoi" path="res://scenes/world.tscn" id="1_llcn5"]
+[ext_resource type="Script" path="res://scripts/tasks/task_card.gd" id="2_3n6aa"]
+[ext_resource type="PackedScene" uid="uid://c4ris3ar6yw73" path="res://scenes/player.tscn" id="2_vd225"]
+[ext_resource type="Resource" uid="uid://crnclwjrwvga5" path="res://resources/task_cards/bag_of_fries.tres" id="3_fv3lp"]
+[ext_resource type="Resource" uid="uid://cjas55olfiqb0" path="res://resources/task_cards/boxed_potatoes_and_garlic.tres" id="4_4cows"]
+[ext_resource type="PackedScene" uid="uid://beuaftpgggkw2" path="res://scenes/ui/hud.tscn" id="4_c6ycp"]
+[ext_resource type="Resource" uid="uid://cwpsufrwfc7n0" path="res://resources/task_cards/canned_tomato_soup.tres" id="5_7d8pv"]
+[ext_resource type="Resource" uid="uid://clevem1vlevgt" path="res://resources/task_cards/pea_hummus.tres" id="6_apsyw"]
+[ext_resource type="Resource" uid="uid://cjif74mp7qji7" path="res://resources/task_cards/strawberry_jam.tres" id="7_8hqmb"]
+[ext_resource type="AudioStream" uid="uid://holutf6qxmd1" path="res://Sounds/walk.wav" id="11_42k22"]
+[ext_resource type="AudioStream" uid="uid://c2newqlsq1jk" path="res://Sounds/pick_crop.wav" id="11_pbo81"]
+[ext_resource type="AudioStream" uid="uid://bji4tdlafiair" path="res://Sounds/cash-register-fake.wav" id="12_pkugc"]
+[ext_resource type="AudioStream" uid="uid://k5wnthxi7oc1" path="res://Sounds/apple_cider.ogg" id="13_xj5av"]
+[ext_resource type="AudioStream" uid="uid://bqe6sf4qm6ufs" path="res://Sounds/birds.ogg" id="14_ola2i"]
+[ext_resource type="AudioStream" uid="uid://c020o0v3ujy5o" path="res://Sounds/yawn.wav" id="16_sl5j2"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ayhn2")
+task_cards = Array[ExtResource("2_3n6aa")]([ExtResource("3_fv3lp"), ExtResource("4_4cows"), ExtResource("5_7d8pv"), ExtResource("6_apsyw"), ExtResource("7_8hqmb")])
+
+[node name="HUD" parent="." instance=ExtResource("4_c6ycp")]
+
+[node name="World" parent="." instance=ExtResource("1_llcn5")]
+
+[node name="Player" parent="." instance=ExtResource("2_vd225")]
+position = Vector2(-30, 100)
+
+[node name="Walk" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("11_42k22")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-30, 60)
+rotation = -0.785398
+zoom = Vector2(1.4, 1.4)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_pbo81")
+
+[node name="CompletedTaskSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_pkugc")
+
+[node name="AppleCider" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_xj5av")
+volume_db = -5.013
+autoplay = true
+
+[node name="Birds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ola2i")
+volume_db = 8.771
+autoplay = true
+
+[node name="Yawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_sl5j2")
+
+[connection signal="restart_game" from="HUD" to="." method="_on_hud_restart_game"]
+[connection signal="task_completed" from="HUD" to="." method="_on_hud_task_completed"]
+[connection signal="next_turn" from="World" to="." method="_on_world_next_turn"]

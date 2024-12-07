@@ -1,0 +1,200 @@
+[gd_scene load_steps=29 format=3 uid="uid://d0mo5suio30gj"]
+
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_4iumh"]
+[ext_resource type="Texture2D" uid="uid://uhmd43gupktj" path="res://assets/player/character_move.png" id="1_cw15h"]
+[ext_resource type="Texture2D" uid="uid://b5u1t83w5rf6q" path="res://assets/player/character_work.png" id="2_f4887"]
+[ext_resource type="Texture2D" uid="uid://vriu1em4b63s" path="res://assets/main_menu_sprite.png" id="2_w8rma"]
+[ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="3_gbawg"]
+[ext_resource type="PackedScene" uid="uid://c7qt7a230lkae" path="res://scenes/ui/credits_screen.tscn" id="6_71ome"]
+[ext_resource type="AudioStream" uid="uid://b7ynoch6iifbm" path="res://Sounds/optomistic_day_masteredloopable.mp3" id="6_cq6xt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrr78"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crf3g"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6tid"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjsmd"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_powme"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s8h1"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjms4"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c460g"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33fjg"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogdp5"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmthm"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t5sw"]
+atlas = ExtResource("1_cw15h")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkghi"]
+atlas = ExtResource("2_f4887")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mam75"]
+atlas = ExtResource("2_f4887")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svdh5"]
+atlas = ExtResource("2_f4887")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6s1o"]
+atlas = ExtResource("2_f4887")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_552pj"]
+atlas = ExtResource("2_f4887")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfkfk"]
+atlas = ExtResource("2_f4887")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxj7g"]
+atlas = ExtResource("2_f4887")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rytku"]
+atlas = ExtResource("2_f4887")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_llfc2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrr78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crf3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6tid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjsmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_powme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s8h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjms4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c460g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33fjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogdp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmthm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t5sw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkghi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mam75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svdh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6s1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_552pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfkfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxj7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rytku")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="StartMenu" type="CanvasLayer"]
+script = ExtResource("1_4iumh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w8rma")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(449.25, 248.75)
+scale = Vector2(5.48438, 5.48438)
+sprite_frames = SubResource("SpriteFrames_llfc2")
+autoplay = "default"
+
+[node name="CreditButton" type="Button" parent="."]
+offset_left = 258.0
+offset_top = 234.0
+offset_right = 318.0
+offset_bottom = 255.0
+theme = ExtResource("3_gbawg")
+text = "Credits"
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 214.0
+offset_top = 184.0
+offset_right = 257.0
+offset_bottom = 205.0
+theme = ExtResource("3_gbawg")
+text = "Start"
+
+[node name="CreditsScreen" parent="." instance=ExtResource("6_71ome")]
+visible = false
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cq6xt")
+autoplay = true
+
+[connection signal="pressed" from="CreditButton" to="." method="_on_credit_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

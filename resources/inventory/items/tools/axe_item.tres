@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://38i7jv8odcfr"]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_7180j"]
+[ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="2_302y1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m83xv"]
+atlas = ExtResource("2_302y1")
+region = Rect2(34, 133, 22, 22)
+
+[resource]
+script = ExtResource("1_7180j")
+name = "Axe"
+texture = SubResource("AtlasTexture_m83xv")
+stackable = false
+enable_hover = false
+description = ""

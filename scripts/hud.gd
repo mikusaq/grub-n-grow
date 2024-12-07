@@ -3,7 +3,9 @@ extends CanvasLayer
 var task_card_ui_scene = preload("res://scenes/ui/task_card_ui.tscn")
 @export var crop_inv: Inv
 
-signal add_money(money: int)
+signal task_completed(task: TaskCard)
+signal enable_game
+signal restart_game
 
 
 func _ready() -> void:
@@ -14,11 +16,12 @@ func set_money(money: int):
 	$MoneyAmount.text = Const.MONEY_SYMBOL + str(money)
 
 
-func set_task_cards(task_cards: Array[TaskCard]):
+func add_task_cards(task_cards: Array[TaskCard]):
 	for task_card in task_cards:
 		var task_card_ui: TaskCardUI = task_card_ui_scene.instantiate()
 		task_card_ui.set_task_card(task_card)
-		task_card_ui.task_completed.connect(task_completed)
+		task_card_ui.task_completed.connect(complete_task)
+		task_card_ui.update_fulfill_condition()
 		$TaskContainer.add_child(task_card_ui)
 
 
@@ -27,5 +30,22 @@ func update_fulfill_conditions(slot_number: int) -> void:
 		task_card_ui.update_fulfill_condition()
 
 
-func task_completed(reward: int) -> void:
-	add_money.emit(reward)
+func complete_task(task: TaskCard) -> void:
+	task_completed.emit(task)
+
+
+func show_game_over_screen():
+	$GameOverScreen.show_screen()
+
+
+func show_pause_screen():
+	$PauseScreen.show_screen()
+
+
+func _on_game_over_screen_start_new_game() -> void:
+	$GameOverScreen.hide()
+	restart_game.emit()
+
+
+func _on_letter_ui_tree_exited() -> void:
+	enable_game.emit()
