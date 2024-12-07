@@ -1,6 +1,6 @@
 extends Control
 
-@export var crop_inventory: Inv
+var crop_inventory: Inv = load("res://resources/inventory/crop_inventory.tres")
 @onready var containers: Array = $CropList.get_children()
 
 

@@ -4,7 +4,7 @@ var hover_enabled: bool
 @export var index: int
 @export var key_display: String = ""
 
-@onready var inv: PlayerInv = preload("res://resources/inventory/player_inventory.tres")
+var inv: PlayerInv = load("res://resources/inventory/player_inventory.tres")
 
 
 func _ready() -> void:

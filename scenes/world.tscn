@@ -1,12 +1,10 @@
-[gd_scene load_steps=32 format=4 uid="uid://dg7o4qlnmdeoi"]
+[gd_scene load_steps=30 format=4 uid="uid://dg7o4qlnmdeoi"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_241gj"]
 [ext_resource type="Script" path="res://scripts/farm_grid.gd" id="1_qy2y8"]
 [ext_resource type="Material" uid="uid://ssbc1q5j0pts" path="res://shaders/farm_tile_shader_material.material" id="2_4cbld"]
 [ext_resource type="Texture2D" uid="uid://1yg5atoc6j4" path="res://assets/environment_tree.png" id="2_tq4rq"]
-[ext_resource type="Resource" uid="uid://behc610vpoq6t" path="res://resources/inventory/player_inventory.tres" id="3_33r3p"]
 [ext_resource type="Texture2D" uid="uid://b682p1xtn8esj" path="res://assets/house.png" id="3_w2bcj"]
-[ext_resource type="Resource" uid="uid://m1lque6lxlpi" path="res://resources/inventory/crop_inventory.tres" id="4_2usl0"]
 [ext_resource type="Texture2D" uid="uid://tq2bophe3vhb" path="res://assets/farm_tiles.png" id="6_0t1jv"]
 [ext_resource type="Script" path="res://scripts/on_ground.gd" id="6_3g3vv"]
 [ext_resource type="AudioStream" uid="uid://k0k8gbheiap5" path="res://Sounds/Scythe.wav" id="10_5omgx"]
@@ -167,8 +165,6 @@ tile_set = SubResource("TileSet_68rut")
 [node name="FarmGrid" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("1_qy2y8")
-player_inv = ExtResource("3_33r3p")
-crop_inv = ExtResource("4_2usl0")
 
 [node name="Ground" type="TileMapLayer" parent="FarmGrid"]
 material = ExtResource("2_4cbld")

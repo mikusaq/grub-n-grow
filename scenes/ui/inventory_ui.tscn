@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ciksfu7s6lkq3"]
+[gd_scene load_steps=6 format=3 uid="uid://ciksfu7s6lkq3"]
 
 [ext_resource type="PackedScene" uid="uid://bgsm66od2xnu1" path="res://scenes/ui/inventory_slot_ui.tscn" id="1_235ug"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory_ui.gd" id="1_jhtfs"]
-[ext_resource type="Resource" uid="uid://behc610vpoq6t" path="res://resources/inventory/player_inventory.tres" id="2_6ana3"]
 [ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="3_jhg5r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yyrfb"]
@@ -23,7 +22,6 @@ offset_bottom = -266.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jhtfs")
-inv = ExtResource("2_6ana3")
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
 layout_mode = 0

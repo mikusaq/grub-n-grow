@@ -6,7 +6,7 @@ class_name TaskCard
 @export var tasks: Array[Task]
 @export var reward: int
 
-var crop_inv: Inv = preload("res://resources/inventory/crop_inventory.tres")
+var crop_inv: Inv = load("res://resources/inventory/crop_inventory.tres")
 
 
 func condition_fulfilled() -> bool:

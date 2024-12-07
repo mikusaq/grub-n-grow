@@ -1,8 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://c4ris3ar6yw73"]
+[gd_scene load_steps=33 format=3 uid="uid://c4ris3ar6yw73"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4ccw0"]
 [ext_resource type="Texture2D" uid="uid://uhmd43gupktj" path="res://assets/player/character_move.png" id="3_uprx5"]
-[ext_resource type="Resource" uid="uid://behc610vpoq6t" path="res://resources/inventory/player_inventory.tres" id="4_7kur0"]
 [ext_resource type="Texture2D" uid="uid://b5u1t83w5rf6q" path="res://assets/player/character_work.png" id="4_l8dej"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6rj7"]
@@ -245,7 +244,6 @@ y_sort_enabled = true
 scale = Vector2(1.3, 1.3)
 collision_mask = 3
 script = ExtResource("1_4ccw0")
-inv_resource = ExtResource("4_7kur0")
 money = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

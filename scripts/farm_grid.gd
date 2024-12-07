@@ -25,8 +25,8 @@ var current_tile_pos: Vector2
 var player_can_interact: bool = false
 
 @export var reach_distance: float = 60.0
-@export var player_inv: PlayerInv
-@export var crop_inv: Inv
+var player_inv: PlayerInv = load("res://resources/inventory/player_inventory.tres")
+var crop_inv: Inv = load("res://resources/inventory/crop_inventory.tres")
 
 signal working
 

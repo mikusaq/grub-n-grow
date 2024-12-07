@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var task_card_ui_scene = preload("res://scenes/ui/task_card_ui.tscn")
-@export var crop_inv: Inv
+var crop_inv: Inv = load("res://resources/inventory/crop_inventory.tres")
 
 signal task_completed(task: TaskCard)
 signal enable_game

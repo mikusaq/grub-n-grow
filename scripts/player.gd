@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 100
-@export var inv_resource: PlayerInv
+var inv_resource: PlayerInv = load("res://resources/inventory/player_inventory.tres")
 @export var money: int
 var moving: bool = false
 var game_enabled: bool = true

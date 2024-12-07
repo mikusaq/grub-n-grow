@@ -1,6 +1,6 @@
 extends Control
 
-@export var inv: PlayerInv
+var inv: PlayerInv = load("res://resources/inventory/player_inventory.tres")
 @onready var slots: Array = $InventorySlots.get_children()
 var active_slot: int
 
