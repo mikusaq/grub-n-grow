@@ -59,9 +59,9 @@ func pause_game():
 
 
 func _on_hud_task_completed(completed_task: TaskCard) -> void:
+	$CompletedTaskSound.play()
 	$Player.money += completed_task.reward
 	$HUD.set_money($Player.money)
-	$CompletedTaskSound.play()
 	used_tasks.erase(completed_task)
 	var task_card: TaskCard = get_not_present_task()
 	used_tasks.append(task_card)

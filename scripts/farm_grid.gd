@@ -132,34 +132,34 @@ func process_click_on_farm_tile(farm_tile: FarmTile):
 			if farm_tile.tile_state == FarmTile.TileState.GRASS:
 				if farm_tile.plant_type != Const.PlantType.BaseTree:
 					working.emit()
+					$CutGrass.play()
 					farm_tile.tile_state = FarmTile.TileState.SOIL
 					_update_tile_atlas_choords(farm_tile.tile_pos, FarmTile.SOIL_1_POS)
 					player_inv.add_item(mulch_item, 1)
-					$CutGrass.play()
 			elif farm_tile.is_harvestable():
 				working.emit()
-				farm_tile.harvest(crop_inv)
 				$Harvest.play()
+				farm_tile.harvest(crop_inv)
 		elif active_item.name == "Mulch":
 			if farm_tile.tile_state == FarmTile.TileState.SOIL:
 				working.emit()
+				$PlaceMulch.play()
 				farm_tile.tile_state = FarmTile.TileState.MULCH
 				farm_tile.update_tile()
 				player_inv.remove_item(mulch_item, 1)
-				$PlaceMulch.play()
 		elif active_item.name == "Axe":
 			if farm_tile.is_fully_grown_tree():
 				working.emit()
-				farm_tile.reset()
 				$ChopTree.play()
+				farm_tile.reset()
 		else:
 			process_seeding(farm_tile, active_item)
 
 
 func process_seeding(farm_tile: FarmTile, active_item: InvItem) -> void:
 	if farm_tile.tile_state == FarmTile.TileState.MULCH:
-		$SowSeeds.play()
 		working.emit()
+		$SowSeeds.play()
 		var plant_to_seed: Const.PlantType
 		if active_item == potato_seed_item:
 			plant_to_seed = Const.PlantType.Potato

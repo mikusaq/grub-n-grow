@@ -189,12 +189,12 @@ offset_bottom = 205.0
 theme = ExtResource("3_gbawg")
 text = "Start"
 
+[node name="CreditsScreen" parent="." instance=ExtResource("6_71ome")]
+visible = false
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_cq6xt")
 autoplay = true
-
-[node name="CreditsScreen" parent="." instance=ExtResource("6_71ome")]
-visible = false
 
 [connection signal="pressed" from="CreditButton" to="." method="_on_credit_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
