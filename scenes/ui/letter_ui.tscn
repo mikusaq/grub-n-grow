@@ -132,10 +132,10 @@ Sven
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 407.0
+offset_left = 371.0
 offset_top = 295.0
-offset_right = 461.0
-offset_bottom = 324.0
+offset_right = 406.0
+offset_bottom = 316.0
 theme = ExtResource("2_qw6l1")
 text = "Next"
 

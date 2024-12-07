@@ -5,8 +5,10 @@ var player_in_door_area: bool = false
 @export var active_door_color: Color
 @export var inactive_door_color: Color
 @export var pressed_door_color: Color
+var game_enabled: bool = true
 
 signal next_turn
+signal work_on_farm_grid
 
 
 func _set_button_color(hover_color: Color, pressed_color: Color):
@@ -27,5 +29,9 @@ func _on_door_area_body_exited(body: Node2D) -> void:
 
 
 func _on_next_turn_button_pressed() -> void:
-	if player_in_door_area:
+	if player_in_door_area and game_enabled:
 		next_turn.emit()
+
+
+func _on_farm_grid_working() -> void:
+	work_on_farm_grid.emit()

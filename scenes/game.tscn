@@ -53,6 +53,8 @@ autoplay = true
 [node name="Yawn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_sl5j2")
 
+[connection signal="enable_game" from="HUD" to="." method="_on_hud_enable_game"]
 [connection signal="restart_game" from="HUD" to="." method="_on_hud_restart_game"]
 [connection signal="task_completed" from="HUD" to="." method="_on_hud_task_completed"]
 [connection signal="next_turn" from="World" to="." method="_on_world_next_turn"]
+[connection signal="work_on_farm_grid" from="World" to="." method="_on_world_work_on_farm_grid"]

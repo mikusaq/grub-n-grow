@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7qt7a230lkae"]
+
+[ext_resource type="Texture2D" uid="uid://e6iswo5jc3hn" path="res://assets/letter_frame.png" id="1_gxd10"]
+[ext_resource type="Script" path="res://scripts/credits_screen.gd" id="1_nph0u"]
+[ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="2_bxoqd"]
+
+[node name="CreditsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nph0u")
+
+[node name="Shade" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.647059)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -112.0
+offset_right = 160.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gxd10")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 113.0
+offset_right = 442.0
+offset_bottom = 277.0
+theme = ExtResource("2_bxoqd")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]
+[font_size={8}]Game Designer[/font_size]
+George A. Boyle
+
+[font_size={8}]Programmer[/font_size]
+Mikuláš Šťastný
+
+[font_size={8}]Artist[/font_size]
+Akemi Hashimura
+
+[font_size={6}]The bird sound is recorded by PeterBluewin[/font_size]
+[/center]
+"
+scroll_active = false
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 295.0
+offset_right = 442.0
+offset_bottom = 316.0
+theme = ExtResource("2_bxoqd")
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

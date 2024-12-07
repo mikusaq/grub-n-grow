@@ -1,6 +1,6 @@
 extends Control
 
-signal start_new_game
+signal hide_credits
 
 
 func show_screen():
@@ -11,4 +11,7 @@ func show_screen():
 
 
 func _on_button_pressed() -> void:
-	start_new_game.emit()
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, Const.TRANSITION)
+	await tween.finished
+	hide()

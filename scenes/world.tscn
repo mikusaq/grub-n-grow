@@ -223,6 +223,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_bd75l")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d0tu2")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_581x3")
 
+[connection signal="working" from="FarmGrid" to="." method="_on_farm_grid_working"]
 [connection signal="body_entered" from="Door/DoorArea" to="." method="_on_door_area_body_entered"]
 [connection signal="body_exited" from="Door/DoorArea" to="." method="_on_door_area_body_exited"]
 [connection signal="pressed" from="Door/NextTurnButton" to="." method="_on_next_turn_button_pressed"]

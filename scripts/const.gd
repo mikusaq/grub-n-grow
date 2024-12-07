@@ -3,6 +3,7 @@ extends Node
 class_name Const
 
 const MONEY_SYMBOL = "$"
+const TRANSITION = 0.15
 
 enum PlantType {
 	NoType,
