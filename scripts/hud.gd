@@ -42,10 +42,18 @@ func show_pause_screen():
 	$PauseScreen.show_screen()
 
 
+func hide_pause_screen():
+	$PauseScreen.hide_screen()
+
+
 func _on_game_over_screen_start_new_game() -> void:
 	$GameOverScreen.hide()
 	restart_game.emit()
 
 
 func _on_letter_ui_tree_exited() -> void:
+	enable_game.emit()
+
+
+func _on_pause_screen_unpause_game() -> void:
 	enable_game.emit()
