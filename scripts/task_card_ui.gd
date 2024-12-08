@@ -11,7 +11,7 @@ func _ready() -> void:
 	modulate.a = 0.0
 	await get_tree().create_timer(0.1).timeout
 	tween = create_tween()
-	tween.tween_property(self, "modulate:a", 1.0, 0.3)
+	tween.tween_property(self, "modulate:a", 1.0, 0.5)
 
 
 func set_task_card(new_task_card: TaskCard) -> void:
