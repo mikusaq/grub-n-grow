@@ -22,7 +22,11 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("left_click"):
+		if game_enabled:
+			var mouse_pos = get_global_mouse_position()
+			$World/FarmGrid.process_click(mouse_pos)
+	elif event.is_action_pressed("pause"):
 		if game_enabled:
 			pause_game()
 		elif not $HUD/LetterUI:

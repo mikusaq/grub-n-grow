@@ -58,13 +58,11 @@ func _process(delta):
 		$OnGround.notify_runtime_tile_data_update()
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click"):
-		var mouse_pos = get_global_mouse_position()
-		var tile_mouse_pos = $Ground.local_to_map(mouse_pos)
-		if tile_in_farm_grid(tile_mouse_pos):
-			var farm_tile = get_farm_tile(tile_mouse_pos)
-			process_click_on_farm_tile(farm_tile)
+func process_click(mouse_pos: Vector2) -> void:
+	var tile_mouse_pos = $Ground.local_to_map(mouse_pos)
+	if tile_in_farm_grid(tile_mouse_pos):
+		var farm_tile = get_farm_tile(tile_mouse_pos)
+		process_click_on_farm_tile(farm_tile)
 
 
 func set_player_pos(pos: Vector2):
