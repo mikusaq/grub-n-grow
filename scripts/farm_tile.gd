@@ -37,7 +37,6 @@ var plant_type: Const.PlantType = Const.PlantType.NoType
 var tile_pos: Vector2i
 var harvest_value: int = 1
 var growing_day: int = 0
-var since_harvest: int = 0
 
 
 func is_harvestable() -> bool:
@@ -77,16 +76,12 @@ func process_next_turn():
 	elif tile_state == TileState.SPROUT:
 		growing_day += 1
 		if plant_type == Const.PlantType.Apple and growing_day == APPLE_TREE_GROW_TIME:
-			tile_state = TileState.PLANT
+			tile_state = TileState.HARVEST
 			update_tile()
 	elif tile_state == TileState.PLANT:
 		growing_day += 1
-		since_harvest += 1
-		if plant_type == Const.PlantType.Apple:
-			if since_harvest == APPLE_TREE_RIPE_TIME:
-				tile_state = TileState.HARVEST
-		elif plant_type == Const.PlantType.Strawberry:
-			tile_state = TileState.HARVEST
+		tile_state = TileState.HARVEST
+		if plant_type == Const.PlantType.Strawberry:
 			_determine_harvest_value()
 		update_tile()
 
@@ -127,7 +122,6 @@ func harvest(crop_inv: Inv):
 		tile_state = TileState.PLANT
 		change_tile.emit(tile_pos, SOIL_1_POS, APPLE_HARVESTED_POS)
 		harvest_value = 1
-		since_harvest = 0
 		return
 	
 	add_harvest_to_inv(inv_item, crop_inv)
@@ -185,7 +179,6 @@ func reset(new_soil_type: SoilType = SoilType.BASE_SOIL):
 	update_tile()
 	harvest_value = 1
 	growing_day = 0
-	since_harvest = 0
 
 
 func _determine_harvest_value() -> void:
