@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TaskCard" load_steps=9 format=3 uid="uid://bggovea33yjic"]
+
+[ext_resource type="Script" path="res://scripts/tasks/task_card.gd" id="1_lbhmg"]
+[ext_resource type="Script" path="res://scripts/tasks/task.gd" id="2_ulp3m"]
+[ext_resource type="Resource" uid="uid://do416cliidno8" path="res://resources/inventory/items/crops/potato_item.tres" id="3_cbn2j"]
+[ext_resource type="Resource" uid="uid://nmbaaw36uhv" path="res://resources/inventory/items/crops/garlic_item.tres" id="4_xsp5w"]
+[ext_resource type="Resource" uid="uid://3fexmonkbgyc" path="res://resources/inventory/items/crops/pea_item.tres" id="5_5cnux"]
+
+[sub_resource type="Resource" id="Resource_qthlh"]
+script = ExtResource("2_ulp3m")
+item = ExtResource("3_cbn2j")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_y1wsx"]
+script = ExtResource("2_ulp3m")
+item = ExtResource("4_xsp5w")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_0q7dm"]
+script = ExtResource("2_ulp3m")
+item = ExtResource("5_5cnux")
+amount = 2
+
+[resource]
+script = ExtResource("1_lbhmg")
+name = "Potato Salad"
+tasks = Array[ExtResource("2_ulp3m")]([SubResource("Resource_qthlh"), SubResource("Resource_y1wsx"), SubResource("Resource_0q7dm")])
+reward = 11

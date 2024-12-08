@@ -11,6 +11,6 @@ amount = 8
 
 [resource]
 script = ExtResource("1_vkfdk")
-name = "Bag of fries"
+name = "French Fries"
 tasks = Array[ExtResource("2_6c271")]([SubResource("Resource_tmlda")])
-reward = 10
+reward = 9

@@ -13,4 +13,4 @@ amount = 8
 script = ExtResource("1_7ep7u")
 name = "Apple Cider"
 tasks = Array[ExtResource("2_oqw3b")]([SubResource("Resource_qthlh")])
-reward = 10
+reward = 6

@@ -184,6 +184,7 @@ func reset(new_soil_type: SoilType = SoilType.BASE_SOIL):
 	soil_type = new_soil_type
 	update_tile()
 	harvest_value = 1
+	growing_day = 0
 	since_harvest = 0
 
 

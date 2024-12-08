@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TaskCard" load_steps=9 format=3 uid="uid://coqpejx71dcee"]
+
+[ext_resource type="Script" path="res://scripts/tasks/task_card.gd" id="1_jk7j2"]
+[ext_resource type="Script" path="res://scripts/tasks/task.gd" id="2_sqf3s"]
+[ext_resource type="Resource" uid="uid://3fexmonkbgyc" path="res://resources/inventory/items/crops/pea_item.tres" id="3_2tq5s"]
+[ext_resource type="Resource" uid="uid://db1jg2uceljm8" path="res://resources/inventory/items/crops/basil_item.tres" id="4_fauxa"]
+[ext_resource type="Resource" uid="uid://nmbaaw36uhv" path="res://resources/inventory/items/crops/garlic_item.tres" id="5_36dg1"]
+
+[sub_resource type="Resource" id="Resource_qthlh"]
+script = ExtResource("2_sqf3s")
+item = ExtResource("3_2tq5s")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_3exvx"]
+script = ExtResource("2_sqf3s")
+item = ExtResource("4_fauxa")
+amount = 4
+
+[sub_resource type="Resource" id="Resource_8avvc"]
+script = ExtResource("2_sqf3s")
+item = ExtResource("5_36dg1")
+amount = 1
+
+[resource]
+script = ExtResource("1_jk7j2")
+name = "Pea and Basil Pesto"
+tasks = Array[ExtResource("2_sqf3s")]([SubResource("Resource_qthlh"), SubResource("Resource_3exvx"), SubResource("Resource_8avvc")])
+reward = 15

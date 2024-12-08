@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TaskCard" load_steps=9 format=3 uid="uid://brsi2fn2qa1xd"]
+
+[ext_resource type="Script" path="res://scripts/tasks/task_card.gd" id="1_gvo5j"]
+[ext_resource type="Script" path="res://scripts/tasks/task.gd" id="2_i72yq"]
+[ext_resource type="Resource" uid="uid://4snklmp365gk" path="res://resources/inventory/items/crops/tomato_item.tres" id="3_s0tyk"]
+[ext_resource type="Resource" uid="uid://db1jg2uceljm8" path="res://resources/inventory/items/crops/basil_item.tres" id="4_6ooh1"]
+[ext_resource type="Resource" uid="uid://nmbaaw36uhv" path="res://resources/inventory/items/crops/garlic_item.tres" id="5_74dwi"]
+
+[sub_resource type="Resource" id="Resource_nrerl"]
+script = ExtResource("2_i72yq")
+item = ExtResource("3_s0tyk")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_52yl7"]
+script = ExtResource("2_i72yq")
+item = ExtResource("4_6ooh1")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_s60po"]
+script = ExtResource("2_i72yq")
+item = ExtResource("5_74dwi")
+amount = 2
+
+[resource]
+script = ExtResource("1_gvo5j")
+name = "Tomato Soup"
+tasks = Array[ExtResource("2_i72yq")]([SubResource("Resource_nrerl"), SubResource("Resource_52yl7"), SubResource("Resource_s60po")])
+reward = 12

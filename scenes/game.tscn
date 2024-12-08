@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ock54d8bs2a2"]
+[gd_scene load_steps=21 format=3 uid="uid://ock54d8bs2a2"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ayhn2"]
 [ext_resource type="PackedScene" uid="uid://dg7o4qlnmdeoi" path="res://scenes/world.tscn" id="1_llcn5"]
@@ -10,7 +10,12 @@
 [ext_resource type="Resource" uid="uid://cwpsufrwfc7n0" path="res://resources/task_cards/canned_tomato_soup.tres" id="5_7d8pv"]
 [ext_resource type="Resource" uid="uid://clevem1vlevgt" path="res://resources/task_cards/pea_hummus.tres" id="6_apsyw"]
 [ext_resource type="Resource" uid="uid://cjif74mp7qji7" path="res://resources/task_cards/strawberry_jam.tres" id="7_8hqmb"]
+[ext_resource type="Resource" uid="uid://dx176132ovcuc" path="res://resources/task_cards/apple_cider.tres" id="8_8vxoy"]
+[ext_resource type="Resource" uid="uid://prw2c1hkbbx2" path="res://resources/task_cards/fruit_salad.tres" id="9_0tcud"]
+[ext_resource type="Resource" uid="uid://coqpejx71dcee" path="res://resources/task_cards/pea_and_basil_pesto.tres" id="10_unkdn"]
 [ext_resource type="AudioStream" uid="uid://holutf6qxmd1" path="res://Sounds/walk.wav" id="11_42k22"]
+[ext_resource type="Resource" uid="uid://bggovea33yjic" path="res://resources/task_cards/potoato_salad.tres" id="11_o853x"]
+[ext_resource type="Resource" uid="uid://brsi2fn2qa1xd" path="res://resources/task_cards/tomato_bruschetta.tres" id="12_dna4l"]
 [ext_resource type="AudioStream" uid="uid://bji4tdlafiair" path="res://Sounds/cash-register-fake.wav" id="12_pkugc"]
 [ext_resource type="AudioStream" uid="uid://k5wnthxi7oc1" path="res://Sounds/apple_cider.ogg" id="13_xj5av"]
 [ext_resource type="AudioStream" uid="uid://bqe6sf4qm6ufs" path="res://Sounds/birds.ogg" id="14_ola2i"]
@@ -19,7 +24,7 @@
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ayhn2")
-task_cards = Array[ExtResource("2_3n6aa")]([ExtResource("3_fv3lp"), ExtResource("4_4cows"), ExtResource("5_7d8pv"), ExtResource("6_apsyw"), ExtResource("7_8hqmb")])
+task_cards = Array[ExtResource("2_3n6aa")]([ExtResource("3_fv3lp"), ExtResource("4_4cows"), ExtResource("5_7d8pv"), ExtResource("6_apsyw"), ExtResource("7_8hqmb"), ExtResource("8_8vxoy"), ExtResource("9_0tcud"), ExtResource("10_unkdn"), ExtResource("11_o853x"), ExtResource("12_dna4l")])
 
 [node name="HUD" parent="." instance=ExtResource("4_c6ycp")]
 
