@@ -92,11 +92,11 @@ func _on_hud_restart_game() -> void:
 func _on_world_next_turn() -> void:
 	game_enabled = false
 	turn_number += 1
-	"""if completed_tasks_in_turn == 0 and turn_number > 1:
+	if completed_tasks_in_turn == 0 and turn_number > 1:
 		$HUD.show_game_over_screen()
-	else:"""
-	await _fade_out_and_update_farm()
-	game_enabled = true
+	else:
+		await _fade_out_and_update_farm()
+		game_enabled = true
 	completed_tasks_in_turn = 0
 
 
