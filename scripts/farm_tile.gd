@@ -185,6 +185,8 @@ func _determine_harvest_value() -> void:
 	var surrounding_farm_tiles = farm_grid.get_surrounding_farm_tiles(self)
 	var bonus_tree = false
 	var apple_bonus_tree = false
+	var basil_bonus = false
+	var garlic_bonus = false
 	if soil_type == SoilType.BONUS_SOIL:
 		harvest_value += 1
 	for farm_tile in surrounding_farm_tiles:
@@ -198,6 +200,10 @@ func _determine_harvest_value() -> void:
 					harvest_value += 1
 					apple_bonus_tree = true
 		elif farm_tile.plant_type == Const.PlantType.Basil and plant_type == Const.PlantType.Tomato:
-			harvest_value += 1
+			if not basil_bonus:
+				harvest_value += 1
+				basil_bonus = true
 		elif farm_tile.plant_type == Const.PlantType.Garlic and plant_type == Const.PlantType.Strawberry:
-			harvest_value += 1
+			if not garlic_bonus:
+				harvest_value += 1
+				garlic_bonus = true
