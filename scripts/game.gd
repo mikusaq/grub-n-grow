@@ -22,8 +22,15 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		pause_game()
+	if event.is_action_pressed("left_click"):
+		if game_enabled:
+			var mouse_pos = get_global_mouse_position()
+			$World/FarmGrid.process_click(mouse_pos)
+	elif event.is_action_pressed("pause"):
+		if game_enabled:
+			pause_game()
+		elif not $HUD/LetterUI:
+			unpause_game()
 
 
 func get_not_present_task() -> TaskCard:
@@ -56,6 +63,11 @@ func _fade_out_and_update_farm():
 func pause_game():
 	game_enabled = false
 	$HUD.show_pause_screen()
+
+
+func unpause_game():
+	$HUD.hide_pause_screen()
+	game_enabled = true
 
 
 func _on_hud_task_completed(completed_task: TaskCard) -> void:
