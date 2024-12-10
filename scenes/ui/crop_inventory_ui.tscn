@@ -29,9 +29,9 @@ text = "Stock"
 
 [node name="CropList" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 59.0
+offset_left = 55.0
 offset_top = 25.0
-offset_right = 108.0
+offset_right = 104.0
 offset_bottom = 106.0
 theme_override_constants/separation = 3
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dg7o4qlnmdeoi"]
+[gd_scene load_steps=32 format=4 uid="uid://dg7o4qlnmdeoi"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_241gj"]
 [ext_resource type="Script" path="res://scripts/farm_grid.gd" id="1_qy2y8"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://k0k8gbheiap5" path="res://Sounds/Scythe.wav" id="10_5omgx"]
 [ext_resource type="AudioStream" uid="uid://c2newqlsq1jk" path="res://Sounds/pick_crop.wav" id="11_ovqhw"]
 [ext_resource type="AudioStream" uid="uid://cf1dvjey12n0x" path="res://Sounds/WoodChop.ogg" id="12_fxgq1"]
+[ext_resource type="Theme" uid="uid://b8prix2n6p0hv" path="res://resources/main_theme.tres" id="13_8dfuv"]
 [ext_resource type="AudioStream" uid="uid://dgfjang4a8c37" path="res://Sounds/MulchBag.ogg" id="13_mm2xv"]
 [ext_resource type="AudioStream" uid="uid://btb8k22k3sw22" path="res://Sounds/PlantSeed.ogg" id="14_54owu"]
 
@@ -238,6 +239,17 @@ shape = SubResource("WorldBoundaryShape2D_7cs37")
 position = Vector2(-256, 0)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_7cs37")
+
+[node name="TasksCompletedLabel" type="Label" parent="."]
+visible = false
+z_index = 2
+offset_left = -136.789
+offset_top = 47.0
+offset_right = -58.7894
+offset_bottom = 59.0
+theme = ExtResource("13_8dfuv")
+theme_override_font_sizes/font_size = 8
+text = "Tasks completed!"
 
 [connection signal="working" from="FarmGrid" to="." method="_on_farm_grid_working"]
 [connection signal="body_entered" from="Door/DoorArea" to="." method="_on_door_area_body_entered"]

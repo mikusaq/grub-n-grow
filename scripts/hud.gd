@@ -35,7 +35,7 @@ func complete_task(task: TaskCard) -> void:
 
 
 func show_game_over_screen():
-	$GameOverScreen.show_screen()
+	$LetterUI.show_game_over()
 
 
 func show_pause_screen():
@@ -46,14 +46,13 @@ func hide_pause_screen():
 	$PauseScreen.hide_screen()
 
 
-func _on_game_over_screen_start_new_game() -> void:
-	$GameOverScreen.hide()
-	restart_game.emit()
-
-
 func _on_pause_screen_unpause_game() -> void:
 	enable_game.emit()
 
 
 func _on_letter_ui_enable_game() -> void:
 	enable_game.emit()
+
+
+func _on_letter_ui_restart_game() -> void:
+	restart_game.emit()

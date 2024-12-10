@@ -6,8 +6,7 @@ var used_tasks: Array[TaskCard] = []
 var turn_number: int = 0
 var completed_tasks_in_turn: int = 0
 var needed_tasks_in_turn: int = 1
-var leveled_up: bool = false
-var level_up_happened: bool = false
+var level_up_happened_in_turn: int = -1
 var game_enabled: bool:
 	set(new_value):
 		game_enabled = new_value
@@ -58,6 +57,7 @@ func _fade_out_and_update_farm():
 	tween.tween_property(self, "modulate", Color.BLACK, 0.8)
 	await tween.finished
 	$World/FarmGrid.process_next_turn()
+	$World.hide_tasks_completed_label()
 	await get_tree().create_timer(0.4).timeout
 	tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.8)
@@ -74,23 +74,19 @@ func unpause_game():
 	game_enabled = true
 
 
-func level_up():
-	needed_tasks_in_turn = 2
-	$HUD/LetterUI.show_screen()
-
-
 func _on_hud_task_completed(completed_task: TaskCard) -> void:
 	$CompletedTaskSound.play()
 	$Player.money += completed_task.reward
-	if $Player.money >= money_to_level_up and not leveled_up:
-		leveled_up = true
-		level_up_happened = true
+	if $Player.money >= money_to_level_up and level_up_happened_in_turn == -1:
+		level_up_happened_in_turn = turn_number
 	$HUD.set_money($Player.money)
 	used_tasks.erase(completed_task)
 	var task_card: TaskCard = get_not_present_task()
 	used_tasks.append(task_card)
 	var task_array: Array[TaskCard] = [task_card]
 	completed_tasks_in_turn += 1
+	if completed_tasks_in_turn >= needed_tasks_in_turn:
+		$World.show_tasks_completed_label()
 	$HUD.add_task_cards(task_array)
 
 
@@ -108,11 +104,15 @@ func _on_world_next_turn() -> void:
 		$HUD.show_game_over_screen()
 	else:
 		await _fade_out_and_update_farm()
-		if level_up_happened:
-			level_up()
-			level_up_happened = false
-		else:
-			game_enabled = true
+		if level_up_happened_in_turn > -1:
+			var turns_from_level_up = turn_number - level_up_happened_in_turn
+			if turns_from_level_up == 1:
+				$HUD/LetterUI.show_screen()
+				completed_tasks_in_turn = 0
+				return
+			elif turns_from_level_up == 2:
+				needed_tasks_in_turn = 2
+		game_enabled = true
 	completed_tasks_in_turn = 0
 
 
