@@ -26,5 +26,4 @@ func remove_item(item_to_remove: InvItem, item_amount: int):
 	if amount > item_amount and item.stackable:
 		amount -= item_amount
 	else:
-		item = null
 		amount = 0

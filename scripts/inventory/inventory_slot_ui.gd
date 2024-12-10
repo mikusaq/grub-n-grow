@@ -14,9 +14,16 @@ func _ready() -> void:
 func update(slot: InvSlot):
 	if slot and slot.item:
 		$ItemDisplay.texture = slot.item.texture
-		$ItemDisplay.visible = true
 		if slot.item.stackable:
-			$ItemAmount.text = str(slot.amount)
+			if slot.amount > 0:	
+				$ItemDisplay.visible = true
+				$ItemAmount.text = str(slot.amount)
+			else:
+				$ItemDisplay.visible = false
+				$ItemAmount.text = ""
+		else:
+			$ItemDisplay.visible = true
+		
 		hover_enabled = slot.item.enable_hover
 		if hover_enabled:
 			$HoverDescription/ItemName.text = slot.item.name
@@ -25,6 +32,7 @@ func update(slot: InvSlot):
 		$ItemDisplay.visible = false
 		$ItemAmount.text = ""
 		hover_enabled = false
+
 
 func set_highlight_visibility(highlight_visible: bool):
 	$Highlight.visible = highlight_visible

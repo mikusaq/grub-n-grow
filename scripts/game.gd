@@ -1,9 +1,13 @@
 extends Node2D
 
 @export var task_cards: Array[TaskCard]
+@export var money_to_level_up: int
 var used_tasks: Array[TaskCard] = []
 var turn_number: int = 0
 var completed_tasks_in_turn: int = 0
+var needed_tasks_in_turn: int = 1
+var leveled_up: bool = false
+var level_up_happened: bool = false
 var game_enabled: bool:
 	set(new_value):
 		game_enabled = new_value
@@ -70,9 +74,17 @@ func unpause_game():
 	game_enabled = true
 
 
+func level_up():
+	needed_tasks_in_turn = 2
+	$HUD/LetterUI.show_screen()
+
+
 func _on_hud_task_completed(completed_task: TaskCard) -> void:
 	$CompletedTaskSound.play()
 	$Player.money += completed_task.reward
+	if $Player.money >= money_to_level_up and not leveled_up:
+		leveled_up = true
+		level_up_happened = true
 	$HUD.set_money($Player.money)
 	used_tasks.erase(completed_task)
 	var task_card: TaskCard = get_not_present_task()
@@ -92,11 +104,15 @@ func _on_hud_restart_game() -> void:
 func _on_world_next_turn() -> void:
 	game_enabled = false
 	turn_number += 1
-	if completed_tasks_in_turn == 0 and turn_number > 1:
+	if completed_tasks_in_turn < needed_tasks_in_turn and turn_number > 1:
 		$HUD.show_game_over_screen()
 	else:
 		await _fade_out_and_update_farm()
-		game_enabled = true
+		if level_up_happened:
+			level_up()
+			level_up_happened = false
+		else:
+			game_enabled = true
 	completed_tasks_in_turn = 0
 
 

@@ -25,6 +25,7 @@
 y_sort_enabled = true
 script = ExtResource("1_ayhn2")
 task_cards = Array[ExtResource("2_3n6aa")]([ExtResource("3_fv3lp"), ExtResource("4_4cows"), ExtResource("5_7d8pv"), ExtResource("6_apsyw"), ExtResource("7_8hqmb"), ExtResource("8_8vxoy"), ExtResource("9_0tcud"), ExtResource("10_unkdn"), ExtResource("11_o853x"), ExtResource("12_dna4l")])
+money_to_level_up = 150
 
 [node name="HUD" parent="." instance=ExtResource("4_c6ycp")]
 
