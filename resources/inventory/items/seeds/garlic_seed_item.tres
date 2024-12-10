@@ -13,4 +13,4 @@ name = "Garlic seed"
 texture = SubResource("AtlasTexture_coovm")
 stackable = false
 enable_hover = true
-description = "[ul] Deters certain types of pests[/ul]"
+description = "[ul bullet=-] Deters certain types of pests[/ul]"

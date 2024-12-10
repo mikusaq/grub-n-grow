@@ -129,34 +129,34 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 4
 theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
-text = "[ul]
+text = "[ul bullet=-]
  Use WASD or arrow keys to move
 [/ul]
 [img]assets/arrows.png[/img]
-[ul]
+[ul bullet=-]
  Use number keys to change tools and seeds
 [/ul]
 [img]assets/keys.png[/img]
-[ul]
+[ul bullet=-]
  Use the Scythe (1) to seed and cut plants
 [/ul]
-[ul]
+[ul bullet=-]
  Use Axe (3) to cut trees
 [/ul]
-[ul]
+[ul bullet=-]
  Place mulch (2) on bare soil to allow planting seeds
 [/ul]
-[ul]
+[ul bullet=-]
  Click on the door of the house to go to sleep and begin new day (crops grow at night)
 [/ul]
 [img]assets/mouse.png[/img]
-[ul]
+[ul bullet=-]
  Grow enough plants to fulfill tasks
 [/ul]
-[ul]
+[ul bullet=-]
  Failing to fulfill at least one task per day will lead to game over
 [/ul]
-[ul]
+[ul bullet=-]
  Some plants interact with each other, providing bonus crops at harvest (watch the numbers carefully)
 [/ul]"
 tab_size = 0

@@ -13,4 +13,4 @@ name = "Basil seed"
 texture = SubResource("AtlasTexture_w81wx")
 stackable = false
 enable_hover = true
-description = "[ul] Deters certain types of pests[/ul]"
+description = "[ul bullet=-] Deters certain types of pests[/ul]"

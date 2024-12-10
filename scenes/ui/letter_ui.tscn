@@ -63,11 +63,11 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 10
 text = "Hey friend!
 
-Great news! The restaurant is buzzing! We’re getting more and more customers every day, and it’s all thanks to the wonderful crops you’ve been sending us. 
+Great news! The restaurant is buzzing! We're getting more and more customers every day, and it's all thanks to the wonderful crops you've been sending us. 
 
 Trouble is, now we need more! 
 
-Starting tomorrow, we’re going to need to fulfill at least two requests every day before you hit the hay! Do you think you can do that? I sure hope so! I’m counting on you to help keep this restaurant alive. I couldn’t do it without you!
+Starting tomorrow, we're going to need to fulfill at least two requests every day before you hit the hay! Do you think you can do that? I sure hope so! I'm counting on you to help keep this restaurant alive. I couldn't do it without you!
 
 Thanks ever so much!
 
@@ -113,13 +113,13 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 10
 text = "Hey neighbor!
 
-It’s me, Marta, from down the road. Sven told me he’s opened a restaurant and has enlisted you to help grow the food. I thought you might like some tips to help you along!
+It's me, Marta, from down the road. Sven told me he's opened a restaurant and has enlisted you to help grow the food. I thought you might like some tips to help you along!
 
-Remember to cut the grass before you try to plant anything. Most plants can’t compete with grass. 
+Remember to cut the grass before you try to plant anything. Most plants can't compete with grass. 
 
-Using mulch will help keep moisture in the ground so you don’t have to water the plants. (You can use the cut grass as mulch!)
+Using mulch will help keep moisture in the ground so you don't have to water the plants. (You can use the cut grass as mulch!)
 
-Try to plant close to trees. Trees provide homes for birds that like to eat the little bugs that eat your plants. If the plants aren’t spending energy healing from bug bites, they might make more food for you!
+Try to plant close to trees. Trees provide homes for birds that like to eat the little bugs that eat your plants. If the plants aren't spending energy healing from bug bites, they might make more food for you!
 
 Some plants help each other out! Be sure to check the seed packets before planting to see if there are any special instructions. 
 
@@ -167,11 +167,11 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 10
 text = "Hey friend!
 
-It’s me, your old buddy Sven. How’s the new home? Have you found a use for that big yard yet? 
+It's me, your old buddy Sven. How's the new home? Have you found a use for that big yard yet? 
 
-I’ve just started a new restaurant, and I could use your help. My customers are super picky, and they want only the freshest local ingredients, and they won’t accept any synthetic chemicals! Can you believe it? 
+I've just started a new restaurant, and I could use your help. My customers are super picky, and they want only the freshest local ingredients, and they won't accept any synthetic chemicals! Can you believe it? 
 
-I’ll send you orders as I figure out what the restaurant needs, and I’ll pay you for your time, of course! 
+I'll send you orders as I figure out what the restaurant needs, and I'll pay you for your time, of course! 
 
 We need to complete orders every day, or the customers might give up on us! So make sure to complete at least one request before you go to bed, or the restaurant might not make it.
 
@@ -221,9 +221,9 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 10
 text = "Hey friend,
 
-Bad news. I’ve got to shut down the restaurant. We just couldn’t get enough food to sate the customers, and they’ve all gone elsewhere. 
+Bad news. I've got to shut down the restaurant. We just couldn't get enough food to sate the customers, and they've all gone elsewhere. 
 
-I wish we could have made this work. I’m sure you’ll find some way to use that beautiful yard of yours. Maybe you could make it a wildflower meadow. That would be beautiful!
+I wish we could have made this work. I'm sure you'll find some way to use that beautiful yard of yours. Maybe you could make it a wildflower meadow. That would be beautiful!
 
 All the best, 
 Sven"
