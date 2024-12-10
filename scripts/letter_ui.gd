@@ -3,6 +3,7 @@ extends Control
 var state: int
 
 signal enable_game
+signal restart_game
 
 
 func _ready() -> void:
@@ -13,6 +14,13 @@ func show_screen():
 	show()
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, Const.TRANSITION)
+
+
+func show_game_over():
+	$Button.text = "Start again"
+	$GameOverLetter.show()
+	state = 3
+	show_screen()
 
 
 func fade_out():
@@ -38,4 +46,7 @@ func _on_button_pressed() -> void:
 	elif state == 2:
 		fade_out()
 		enable_game.emit()
-		self.queue_free()
+		$Letter3.queue_free()
+	elif state == 3:
+		await fade_out()
+		restart_game.emit()

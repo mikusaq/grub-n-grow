@@ -180,11 +180,69 @@ I sure appreciate your help!
 Sven
 "
 
+[node name="GameOverLetter" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameOverLetter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -112.0
+offset_right = 160.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k2xtt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOverLetter"]
+layout_mode = 0
+offset_left = -106.0
+offset_top = -38.0
+offset_right = 142.0
+offset_bottom = 107.0
+theme = ExtResource("2_qw6l1")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+text = "Hey friend,
+
+Bad news. I’ve got to shut down the restaurant. We just couldn’t get enough food to sate the customers, and they’ve all gone elsewhere. 
+
+I wish we could have made this work. I’m sure you’ll find some way to use that beautiful yard of yours. Maybe you could make it a wildflower meadow. That would be beautiful!
+
+All the best, 
+Sven"
+
+[node name="Label" type="Label" parent="GameOverLetter"]
+layout_mode = 0
+offset_left = -51.0
+offset_top = -133.0
+offset_right = 86.0
+offset_bottom = -97.0
+theme = ExtResource("2_qw6l1")
+theme_override_font_sizes/font_size = 25
+text = "Game Over"
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 371.0
+offset_left = 354.0
 offset_top = 295.0
-offset_right = 406.0
+offset_right = 389.0
 offset_bottom = 316.0
 theme = ExtResource("2_qw6l1")
 text = "Next"
