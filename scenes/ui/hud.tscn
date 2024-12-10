@@ -48,5 +48,5 @@ visible = false
 visible = false
 
 [connection signal="start_new_game" from="GameOverScreen" to="." method="_on_game_over_screen_start_new_game"]
-[connection signal="tree_exited" from="LetterUI" to="." method="_on_letter_ui_tree_exited"]
+[connection signal="enable_game" from="LetterUI" to="." method="_on_letter_ui_enable_game"]
 [connection signal="unpause_game" from="PauseScreen" to="." method="_on_pause_screen_unpause_game"]

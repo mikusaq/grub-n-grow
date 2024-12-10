@@ -2,8 +2,24 @@ extends Control
 
 var state: int
 
+signal enable_game
+
+
 func _ready() -> void:
 	state = 0
+
+
+func show_screen():
+	show()
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, Const.TRANSITION)
+
+
+func fade_out():
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, Const.TRANSITION)
+	await tween.finished
+
 
 func _on_button_pressed() -> void:
 	if state == 0:
@@ -14,7 +30,12 @@ func _on_button_pressed() -> void:
 		$Button.text = "Continue"
 		state += 1
 	elif state == 1:
-		var tween = create_tween()
-		tween.tween_property(self, "modulate:a", 0.0, Const.TRANSITION)
-		await tween.finished
+		fade_out()
+		$Letter2.queue_free()
+		hide()
+		enable_game.emit()
+		state += 1
+	elif state == 2:
+		fade_out()
+		enable_game.emit()
 		self.queue_free()

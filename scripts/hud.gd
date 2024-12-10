@@ -51,9 +51,9 @@ func _on_game_over_screen_start_new_game() -> void:
 	restart_game.emit()
 
 
-func _on_letter_ui_tree_exited() -> void:
+func _on_pause_screen_unpause_game() -> void:
 	enable_game.emit()
 
 
-func _on_pause_screen_unpause_game() -> void:
+func _on_letter_ui_enable_game() -> void:
 	enable_game.emit()
