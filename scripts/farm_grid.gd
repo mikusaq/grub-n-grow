@@ -55,8 +55,6 @@ func _process(delta):
 	if current_tile_pos != tile_pos or player_pos_changed:
 		current_tile_pos = tile_pos
 		$OnGround.set_mouse_pos(tile_pos, pixel_art_size)
-		print("mouse:", $OnGround.mouse_tile_pos)
-		print("player:", $OnGround.player_tile_pos)
 		player_pos_changed = false
 		update_interaction_with_player()
 		$OnGround.notify_runtime_tile_data_update()
