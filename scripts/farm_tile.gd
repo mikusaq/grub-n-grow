@@ -72,7 +72,6 @@ func process_next_turn():
 			return
 		tile_state = TileState.HARVEST
 		update_tile()
-		_determine_harvest_value()
 	elif tile_state == TileState.SPROUT:
 		growing_day += 1
 		if plant_type == Const.PlantType.Apple and growing_day == APPLE_TREE_GROW_TIME:
@@ -81,8 +80,6 @@ func process_next_turn():
 	elif tile_state == TileState.PLANT:
 		growing_day += 1
 		tile_state = TileState.HARVEST
-		if plant_type == Const.PlantType.Strawberry:
-			_determine_harvest_value()
 		update_tile()
 
 
@@ -181,7 +178,7 @@ func reset(new_soil_type: SoilType = SoilType.BASE_SOIL):
 	growing_day = 0
 
 
-func _determine_harvest_value() -> void:
+func determine_harvest_value() -> void:
 	var surrounding_farm_tiles = farm_grid.get_surrounding_farm_tiles(self)
 	var bonus_tree = false
 	var apple_bonus_tree = false
@@ -194,7 +191,7 @@ func _determine_harvest_value() -> void:
 			if not bonus_tree:
 				harvest_value += 1
 				bonus_tree = true
-			if is_fully_grown_apple_tree():
+			if farm_tile.is_fully_grown_apple_tree():
 				var flowering_crops = [Const.PlantType.Tomato, Const.PlantType.Pea, Const.PlantType.Strawberry, Const.PlantType.Garlic]
 				if plant_type in flowering_crops and not apple_bonus_tree:
 					harvest_value += 1

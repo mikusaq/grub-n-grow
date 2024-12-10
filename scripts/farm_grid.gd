@@ -186,3 +186,6 @@ func _update_tile_atlas_choords(tile_pos: Vector2i, ground_pos: Vector2i, plant_
 func process_next_turn():
 	for farm_tile in farm_tiles:
 		farm_tile.process_next_turn()
+	for farm_tile in farm_tiles:
+		if farm_tile.is_harvestable():
+			farm_tile.determine_harvest_value()
