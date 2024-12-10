@@ -57,6 +57,7 @@ func _fade_out_and_update_farm():
 	tween.tween_property(self, "modulate", Color.BLACK, 0.8)
 	await tween.finished
 	$World/FarmGrid.process_next_turn()
+	$World.hide_tasks_completed_label()
 	await get_tree().create_timer(0.4).timeout
 	tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.8)
@@ -84,6 +85,8 @@ func _on_hud_task_completed(completed_task: TaskCard) -> void:
 	used_tasks.append(task_card)
 	var task_array: Array[TaskCard] = [task_card]
 	completed_tasks_in_turn += 1
+	if completed_tasks_in_turn >= needed_tasks_in_turn:
+		$World.show_tasks_completed_label()
 	$HUD.add_task_cards(task_array)
 
 

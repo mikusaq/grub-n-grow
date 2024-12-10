@@ -18,6 +18,14 @@ func _set_button_color(hover_color: Color, pressed_color: Color):
 	style_box.bg_color = pressed_color
 
 
+func show_tasks_completed_label():
+	$TasksCompletedLabel.show()
+
+
+func hide_tasks_completed_label():
+	$TasksCompletedLabel.hide()
+
+
 func _on_door_area_body_entered(body: Node2D) -> void:
 	player_in_door_area = true
 	_set_button_color(active_door_color, pressed_door_color)
