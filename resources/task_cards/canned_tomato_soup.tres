@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_nrerl"]
 script = ExtResource("2_s5aiq")
 item = ExtResource("3_vbuns")
-amount = 8
+amount = 12
 
 [sub_resource type="Resource" id="Resource_52yl7"]
 script = ExtResource("2_s5aiq")
