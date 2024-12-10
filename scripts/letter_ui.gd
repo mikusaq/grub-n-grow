@@ -45,8 +45,9 @@ func _on_button_pressed() -> void:
 		state += 1
 	elif state == 2:
 		fade_out()
-		enable_game.emit()
 		$Letter3.queue_free()
+		hide()
+		enable_game.emit()
 	elif state == 3:
 		await fade_out()
 		restart_game.emit()
