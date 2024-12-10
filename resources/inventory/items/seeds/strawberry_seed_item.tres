@@ -13,5 +13,5 @@ name = "Strawberry seed"
 texture = SubResource("AtlasTexture_vrc12")
 stackable = false
 enable_hover = true
-description = "[ul] Watch out for pests![/ul]
-[ul] Long-lived (perennial)[/ul]"
+description = "[ul bullet=-] Watch out for pests![/ul]
+[ul bullet=-] Long-lived (perennial)[/ul]"

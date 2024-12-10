@@ -13,4 +13,4 @@ name = "Tomato seed"
 texture = SubResource("AtlasTexture_vxj3k")
 stackable = false
 enable_hover = true
-description = "[ul] Watch out for pests![/ul]"
+description = "[ul bullet=-] Watch out for pests![/ul]"

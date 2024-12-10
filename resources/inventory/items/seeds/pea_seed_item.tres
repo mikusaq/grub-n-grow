@@ -13,4 +13,4 @@ name = "Pea seed"
 texture = SubResource("AtlasTexture_awnye")
 stackable = false
 enable_hover = true
-description = "[ul] Great for the soil![/ul]"
+description = "[ul bullet=-] Great for the soil![/ul]"
