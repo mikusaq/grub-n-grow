@@ -23,6 +23,6 @@ amount = 3
 
 [resource]
 script = ExtResource("1_gvo5j")
-name = "Tomato Soup"
+name = "Tomato Bruchetta"
 tasks = Array[ExtResource("2_i72yq")]([SubResource("Resource_nrerl"), SubResource("Resource_52yl7"), SubResource("Resource_s60po")])
-reward = 12
+reward = 15

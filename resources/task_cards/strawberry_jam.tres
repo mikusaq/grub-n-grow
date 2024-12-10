@@ -13,4 +13,4 @@ amount = 12
 script = ExtResource("1_brj3a")
 name = "Strawberry Jam"
 tasks = Array[ExtResource("2_vep0p")]([SubResource("Resource_qthlh")])
-reward = 10
+reward = 8

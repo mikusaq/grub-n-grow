@@ -13,4 +13,4 @@ amount = 10
 script = ExtResource("1_tg5ce")
 name = "Pea Hummus"
 tasks = Array[ExtResource("2_kwg14")]([SubResource("Resource_6kyrw")])
-reward = 14
+reward = 7
