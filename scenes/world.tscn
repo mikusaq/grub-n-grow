@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dg7o4qlnmdeoi"]
+[gd_scene load_steps=31 format=4 uid="uid://dg7o4qlnmdeoi"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_241gj"]
 [ext_resource type="Script" path="res://scripts/farm_grid.gd" id="1_qy2y8"]
@@ -140,6 +140,8 @@ bg_color = Color(1, 0, 0, 0.4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_581x3"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7cs37"]
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 scale = Vector2(1.00154, 1)
@@ -219,6 +221,23 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_iiphn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bd75l")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d0tu2")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_581x3")
+
+[node name="WorldBoundary" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="DownBoundary" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(0, 188)
+shape = SubResource("WorldBoundaryShape2D_7cs37")
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(196, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_7cs37")
+
+[node name="RightBoundary" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(-256, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_7cs37")
 
 [connection signal="working" from="FarmGrid" to="." method="_on_farm_grid_working"]
 [connection signal="body_entered" from="Door/DoorArea" to="." method="_on_door_area_body_entered"]

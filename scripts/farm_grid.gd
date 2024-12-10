@@ -51,8 +51,12 @@ func _ready() -> void:
 
 
 func _process(delta):
-	if current_tile_pos != get_tile_global_pos() or player_pos_changed:
-		current_tile_pos = get_tile_global_pos()
+	var tile_pos = get_tile_global_pos()
+	if current_tile_pos != tile_pos or player_pos_changed:
+		current_tile_pos = tile_pos
+		$OnGround.set_mouse_pos(tile_pos, pixel_art_size)
+		print("mouse:", $OnGround.mouse_tile_pos)
+		print("player:", $OnGround.player_tile_pos)
 		player_pos_changed = false
 		update_interaction_with_player()
 		$OnGround.notify_runtime_tile_data_update()
@@ -67,10 +71,7 @@ func process_click(mouse_pos: Vector2) -> void:
 
 func set_player_pos(pos: Vector2):
 	player_pos = pos
-	if player_pos.x < 0 or player_pos.y < 0:
-		$OnGround.player_tile_pos = Vector2i(-1, -1)
-	else:
-		$OnGround.player_tile_pos = Vector2i(pos) / pixel_art_size.x
+	$OnGround.set_player_pos(pos, pixel_art_size)
 	player_pos_changed = true
 
 
