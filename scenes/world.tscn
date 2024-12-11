@@ -198,6 +198,7 @@ stream = ExtResource("10_5omgx")
 
 [node name="Harvest" type="AudioStreamPlayer" parent="FarmGrid"]
 stream = ExtResource("11_ovqhw")
+volume_db = 10.065
 
 [node name="ChopTree" type="AudioStreamPlayer" parent="FarmGrid"]
 stream = ExtResource("12_fxgq1")

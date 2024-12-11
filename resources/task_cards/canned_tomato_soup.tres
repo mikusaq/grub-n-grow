@@ -8,15 +8,15 @@
 [sub_resource type="Resource" id="Resource_nrerl"]
 script = ExtResource("2_s5aiq")
 item = ExtResource("3_vbuns")
-amount = 10
+amount = 12
 
 [sub_resource type="Resource" id="Resource_52yl7"]
 script = ExtResource("2_s5aiq")
 item = ExtResource("4_oskg2")
-amount = 4
+amount = 3
 
 [resource]
 script = ExtResource("1_0xvfy")
-name = "Canned Tomato Soup"
+name = "Tomato Soup"
 tasks = Array[ExtResource("2_s5aiq")]([SubResource("Resource_nrerl"), SubResource("Resource_52yl7")])
-reward = 17
+reward = 12

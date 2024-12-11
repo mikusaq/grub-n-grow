@@ -7,10 +7,10 @@
 [sub_resource type="Resource" id="Resource_qthlh"]
 script = ExtResource("2_vep0p")
 item = ExtResource("3_i4p7e")
-amount = 8
+amount = 12
 
 [resource]
 script = ExtResource("1_brj3a")
 name = "Strawberry Jam"
 tasks = Array[ExtResource("2_vep0p")]([SubResource("Resource_qthlh")])
-reward = 10
+reward = 8

@@ -13,4 +13,6 @@ name = "Apple seed"
 texture = SubResource("AtlasTexture_vxj3k")
 stackable = false
 enable_hover = true
-description = "[ul bullet=-] Great for the whole garden[/ul]"
+description = "[ul bullet=-] Houses birds
+ Attracts pollinators
+ Long lived[/ul]"

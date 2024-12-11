@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TaskCard" load_steps=5 format=3 uid="uid://dx176132ovcuc"]
+
+[ext_resource type="Script" path="res://scripts/tasks/task_card.gd" id="1_7ep7u"]
+[ext_resource type="Script" path="res://scripts/tasks/task.gd" id="2_oqw3b"]
+[ext_resource type="Resource" uid="uid://crldlbvusef27" path="res://resources/inventory/items/crops/apple_item.tres" id="3_dktlu"]
+
+[sub_resource type="Resource" id="Resource_qthlh"]
+script = ExtResource("2_oqw3b")
+item = ExtResource("3_dktlu")
+amount = 8
+
+[resource]
+script = ExtResource("1_7ep7u")
+name = "Apple Cider"
+tasks = Array[ExtResource("2_oqw3b")]([SubResource("Resource_qthlh")])
+reward = 6

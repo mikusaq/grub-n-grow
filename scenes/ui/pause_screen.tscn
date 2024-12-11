@@ -138,7 +138,7 @@ text = "[ul bullet=-]
 [/ul]
 [img]assets/keys.png[/img]
 [ul bullet=-]
- Use the Scythe (1) to seed and cut plants
+ Use the Scythe (1) to harvest and cut plants
 [/ul]
 [ul bullet=-]
  Use Axe (3) to cut trees
@@ -157,7 +157,10 @@ text = "[ul bullet=-]
  Failing to fulfill at least one task per day will lead to game over
 [/ul]
 [ul bullet=-]
- Some plants interact with each other, providing bonus crops at harvest (watch the numbers carefully)
+ Some plants interact with each other, providing bonus crops at harvest (watch the numbers carefully) 
+[/ul]
+[ul bullet=-]
+ Plant area of effect is up/down/left/right, not diagonal 
 [/ul]"
 tab_size = 0
 
