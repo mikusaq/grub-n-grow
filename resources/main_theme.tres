@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://b8prix2n6p0hv"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://b8prix2n6p0hv"]
 
 [ext_resource type="Texture2D" uid="uid://clrbl86r51aak" path="res://assets/inventory.png" id="1_ewsur"]
 [ext_resource type="FontFile" uid="uid://br0ytyvgenot2" path="res://assets/fonts/pointfree.ttf" id="1_sutv3"]
@@ -52,6 +52,46 @@ expand_margin_right = 16.0
 expand_margin_bottom = 8.0
 modulate_color = Color(0.466181, 0.466181, 0.466181, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s1t2"]
+bg_color = Color(0.980392, 0.854902, 0.521569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xfnf"]
+bg_color = Color(0.85917, 0.695904, 0.201361, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d38bq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.653042, 0.524774, 0.130546, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1q50"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.544974, 0.544974, 0.544974, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
 [resource]
 default_font = ExtResource("1_sutv3")
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -68,3 +108,7 @@ Button/styles/focus = SubResource("StyleBoxEmpty_4cjpx")
 Button/styles/hover = SubResource("StyleBoxTexture_i77rk")
 Button/styles/normal = SubResource("StyleBoxTexture_c2lvt")
 Button/styles/pressed = SubResource("StyleBoxTexture_jsqs4")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_5s1t2")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_6xfnf")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_d38bq")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_n1q50")

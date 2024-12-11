@@ -81,7 +81,7 @@ offset_left = -49.0
 offset_top = 46.0
 offset_right = 54.0
 offset_bottom = 67.0
-text = "Back To Game"
+text = "Resume"
 
 [node name="HowToPlayScreen" type="Control" parent="."]
 visible = false
