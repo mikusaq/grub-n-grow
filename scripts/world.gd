@@ -19,11 +19,11 @@ func _set_button_color(hover_color: Color, pressed_color: Color):
 
 
 func show_tasks_completed_label():
-	$TasksCompletedLabel.show()
+	$TasksCompletedPanel.tick()
 
 
 func hide_tasks_completed_label():
-	$TasksCompletedLabel.hide()
+	$TasksCompletedPanel.untick()
 
 
 func _on_door_area_body_entered(body: Node2D) -> void:
