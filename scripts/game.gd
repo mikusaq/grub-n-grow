@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("pause"):
 		if game_enabled:
 			pause_game()
-		elif not $HUD/LetterUI:
+		elif not $HUD/LetterUI.visible:
 			unpause_game()
 
 
@@ -122,3 +122,7 @@ func _on_world_work_on_farm_grid() -> void:
 
 func _on_hud_enable_game() -> void:
 	game_enabled = true
+
+
+func _on_hud_pause_game() -> void:
+	pause_game()

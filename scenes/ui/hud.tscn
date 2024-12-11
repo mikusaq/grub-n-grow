@@ -38,11 +38,21 @@ offset_top = 8.0
 offset_right = 241.0
 offset_bottom = 108.0
 
+[node name="PauseButton" type="Button" parent="."]
+offset_left = 581.0
+offset_top = 14.0
+offset_right = 618.0
+offset_bottom = 32.0
+theme = ExtResource("3_u5c0e")
+theme_override_font_sizes/font_size = 12
+text = "Pause"
+
 [node name="LetterUI" parent="." instance=ExtResource("7_anx5h")]
 
 [node name="PauseScreen" parent="." instance=ExtResource("8_nk4jr")]
 visible = false
 
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="enable_game" from="LetterUI" to="." method="_on_letter_ui_enable_game"]
 [connection signal="restart_game" from="LetterUI" to="." method="_on_letter_ui_restart_game"]
 [connection signal="unpause_game" from="PauseScreen" to="." method="_on_pause_screen_unpause_game"]

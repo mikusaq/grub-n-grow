@@ -6,6 +6,7 @@ var crop_inv: Inv = load("res://resources/inventory/crop_inventory.tres")
 signal task_completed(task: TaskCard)
 signal enable_game
 signal restart_game
+signal pause_game
 
 
 func _ready() -> void:
@@ -56,3 +57,7 @@ func _on_letter_ui_enable_game() -> void:
 
 func _on_letter_ui_restart_game() -> void:
 	restart_game.emit()
+
+
+func _on_pause_button_pressed() -> void:
+	pause_game.emit()
