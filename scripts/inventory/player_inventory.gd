@@ -12,5 +12,5 @@ var active_slot: int = 0:
 signal active_slot_changed()
 
 
-func get_active_item() -> InvItem:
-	return slots[active_slot].item
+func get_active_slot() -> InvSlot:
+	return slots[active_slot]

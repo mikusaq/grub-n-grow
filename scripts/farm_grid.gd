@@ -123,9 +123,9 @@ func update_interaction_with_player():
 
 
 func process_click_on_farm_tile(farm_tile: FarmTile):
-	var active_item = player_inv.get_active_item()
-	if player_can_interact and active_item != null:
-		if active_item.name == "Scythe":
+	var active_slot = player_inv.get_active_slot()
+	if player_can_interact and active_slot.item != null:
+		if active_slot.item.name == "Scythe":
 			if farm_tile.tile_state == FarmTile.TileState.GRASS:
 				if farm_tile.plant_type != Const.PlantType.BaseTree:
 					working.emit()
@@ -137,20 +137,20 @@ func process_click_on_farm_tile(farm_tile: FarmTile):
 				working.emit()
 				$Harvest.play()
 				farm_tile.harvest(crop_inv)
-		elif active_item.name == "Mulch":
+		elif active_slot.item.name == "Mulch" and active_slot.amount > 0:
 			if farm_tile.tile_state == FarmTile.TileState.SOIL:
 				working.emit()
 				$PlaceMulch.play()
 				farm_tile.tile_state = FarmTile.TileState.MULCH
 				farm_tile.update_tile()
 				player_inv.remove_item(mulch_item, 1)
-		elif active_item.name == "Axe":
+		elif active_slot.item.name == "Axe":
 			if farm_tile.is_fully_grown_tree():
 				working.emit()
 				$ChopTree.play()
 				farm_tile.reset()
 		else:
-			process_seeding(farm_tile, active_item)
+			process_seeding(farm_tile, active_slot.item)
 
 
 func process_seeding(farm_tile: FarmTile, active_item: InvItem) -> void:
